@@ -1,3 +1,4 @@
+$errorColor: red;
 .authform {
    margin: 15px;
    .item {
@@ -6,13 +7,13 @@
 }
 
 .error {
-  border-color: red;
+  border-color: $errorColor;
   &:after {
     position: absolute;
     font-family: $ionicons-font-family;
     right: 10px;
     line-height: 2;
-    color: red;
+    color: $errorColor;
     content: '\f12a';
   }
 }
@@ -27,4 +28,9 @@
     color: green;
     content: '\f122';
   }
+}
+
+.authFormError {
+  text-align: center;
+  color: $errorColor;
 }

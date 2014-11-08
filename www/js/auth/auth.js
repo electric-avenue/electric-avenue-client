@@ -17,6 +17,7 @@ angular.module('starter.auth', [])
 .controller('LoginCtrl', function($scope, $timeout, Auth, $state) {
   // Form data for the login modal
   $scope.loginData = {};
+  $scope.loginError = false;
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
     var user = $scope.loginData.username || undefined;
@@ -26,10 +27,11 @@ angular.module('starter.auth', [])
       $state.go('app.home');
     } else {
       // User login attempt failed
+      $scope.loginError = true;
     }
   };
 })
-.factory('Auth', function($http, $location, $window, Session) {
+.factory('Auth', function($http, $location, $window, $cookieStore) {
   // Test data
   // TODO remove when server is ready
   var testData = {
@@ -50,30 +52,19 @@ angular.module('starter.auth', [])
     if (user === testData.username && pass === testData.password) {
       var id = 1234;
       var userid = 2;
-      Session.create(id, userid);
+      $cookieStore.put('user', user);
       return true;
     } else {
       return false;
     }
   };
   auth.isAuth = function() {
-    return !!Session.userId;
+    return !!$cookieStore.get('user');
   };
   auth.logout = function() {
     if (auth.isAuth()) {
-      Session.destroy();
+      $cookieStore.remove('user');
     }
   };
   return auth;
-})
-.service('Session', function () {
-  this.create = function (sessionId, userId, userRole) {
-    this.id = sessionId;
-    this.userId = userId;
-  };
-  this.destroy = function () {
-    this.id = null;
-    this.userId = null;
-  };
-  return this;
 });
