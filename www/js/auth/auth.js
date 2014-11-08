@@ -7,6 +7,10 @@ angular.module('starter.auth', [])
     var user = $scope.signupData.username || undefined;
     var email = $scope.signupData.email || undefined;
     var pass = $scope.signupData.password || undefined;
+    if (!user || !email || !pass) {
+      $scope.signupError = true;
+      return;
+    }
     Auth.signup(user, email, pass)
       .then(function(data) {
         $state.transitionTo('app.login');
@@ -23,6 +27,10 @@ angular.module('starter.auth', [])
   $scope.doLogin = function() {
     var user = $scope.loginData.username || undefined;
     var pass = $scope.loginData.password || undefined;
+    if (!user || !password) {
+      $scope.loginError = true;
+      return;
+    }
     Auth.login(user, pass)
       .then(function(data) {
         if (!data) {
