@@ -1,0 +1,22 @@
+<ion-view title="Login">
+  <ion-content has-header="true" has-tabs="true" padding="true">
+    <form novalidate name="loginForm" ng-submit="doLogin()">
+      <div class="list authform">
+        <label class="item item-input"
+            ng-class="{'error': loginForm.username.$dirty && loginForm.username.$invalid, 'valid': !loginForm.username.$invalid && loginForm.username.$dirty }">
+          <input type="text" name="username" placeholder="Username or Email" ng-model="loginData.username" required>
+        </label>
+        <label class="item item-input"
+            ng-class="{'error': loginForm.password.$dirty && loginForm.password.$invalid, 'valid': !loginForm.password.$invalid && loginForm.password.$dirty }">
+          <input type="password" name="password" placeholder="Password" ng-model="loginData.password" required>
+        </label>
+        <div>
+          <button class="button button-block button-positive" type="submit">Login</button>
+        </div>
+        <div style="text-align: center">
+          Or <a href="/#/app/signup">Create an account</a>
+        </div>
+      </div>
+    </form>
+  </ion-content>
+</ion-view>

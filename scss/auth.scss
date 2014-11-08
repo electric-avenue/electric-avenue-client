@@ -1,0 +1,30 @@
+.authform {
+   margin: 15px;
+   .item {
+     margin: 5px 0;
+   }
+}
+
+.error {
+  border-color: red;
+  &:after {
+    position: absolute;
+    font-family: $ionicons-font-family;
+    right: 10px;
+    line-height: 2;
+    color: red;
+    content: '\f12a';
+  }
+}
+
+.valid {
+  border-color: green;
+  &:after {
+    position: absolute;
+    font-family: $ionicons-font-family;
+    right: 10px;
+    line-height: 2;
+    color: green;
+    content: '\f122';
+  }
+}
