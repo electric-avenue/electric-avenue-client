@@ -7821,7 +7821,8 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
     margin: 5px 0; }
 
 .error {
-  border-color: red; }
+  border: none;
+  box-shadow: 0 0 2px red; }
   .error:after {
     position: absolute;
     font-family: "Ionicons";
@@ -7831,7 +7832,8 @@ $ios-transition-box-shadow-end: -200px 0px 200px rgba(0,0,0,0.15), -5px 0px 5px 
     content: '\f12a'; }
 
 .valid {
-  border-color: green; }
+  border: none;
+  box-shadow: 0 0 2px green; }
   .valid:after {
     position: absolute;
     font-family: "Ionicons";

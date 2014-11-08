@@ -1,17 +1,18 @@
 angular.module('starter.auth', [])
 
-.controller('SignUpCtrl', function($scope, Auth) {
+.controller('SignUpCtrl', function($scope, Auth, $state) {
   $scope.signupData = {};
+  $scope.signupError = false;
   $scope.doSignup = function() {
     var user = $scope.signupData.username || undefined;
     var email = $scope.signupData.email || undefined;
     var pass = $scope.signupData.password || undefined;
-    if (Auth.signup(user, email, pass)) {
-      // Login after a user signs up
-      Auth.login(user, pass);
-    } else {
-      // Error on signup
-    }
+    Auth.signup(user, email, pass)
+      .then(function(data) {
+        $state.transitionTo('app.login');
+      }).catch(function(err) {
+        $scope.signupError = true;
+      });
   };
 })
 .controller('LoginCtrl', function($scope, $timeout, Auth, $state) {
@@ -22,13 +23,16 @@ angular.module('starter.auth', [])
   $scope.doLogin = function() {
     var user = $scope.loginData.username || undefined;
     var pass = $scope.loginData.password || undefined;
-    if (Auth.login(user, pass)) {
-      // User is logged in
-      $state.go('app.home');
-    } else {
-      // User login attempt failed
-      $scope.loginError = true;
-    }
+    Auth.login(user, pass)
+      .then(function(data) {
+        if (!data) {
+          $scope.loginError = true;
+        } else {
+          $state.transitionTo('app.home');
+        }
+      }).catch(function(err) {
+        $scope.loginError = true;
+      });
   };
 })
 .factory('Auth', function($http, $location, $window, $cookieStore) {
@@ -43,20 +47,39 @@ angular.module('starter.auth', [])
     if (!user || !email || !pass) {
       return false;
     }
-    return true;
+    var data = {
+      username: user,
+      email: email,
+      password: pass
+    };
+    return $http({
+      method: 'POST',
+      url: 'http://10.6.23.250:5000/auth/register',
+      data: data
+    }).then(function(resp) {
+      return true;
+    });
   };
   auth.login = function(user, pass) {
     if (!user || !pass) {
       return false;
     }
-    if (user === testData.username && pass === testData.password) {
-      var id = 1234;
-      var userid = 2;
-      $cookieStore.put('user', user);
-      return true;
-    } else {
+    var data = {
+      username: user,
+      password: pass
+    };
+    return $http({
+      method: 'POST',
+      url: 'http://10.6.23.250:5000/auth/login',
+      data: data
+    }).then(function(resp) {
+      if (resp.data.success) {
+        $cookieStore.put('user', user);
+        return true;
+      }
+    }).catch(function(err) {
       return false;
-    }
+    });
   };
   auth.isAuth = function() {
     return !!$cookieStore.get('user');

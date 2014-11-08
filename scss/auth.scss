@@ -1,4 +1,6 @@
 $errorColor: red;
+$successColor: green;
+
 .authform {
    margin: 15px;
    .item {
@@ -7,7 +9,8 @@ $errorColor: red;
 }
 
 .error {
-  border-color: $errorColor;
+  border: none;
+  box-shadow: 0 0 2px $errorColor;
   &:after {
     position: absolute;
     font-family: $ionicons-font-family;
@@ -19,13 +22,14 @@ $errorColor: red;
 }
 
 .valid {
-  border-color: green;
+  border: none;
+  box-shadow: 0 0 2px $successColor;
   &:after {
     position: absolute;
     font-family: $ionicons-font-family;
     right: 10px;
     line-height: 2;
-    color: green;
+    color: $successColor;
     content: '\f122';
   }
 }
