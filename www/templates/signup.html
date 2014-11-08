@@ -1,11 +1,13 @@
 <ion-view title="Signup">
   <ion-content has-header="true" padding="true">
+    <p class="authFormError" ng-show="signupError">
+      Signup failed
+    </p>
     <form novalidate name="signupForm" ng-submit="doSignup()">
       <div class="list authform">
         <label class="item item-input"
             ng-class="{'error': signupForm.username.$dirty && signupForm.username.$invalid, 'valid': !signupForm.username.$invalid && signupForm.username.$dirty }">
-          <input type="text" name="username" placeholder="Username"
-            ng-model="signupData.username" ng-minlength="3" ng-maxlength="20" required>
+          <input type="text" name="username" placeholder="Username" ng-model="signupData.username" ng-minlength="3" ng-maxlength="20" required>
         </label>
         <label class="item item-input"
             ng-class="{'error': signupForm.email.$dirty && signupForm.email.$invalid, 'valid': !signupForm.email.$invalid && signupForm.email.$dirty }">
@@ -13,7 +15,7 @@
         </label>
         <label class="item item-input"
             ng-class="{'error': signupForm.password.$dirty && signupForm.password.$invalid, 'valid': !signupForm.password.$invalid && signupForm.password.$dirty }">
-          <input type="password" name="password" placeholder="Password" ng-model="signupData.password" required>
+          <input type="password" name="password" placeholder="Password" ng-model="signupData.password" ng-minlength="5" required>
         </label>
         <div>
           <button class="button button-block button-positive" type="submit">Create account</button>

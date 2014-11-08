@@ -1,35 +1,41 @@
 angular.module('starter.auth', [])
 
-.controller('SignUpCtrl', function($scope, Auth) {
+.controller('SignUpCtrl', function($scope, Auth, $state) {
   $scope.signupData = {};
+  $scope.signupError = false;
   $scope.doSignup = function() {
     var user = $scope.signupData.username || undefined;
     var email = $scope.signupData.email || undefined;
     var pass = $scope.signupData.password || undefined;
-    if (Auth.signup(user, email, pass)) {
-      // Login after a user signs up
-      Auth.login(user, pass);
-    } else {
-      // Error on signup
-    }
+    Auth.signup(user, email, pass)
+      .then(function(data) {
+        $state.transitionTo('app.login');
+      }).catch(function(err) {
+        $scope.signupError = true;
+      });
   };
 })
 .controller('LoginCtrl', function($scope, $timeout, Auth, $state) {
   // Form data for the login modal
   $scope.loginData = {};
+  $scope.loginError = false;
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
     var user = $scope.loginData.username || undefined;
     var pass = $scope.loginData.password || undefined;
-    if (Auth.login(user, pass)) {
-      // User is logged in
-      $state.go('app.home');
-    } else {
-      // User login attempt failed
-    }
+    Auth.login(user, pass)
+      .then(function(data) {
+        if (!data) {
+          $scope.loginError = true;
+        } else {
+          $state.transitionTo('app.home');
+        }
+      }).catch(function(err) {
+        $scope.loginError = true;
+      });
   };
 })
-.factory('Auth', function($http, $location, $window, Session) {
+.factory('Auth', function($http, $location, $window, $cookieStore) {
   // Test data
   // TODO remove when server is ready
   var testData = {
@@ -41,39 +47,47 @@ angular.module('starter.auth', [])
     if (!user || !email || !pass) {
       return false;
     }
-    return true;
+    var data = {
+      username: user,
+      email: email,
+      password: pass
+    };
+    return $http({
+      method: 'POST',
+      url: 'http://10.6.23.250:5000/auth/register',
+      data: data
+    }).then(function(resp) {
+      return true;
+    });
   };
   auth.login = function(user, pass) {
     if (!user || !pass) {
       return false;
     }
-    if (user === testData.username && pass === testData.password) {
-      var id = 1234;
-      var userid = 2;
-      Session.create(id, userid);
-      return true;
-    } else {
+    var data = {
+      username: user,
+      password: pass
+    };
+    return $http({
+      method: 'POST',
+      url: 'http://10.6.23.250:5000/auth/login',
+      data: data
+    }).then(function(resp) {
+      if (resp.data.success) {
+        $cookieStore.put('user', user);
+        return true;
+      }
+    }).catch(function(err) {
       return false;
-    }
+    });
   };
   auth.isAuth = function() {
-    return !!Session.userId;
+    return !!$cookieStore.get('user');
   };
   auth.logout = function() {
     if (auth.isAuth()) {
-      Session.destroy();
+      $cookieStore.remove('user');
     }
   };
   return auth;
-})
-.service('Session', function () {
-  this.create = function (sessionId, userId, userRole) {
-    this.id = sessionId;
-    this.userId = userId;
-  };
-  this.destroy = function () {
-    this.id = null;
-    this.userId = null;
-  };
-  return this;
 });
