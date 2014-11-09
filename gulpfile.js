@@ -4,6 +4,7 @@ var bower = require('bower');
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
+var jsdoc = require('gulp-jsdoc');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 var karma = require('karma').server;
@@ -28,6 +29,11 @@ gulp.task('sass', function(done) {
 
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
+});
+
+gulp.task('docs', function() {
+  gulp.src(['www/js/*.js', 'www/js/**/*.js'])
+    .pipe(jsdoc('./docs'));
 });
 
 gulp.task('install', ['git-check'], function() {
