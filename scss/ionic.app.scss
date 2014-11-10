@@ -20,4 +20,4 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 // Include Auth-specific styling
-@import "auth.scss";
+@import "../www/views/auth/auth.scss";

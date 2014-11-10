@@ -25,14 +25,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.auth', 'ngCo
     .state('app', {
       url: "/app",
       abstract: true,
-      templateUrl: 'templates/menu.html',
+      templateUrl: 'views/menu.html',
       controller: 'AppCtrl'
     })
     .state('app.home', {
       url: "/home",
       views: {
         'menuContent': {
-          templateUrl: 'templates/home.html',
+          templateUrl: 'views/user/home/home.html',
           controller: 'AppCtrl'
         }
       },
@@ -42,7 +42,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.auth', 'ngCo
       url: "/signup",
       views: {
         'menuContent': {
-          templateUrl: "templates/signup.html",
+          templateUrl: "views/auth/signup.html",
           controller: 'SignUpCtrl'
         }
       }
@@ -51,7 +51,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.auth', 'ngCo
       url: "/login",
       views: {
         'menuContent': {
-          templateUrl: "templates/login.html",
+          templateUrl: "views/auth/login.html",
           controller: 'LoginCtrl'
         }
       }
