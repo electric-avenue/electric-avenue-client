@@ -1,0 +1,38 @@
+$errorColor: red;
+$successColor: green;
+
+.authform {
+   margin: 15px;
+   .item {
+     margin: 5px 0;
+   }
+   .error {
+     border: none;
+     box-shadow: 0 0 2px $errorColor;
+     &:after {
+       position: absolute;
+       font-family: $ionicons-font-family;
+       right: 10px;
+       line-height: 2;
+       color: $errorColor;
+       content: '\f12a';
+     }
+   }
+   .valid {
+     border: none;
+     box-shadow: 0 0 2px $successColor;
+     &:after {
+       position: absolute;
+       font-family: $ionicons-font-family;
+       right: 10px;
+       line-height: 2;
+       color: $successColor;
+       content: '\f122';
+     }
+   }
+}
+
+.authFormError {
+  text-align: center;
+  color: $errorColor;
+}
