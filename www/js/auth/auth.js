@@ -27,7 +27,7 @@ angular.module('starter.auth', [])
   $scope.doLogin = function() {
     var user = $scope.loginData.username || undefined;
     var pass = $scope.loginData.password || undefined;
-    if (!user || !password) {
+    if (!user || !pass) {
       $scope.loginError = true;
       return;
     }
@@ -44,12 +44,6 @@ angular.module('starter.auth', [])
   };
 })
 .factory('Auth', function($http, $location, $window, $cookieStore) {
-  // Test data
-  // TODO remove when server is ready
-  var testData = {
-    username: 'blah',
-    password: 'test'
-  };
   var auth = {};
   auth.signup = function(user, email, pass) {
     if (!user || !email || !pass) {
