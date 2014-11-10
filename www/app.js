@@ -4,9 +4,13 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.auth', 'ngCookies'])
-
-.run(function($ionicPlatform) {
+angular.module('starter', [
+  'ionic',
+  'starter.controllers',
+  'starter.auth',
+  'ngCookies'
+  // 'starter.userprofile'
+]).run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -23,21 +27,30 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.auth', 'ngCo
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('app', {
-      url: "/app",
+      url: '/app',
       abstract: true,
       templateUrl: 'views/menu.html',
-      controller: 'AppCtrl'
+      controller: 'MenuCtrl'
     })
     .state('app.home', {
-      url: "/home",
+      url: '/home',
       views: {
         'menuContent': {
           templateUrl: 'views/user/home/home.html',
-          controller: 'AppCtrl'
+          controller: 'MenuCtrl'
         }
       },
       authenticate: true
     })
+    // .state('app.userProfile', {
+    //   url: '/profile',
+    //   views: {
+    //     'menuContent': {
+    //       templateUrl: 'views/user/profile/profile.html',
+    //       controller: 'ProfileCtrl'
+    //     }
+    //   }
+    // })
     .state('app.signup', {
       url: "/signup",
       views: {
@@ -48,10 +61,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.auth', 'ngCo
       }
     })
     .state('app.login', {
-      url: "/login",
+      url: '/login',
       views: {
         'menuContent': {
-          templateUrl: "views/auth/login.html",
+          templateUrl: 'views/auth/login.html',
           controller: 'LoginCtrl'
         }
       }
