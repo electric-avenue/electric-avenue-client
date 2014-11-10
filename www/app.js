@@ -79,7 +79,7 @@ angular.module('starter', [
         },
         function(response) {
           if (response.status === 401) {
-            console.log('LOCKED DOWN BIATCHES')
+            console.log('Rejected')
             $location.url('/login');
           }
           return $q.reject(response);
