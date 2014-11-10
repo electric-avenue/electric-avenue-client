@@ -56,7 +56,7 @@ angular.module('starter.auth', [])
     };
     return $http({
       method: 'POST',
-      url: 'http://10.6.23.250:5000/auth/register',
+      url: 'http://localhost:5000/auth/register',
       data: data
     }).then(function(resp) {
       return true;
@@ -72,11 +72,11 @@ angular.module('starter.auth', [])
     };
     return $http({
       method: 'POST',
-      url: 'http://10.6.23.250:5000/auth/login',
+      url: 'http://localhost:5000/auth/login',
       data: data
-    }).then(function(resp) {
-      if (resp.data.success) {
-        $cookieStore.put('user', user);
+    }).then(function(res) {
+      if (!!res.data) {
+        $cookieStore.put('user', res.data);
         return true;
       }
     }).catch(function(err) {

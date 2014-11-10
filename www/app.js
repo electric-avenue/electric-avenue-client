@@ -24,7 +24,7 @@ angular.module('starter', [
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $stateProvider
     .state('app', {
       url: '/app',
@@ -71,6 +71,22 @@ angular.module('starter', [
     });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
+  $httpProvider.responseInterceptors.push(function($q, $location) {
+    return function(promise) {
+      return promise.then(
+        function(response) {
+          return response;
+        },
+        function(response) {
+          if (response.status === 401) {
+            console.log('LOCKED DOWN BIATCHES')
+            $location.url('/login');
+          }
+          return $q.reject(response);
+        }
+      );
+    };
+  });
 })
 .run(function ($rootScope, $state, Auth) {
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
