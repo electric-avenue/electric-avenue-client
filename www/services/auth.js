@@ -1,7 +1,6 @@
 angular.module('auth', [])
 .factory('Auth', function($http, $location, $cookieStore) {
-  var auth = {};
-  auth.signup = function(user, email, pass) {
+  var signup = function(user, email, pass) {
     if (!user || !email || !pass) {
       return false;
     }
@@ -10,15 +9,17 @@ angular.module('auth', [])
       email: email,
       password: pass
     };
+
     return $http({
       method: 'POST',
       url: 'http://localhost:5000/auth/register',
       data: data
-    }).then(function(resp) {
+    }).then(function(res) {
       return true;
     });
   };
-  auth.login = function(user, pass) {
+
+  var login = function(user, pass) {
     if (!user || !pass) {
       return false;
     }
@@ -26,6 +27,7 @@ angular.module('auth', [])
       username: user,
       password: pass
     };
+
     return $http({
       method: 'POST',
       url: 'http://localhost:5000/auth/login',
@@ -39,18 +41,25 @@ angular.module('auth', [])
       return false;
     });
   };
-  auth.isAuth = function() {
+
+  var isAuth = function() {
     return !!$cookieStore.get('user');
   };
-  auth.logout = function() {
-    $http({
+
+  var logout = function() {
+    if (isAuth()) {
+      $cookieStore.remove('user');
+    }
+    return $http({
       method: 'POST',
       url: 'http://localhost:5000/auth/logout'
-    }).then(function(res) {
-      if (auth.isAuth()) {
-        $cookieStore.remove('user');
-      }
-    })
+    });
   };
-  return auth;
+
+  return {
+    signup: signup,
+    login: login,
+    isAuth: isAuth,
+    logout: logout
+  };
 });

@@ -69,7 +69,7 @@ angular.module('starter', [
   /* 
   *  DEVELOPMENT ONLY - NOT NEEDED FOR IONIC MOBILE BUILD
   */
-  // $httpProvider.defaults.withCredentials = true;
+  $httpProvider.defaults.withCredentials = true;
   /*
   *  END DEVELOPMENT ONLY
   */
@@ -81,7 +81,6 @@ angular.module('starter', [
         },
         function(response) {
           if (response.status === 401) {
-            console.log('Rejected')
             $location.url('/login');
           }
           return $q.reject(response);
