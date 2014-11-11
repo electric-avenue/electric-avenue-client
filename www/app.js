@@ -1,13 +1,8 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
 angular.module('starter', [
   'ionic',
   'starter.controllers',
-  'starter.auth',
+  'starter.login',
+  'starter.signup',
   'ngCookies'
   // 'starter.userprofile'
 ]).run(function($ionicPlatform) {
@@ -24,12 +19,12 @@ angular.module('starter', [
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $stateProvider
     .state('app', {
       url: '/app',
       abstract: true,
-      templateUrl: 'views/menu.html',
+      templateUrl: 'views/menu/menu.html',
       controller: 'MenuCtrl'
     })
     .state('app.home', {
@@ -55,7 +50,7 @@ angular.module('starter', [
       url: "/signup",
       views: {
         'menuContent': {
-          templateUrl: "views/auth/signup.html",
+          templateUrl: "views/auth/signup/signup.html",
           controller: 'SignUpCtrl'
         }
       }
@@ -64,13 +59,36 @@ angular.module('starter', [
       url: '/login',
       views: {
         'menuContent': {
-          templateUrl: 'views/auth/login.html',
+          templateUrl: 'views/auth/login/login.html',
           controller: 'LoginCtrl'
         }
       }
     });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
+  /* 
+  *  DEVELOPMENT ONLY - NOT NEEDED FOR IONIC MOBILE BUILD
+  */
+  // $httpProvider.defaults.withCredentials = true;
+  /*
+  *  END DEVELOPMENT ONLY
+  */
+  $httpProvider.responseInterceptors.push(function($q, $location) {
+    return function(promise) {
+      return promise.then(
+        function(response) {
+          return response;
+        },
+        function(response) {
+          if (response.status === 401) {
+            console.log('Rejected')
+            $location.url('/login');
+          }
+          return $q.reject(response);
+        }
+      );
+    };
+  });
 })
 .run(function ($rootScope, $state, Auth) {
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
