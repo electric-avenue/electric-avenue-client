@@ -5,7 +5,7 @@ angular.module('vendorProfile', ['angularFileUpload'])
     for (var i = 0; i < $files.length; i++) {
       var file = $files[i];
       $scope.upload = $upload.upload({
-        url: config.baseUrl + '/api/vendor/photo', 
+        url: config.baseUrl + '/api/vendor/photo',
         method: 'POST',
         data: {myObj: $scope.myModelObj},
         file: file,

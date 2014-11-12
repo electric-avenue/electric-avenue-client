@@ -3,6 +3,7 @@ angular.module('starter', [
   'starter.controllers',
   'starter.login',
   'starter.signup',
+  'starter.vendorProfile',
   'ngCookies'
   // 'starter.userprofile'
 ]).run(function($ionicPlatform) {
@@ -46,6 +47,15 @@ angular.module('starter', [
     //     }
     //   }
     // })
+    .state('app.vendorProfile', {
+      url: '/vendor/profile',
+      views: {
+        'menuContent': {
+          templateUrl: 'views/vendor/profile/profile.html',
+          controller: 'VendorProfileCtrl'
+        }
+      }
+    })
     .state('app.signup', {
       url: "/signup",
       views: {
