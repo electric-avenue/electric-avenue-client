@@ -32,8 +32,11 @@ gulp.task('watch', function() {
 });
 
 gulp.task('docs', function() {
-  gulp.src(['www/js/*.js', 'www/js/**/*.js'])
-    .pipe(jsdoc('./docs'));
+  gulp.src([
+    'www/app.js',
+    'www/services/**/*.js',
+    'www/views/**/*.js'
+    ]).pipe(jsdoc('./docs'));
 });
 
 gulp.task('install', ['git-check'], function() {
