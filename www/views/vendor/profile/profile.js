@@ -18,4 +18,4 @@ angular.module('vendorProfile', ['angularFileUpload'])
       });
     }
   };
-}];
+});
