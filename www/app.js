@@ -66,10 +66,10 @@ angular.module('starter', [
     });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
-  /* 
+  /*
   *  DEVELOPMENT ONLY - NOT NEEDED FOR IONIC MOBILE BUILD
   */
-  $httpProvider.defaults.withCredentials = true;
+  //$httpProvider.defaults.withCredentials = true;
   /*
   *  END DEVELOPMENT ONLY
   */

@@ -1,15 +1,22 @@
+/**
+ * Menu Controller for the side menu
+ * @module MenuCtrl
+ */
 angular.module('starter.controllers', [])
-
 .controller('MenuCtrl', function($scope, Auth, $state, $http) {
+  // Get auth method
   $scope.isAuth = Auth.isAuth;
+  // Expose logout for the user
   $scope.logout = function() {
     Auth.logout();
     $state.go('app.login');
   };
+  // test function
+  // TODO delete later
   $scope.test = function() {
     return $http({
-      method: 'GET', 
-      url: 'http://localhost:5000/test'
+      method: 'GET',
+      url: 'http://10.6.23.250:5000/test'
     })
     .then(function(response) {
       console.log('resposeRick:', response);
