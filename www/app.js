@@ -3,7 +3,7 @@ angular.module('starter', [
   'starter.controllers',
   'starter.login',
   'starter.signup',
-  'starter.vendorProfile',
+  'vendorProfile',
   'ngCookies'
   // 'starter.userprofile'
 ]).run(function($ionicPlatform) {

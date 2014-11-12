@@ -8,9 +8,12 @@
   <ion-content has-header="true">
     <form novalidate name="vendorProfileForm" ng-submit="saveProfile()">
       <div class="list profileForm">
-        <div class="row">
-          <input type="file" ng-file-select="onFileSelect($files)">
-          <button ng-click="upload.abort()">Cancel Upload</button>
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper profileinput">
+            <input type="file" name="filepic" ng-file-select="onFileSelect($files)">
+          </label>
+          <button class="button button-clear icon-left ion-close button-assertive" ng-hide="true" ng-click="upload.abort()"></button>
+          <button class="button button-clear icon-left ion-upload button-positive" ng-click="upload.abort()"></button>
         </div>
         <div class="row">
           <label class="col item item-input item-floating-label profileinput">
@@ -39,12 +42,16 @@
         <div class="item item-toggle profileToggle">
           Accept Payments?
           <label class="toggle toggle-positive">
-            <input type="checkbox" name="payments">
+            <input type="checkbox" name="payments" ng-model="isPayable">
             <div class="track">
               <div class="handle"></div>
             </div>
           </label>
         </div>
+        <label class="item item-input item-floating-label profileinput" ng-show="isPayable">
+          <span class="input-label">Address</span>
+          <input type="text" name="address" placeholder="Home Address">
+        </label>
       </div>
       <div class="padding">
         <button class="button button-block button-positive">Save</button>
