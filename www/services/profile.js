@@ -1,6 +1,5 @@
 angular.module('profile', [])
-.factory('profile', function($http) {
-
+.factory('profile', function($http, $upload) {
   var changeStatus = function(changes, callback) {
 
   };
@@ -10,21 +9,47 @@ angular.module('profile', [])
   };
 
   var updateProfile = function(changes, callback) {
+    var data = _.pick(changes, [
+      'description',
+      'displayName',
+      'types'
+    ]);
+    
+    return $http({
+      method: 'POST',
+      url: config.baseUrl + '/api/vendor/add',
+      data: data
+    }).then(function(res) {
+      console.log('Success:', res);
+      return true;
+    }).catch(function(err) {
+      console.log('Error:', err);
+      return false;
+    });
 
   };
 
   var becomeVendor = function(info, callback) {
-    var data = {
-      description: info.description
-    }
+    var data = _.pick(info, [
+      'description',
+      'firstName',
+      'middleInitial',
+      'lastName',
+      'displayName',
+      'types'
+    ]);
+
     return $http({
       method: 'POST',
-      data: 
-
-    }).then(function() {
-      if 
-
-    })
+      url: config.baseUrl + '/api/vendor/add',
+      data: data
+    }).then(function(res) {
+      console.log('Success:', res);
+      return true;
+    }).catch(function(err) {
+      console.log('Error:', err);
+      return false;
+    });
   };
 
   return {
@@ -34,10 +59,3 @@ angular.module('profile', [])
     becomeVendor: becomeVendor
   };
 });
-
-  image: Sequelize.STRING,
-  description: Sequelize.STRING,
-  status: Sequelize.BOOLEAN,
-  total_tip: Sequelize.DECIMAL,
-  latitude: Sequelize.FLOAT,
-  longitude: Sequelize.FLOAT

@@ -16,7 +16,7 @@ angular.module('starter.controllers', [])
   $scope.test = function() {
     return $http({
       method: 'GET',
-      url: 'http://10.6.23.250:5000/test'
+      url: config.baseUrl + '/test'
     })
     .then(function(response) {
       console.log('resposeRick:', response);

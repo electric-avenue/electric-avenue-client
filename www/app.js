@@ -69,7 +69,7 @@ angular.module('starter', [
   /*
   *  DEVELOPMENT ONLY - NOT NEEDED FOR IONIC MOBILE BUILD
   */
-  //$httpProvider.defaults.withCredentials = true;
+  $httpProvider.defaults.withCredentials = true;
   /*
   *  END DEVELOPMENT ONLY
   */

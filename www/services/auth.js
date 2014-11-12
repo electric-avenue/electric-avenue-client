@@ -5,7 +5,6 @@
  */
 angular.module('auth', [])
 .factory('Auth', function($http, $location, $cookieStore) {
-  var baseUrl = 'http://10.6.23.250:5000';
   /**
    * Register a user
    * @function
@@ -29,7 +28,7 @@ angular.module('auth', [])
     // Register the user
     return $http({
       method: 'POST',
-      url: baseUrl + '/auth/register',
+      url: config.baseUrl + '/auth/register',
       data: data
     }).then(function(res) {
       // Successful return true
@@ -57,7 +56,7 @@ angular.module('auth', [])
     // Send a request for the login data
     return $http({
       method: 'POST',
-      url: baseUrl + '/auth/login',
+      url: config.baseUrl + '/auth/login',
       data: data
     }).then(function(res) {
       if (!!res.data) {
@@ -92,7 +91,7 @@ angular.module('auth', [])
     // Send request to server
     return $http({
       method: 'POST',
-      url: baseUrl + '/auth/logout'
+      url: config.baseUrl + '/auth/logout'
     });
   };
 
