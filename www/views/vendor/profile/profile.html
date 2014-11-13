@@ -10,7 +10,7 @@
       <div class="list profileForm">
         <div class="item item-input-inset">
           <label class="item-input-wrapper profileinput profileUpload">
-            <div class="fileUpload button button-full button-outline button-positive">
+            <div class="button button-full button-outline button-positive fileUpload">
               <span ng-if="!data.fileInput || data.fileInput === ''">Select Image</span>
               <span ng-if="data.fileInput">{{data.fileInput[0].name}}</span>
               <input type="file" class="upload" name="filepic" ng-file-select="data.fileInput = $files">
