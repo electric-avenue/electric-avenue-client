@@ -49,6 +49,7 @@ angular.module('starter', [
     // })
     .state('app.vendorProfile', {
       url: '/vendor/profile',
+      authenticate: true,
       views: {
         'menuContent': {
           templateUrl: 'views/vendor/profile/profile.html',
@@ -79,7 +80,7 @@ angular.module('starter', [
   /*
   *  DEVELOPMENT ONLY - NOT NEEDED FOR IONIC MOBILE BUILD
   */
-  $httpProvider.defaults.withCredentials = true;
+  //$httpProvider.defaults.withCredentials = true;
   /*
   *  END DEVELOPMENT ONLY
   */
