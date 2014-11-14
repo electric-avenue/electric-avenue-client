@@ -49,10 +49,33 @@ angular.module('starter', [
     // })
     .state('app.vendorProfile', {
       url: '/vendor/profile',
+      authenticate: true,
       views: {
         'menuContent': {
           templateUrl: 'views/vendor/profile/profile.html',
           controller: 'VendorProfileCtrl'
+        }
+      }
+    })
+    // temporary
+    .state('app.usermap', {
+      url: '/user/map',
+      authenticate: true,
+      views: {
+        'menuContent': {
+          templateUrl: 'views/user/home/home.html',
+          controller: 'MenuCtrl'
+        }
+      }
+    })
+    // temporary
+    .state('app.userlist', {
+      url: '/user/list',
+      authenticate: true,
+      views: {
+        'menuContent': {
+          templateUrl: 'views/user/home/home.html',
+          controller: 'MenuCtrl'
         }
       }
     })
@@ -79,7 +102,7 @@ angular.module('starter', [
   /*
   *  DEVELOPMENT ONLY - NOT NEEDED FOR IONIC MOBILE BUILD
   */
-  $httpProvider.defaults.withCredentials = true;
+  //$httpProvider.defaults.withCredentials = true;
   /*
   *  END DEVELOPMENT ONLY
   */

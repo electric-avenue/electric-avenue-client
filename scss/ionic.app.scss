@@ -19,6 +19,15 @@ $dark:                            #444 !default;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-// Include Auth-specific styling
+.tabs-active .has-header {
+  top: 100px;
+}
+.maintabs {
+  left: 0;
+  .tab-item {
+    max-width: 250px;
+  }
+}
 @import "../www/views/auth/auth.scss";
 @import "../www/views/vendor/profile/profile.scss";
+@import "../www/views/menu/menu.scss";
