@@ -15,7 +15,11 @@ angular.module('starter.controllers', [])
     $scope.state = _.indexOf(excludedStates, $state.current.name) === -1;
   });
   // Get auth method
-  $scope.isAuth = Auth.isAuth;
+  $scope.check = {
+    isAuth: function() {
+      return Auth.isAuth;
+    }
+  };
   // Expose logout for the user
   $scope.logout = function() {
     Auth.logout();

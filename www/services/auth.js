@@ -5,6 +5,7 @@
  */
 angular.module('auth', [])
 .factory('Auth', function($http, $location, $cookieStore) {
+  var auth = {};
   /**
    * Register a user
    * @function
@@ -14,7 +15,7 @@ angular.module('auth', [])
    * @param {string} pass Users's password
    * @returns {Promise}
    */
-  var signup = function(user, email, pass) {
+  auth.signup = function(user, email, pass) {
     // Do preliminary check to see if all values are accounted for
     if (!user || !email || !pass) {
       return false;
@@ -45,7 +46,7 @@ angular.module('auth', [])
    * @param {string} pass Users's password
    * @returns {Promise}
    */
-  var login = function(user, pass) {
+  auth.login = function(user, pass) {
     if (!user || !pass) {
       return false;
     }
@@ -60,6 +61,7 @@ angular.module('auth', [])
       data: data
     }).then(function(res) {
       if (!!res.data) {
+        auth.isAuth = true;
         $cookieStore.put('user', res.data);
         return true;
       }
@@ -74,18 +76,20 @@ angular.module('auth', [])
    * @memberof module:Auth
    * @returns {boolean}
    */
-  var isAuth = function() {
-    return !!$cookieStore.get('user');
-  };
+
+  // var isAuth = function() {
+  //   return !!$cookieStore.get('user');
+  // };
   /**
    * Logs a user out of the session
    * @function
    * @memberof module:Auth
    * @returns {Promise}
    */
-  var logout = function() {
+  auth.logout = function() {
     // Remove the cookie
-    if (isAuth()) {
+    if (auth.isAuth) {
+      auth.isAuth = false;
       $cookieStore.remove('user');
     }
     // Send request to server
@@ -94,11 +98,12 @@ angular.module('auth', [])
       url: config.baseUrl + '/auth/logout'
     });
   };
-
-  return {
-    signup: signup,
-    login: login,
-    isAuth: isAuth,
-    logout: logout
-  };
+  auth.isAuth = false;
+  return auth;
+  // return {
+  //   signup: signup,
+  //   login: login,
+  //   isAuth: false,
+  //   logout: logout
+  // };
 });

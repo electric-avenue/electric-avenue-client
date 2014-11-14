@@ -3,10 +3,10 @@
     <ion-nav-bar class="bar-stable nav-title-slide-ios7">
       <!--<ion-nav-back-button class="button-clear" ng-if="!!false"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>-->
       <ion-nav-buttons side="left">
-        <button menu-toggle="left" ng-if="isAuth()" class="button button-icon icon ion-navicon"></button>
+        <button menu-toggle="left" ng-if="check.isAuth()" class="button button-icon icon ion-navicon"></button>
       </ion-nav-buttons>
       <ion-nav-buttons side="right">
-        <button ui-sref="app.vendorProfile" ng-if="isAuth()" class="button button-icon icon ion-gear-b"></button>
+        <button ui-sref="app.vendorProfile" ng-if="check.isAuth()" class="button button-icon icon ion-gear-b"></button>
       </ion-nav-buttons>
       <div class="tabs-striped tabs-top tabs-background-stable tabs-positive" ng-hide="!state">
         <div class="tabs maintabs">
