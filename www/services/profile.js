@@ -1,6 +1,6 @@
 angular.module('profile', [])
 .factory('profile', function($http, $upload) {
-  var changeStatus = function(changes, callback) {
+  var updateStatus = function(changes, callback) {
     var data = _.pick(changes, 'status');
     return $http({
       method: 'POST',
@@ -43,7 +43,7 @@ angular.module('profile', [])
       if (callback) {
         callback(err, null);
       }
-      reutrn false;
+      return false;
     });
   };
 
@@ -107,7 +107,7 @@ angular.module('profile', [])
   };
 
   return {
-    changeStatus: changeStatus,
+    updateStatus: updateStatus,
     getStatus: getStatus,
     updateProfile: updateProfile,
     becomeVendor: becomeVendor
