@@ -102,7 +102,7 @@ angular.module('starter', [
   /*
   *  DEVELOPMENT ONLY - NOT NEEDED FOR IONIC MOBILE BUILD
   */
-  //$httpProvider.defaults.withCredentials = true;
+  $httpProvider.defaults.withCredentials = true;
   /*
   *  END DEVELOPMENT ONLY
   */
@@ -114,7 +114,7 @@ angular.module('starter', [
         },
         function(response) {
           if (response.status === 401) {
-            $location.url('/login');
+            $location.url('/app/login');
           }
           return $q.reject(response);
         }
@@ -125,13 +125,15 @@ angular.module('starter', [
 .run(function ($rootScope, $state, Auth) {
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
     // Authenticated routes
-    if (toState.authenticate && !Auth.isAuth()){
+    if (toState.authenticate && !Auth.isAuth){
       event.preventDefault();
+      console.log(Auth.isAuth);
       // User isn’t authenticated
+      console.log(toState.authenticate)
       $state.transitionTo('app.login');
     }
     // If they are logged in, don't let them go to signup or login pages
-    if (Auth.isAuth() && (toState.name === 'app.signup' || toState.name === 'app.login')) {
+    if (Auth.isAuth && (toState.name === 'app.signup' || toState.name === 'app.login')) {
       event.preventDefault();
       $state.transitionTo('app.home');
     }
