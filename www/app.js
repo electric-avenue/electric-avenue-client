@@ -106,7 +106,7 @@ angular.module('starter', [
   /*
   *  END DEVELOPMENT ONLY
   */
-  $httpProvider.responseInterceptors.push(function($q, $location) {
+  $httpProvider.responseInterceptors.push(function($q) {
     return function(promise) {
       return promise.then(
         function(response) {
@@ -114,7 +114,7 @@ angular.module('starter', [
         },
         function(response) {
           if (response.status === 401) {
-            $location.url('/app/login');
+            $state.transitionTo('app.login');
           }
           return $q.reject(response);
         }
@@ -127,9 +127,7 @@ angular.module('starter', [
     // Authenticated routes
     if (toState.authenticate && !Auth.isAuth){
       event.preventDefault();
-      console.log(Auth.isAuth);
       // User isn’t authenticated
-      console.log(toState.authenticate)
       $state.transitionTo('app.login');
     }
     // If they are logged in, don't let them go to signup or login pages
