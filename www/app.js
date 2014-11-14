@@ -57,6 +57,28 @@ angular.module('starter', [
         }
       }
     })
+    // temporary
+    .state('app.usermap', {
+      url: '/user/map',
+      authenticate: true,
+      views: {
+        'menuContent': {
+          templateUrl: 'views/user/home/home.html',
+          controller: 'MenuCtrl'
+        }
+      }
+    })
+    // temporary
+    .state('app.userlist', {
+      url: '/user/list',
+      authenticate: true,
+      views: {
+        'menuContent': {
+          templateUrl: 'views/user/home/home.html',
+          controller: 'MenuCtrl'
+        }
+      }
+    })
     .state('app.signup', {
       url: "/signup",
       views: {
