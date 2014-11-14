@@ -4,9 +4,15 @@
  */
 angular.module('starter.controllers', [])
 .controller('MenuCtrl', function($scope, Auth, $state, $http) {
-  $scope.state = $state.current.name;
+  // States to avoid showing the map & list buttons for
+  var excludedStates = [
+    'app.vendorProfile',
+    'app.signup',
+    'app.login'
+  ];
+  $scope.state = _.indexOf(excludedStates, $state.current.name) === -1;
   $scope.$watch(function($scope) {
-    $scope.state = $state.current.name;
+    $scope.state = _.indexOf(excludedStates, $state.current.name) === -1;
   });
   // Get auth method
   $scope.isAuth = Auth.isAuth;
@@ -16,7 +22,6 @@ angular.module('starter.controllers', [])
     $state.go('app.login');
   };
   $scope.changeState = function(name) {
-    console.log('hit');
     $state.transitionTo(name);
   };
   // test function

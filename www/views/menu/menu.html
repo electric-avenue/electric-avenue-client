@@ -1,14 +1,14 @@
 <ion-side-menus>
-<ion-pane ion-side-menu-content drag-content="false" ng-class="{'tabs-active': state !== 'app.vendorProfile'}">
+<ion-pane ion-side-menu-content drag-content="false" ng-class="{'tabs-active': state}">
     <ion-nav-bar class="bar-stable nav-title-slide-ios7">
       <!--<ion-nav-back-button class="button-clear" ng-if="!!false"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>-->
       <ion-nav-buttons side="left">
-        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+        <button menu-toggle="left" ng-if="isAuth()" class="button button-icon icon ion-navicon"></button>
       </ion-nav-buttons>
       <ion-nav-buttons side="right">
-        <button ui-sref="app.vendorProfile" class="button button-icon icon ion-gear-b"></button>
+        <button ui-sref="app.vendorProfile" ng-if="isAuth()" class="button button-icon icon ion-gear-b"></button>
       </ion-nav-buttons>
-      <div class="tabs-striped tabs-top tabs-background-stable tabs-positive" ng-hide="state === 'app.vendorProfile'">
+      <div class="tabs-striped tabs-top tabs-background-stable tabs-positive" ng-hide="!state">
         <div class="tabs maintabs">
           <a class="tab-item" ui-sref-active="active" ui-sref="app.usermap">
             <i class="icon ion-map"></i>
