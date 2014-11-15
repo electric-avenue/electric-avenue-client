@@ -1,6 +1,6 @@
 <ion-view title="Vendor Signup">
   <ion-content has-header="true">
-    <form novalidate name="vendorSignupForm" ng-submit="signupVendor()">
+    <form novalidate name="vendorSignupForm">
       <div class="list profileForm">
         <div class="item item-input-inset">
           <label class="item-input-wrapper profileinput profileUpload">
@@ -10,16 +10,14 @@
               <input type="file" class="upload" name="filepic" ng-file-select="data.fileInput = $files">
             </div>
           </label>
-          <button class="button button-large button-clear icon-left ion-close button-assertive" ng-if="uploading" ng-click="upload.abort()"></button>
-          <button class="button button-large button-clear icon-left ion-upload button-positive" ng-if="!uploading" ng-click="onFileSelect();"></button>
         </div>
         <label class="item item-input item-floating-label profileinput">
           <span class="input-label">Description</span>
-          <input name="description" type="text" placeholder="Description">
+          <input name="description" type="text" ng-model="data.descriptiopn" placeholder="Description">
         </label>
         <label class="item item-input item-floating-label profileinput">
           <span class="input-label">Types</span>
-          <input name="types" type="text" placeholder="Types">
+          <input name="types" type="text" ng-model="data.types" placeholder="Types">
         </label>
         <div class="item item-toggle profileToggle">
           Accept Payments?
@@ -67,7 +65,7 @@
         </div>
       </div>
       <div class="padding">
-        <button class="button button-block button-positive">Save</button>
+        <button class="button button-block button-positive" ng-click="becomeVendor();" ui-sref="app.home">Save</button>
       </div>
     </form>
   </ion-content>

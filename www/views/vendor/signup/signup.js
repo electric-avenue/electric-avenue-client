@@ -1,28 +1,25 @@
-angular.module('vendorSignup', ['angularFileUpload'])
-.controller('VendorSignupCtrl', function($scope, $upload) {
+angular.module('vendorSignup', ['vendorFactory'])
+.controller('VendorSignupCtrl', function($scope, $http, Vendor) {
   // will add to factory eventually
   $scope.data = {
-    fileInput: ''
+    fileInput: '',
+    description: '',
+    types: ''
   };
-  $scope.uploading = false;
-  $scope.onFileSelect = function() {
-    var files = $scope.data.fileInput;
-    for (var i = 0; i < files.length; i++) {
-      var file = files[i];
-      $scope.upload = $upload.upload({
-        url: config.baseUrl + '/api/vendor/photo',
-        method: 'POST',
-        data: {myObj: $scope.myModelObj},
-        file: file,
-      })
-      .progress(function(evt) {
-        console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-        $scope.uploading = true;
-      })
-      .success(function(data, status, headers, config) {
-        $scope.uploading = false;
-        console.log(data);
-      });
-    }
+  $scope.becomeVendor = function() {
+    var data = _.pick($scope.data, [
+      'description'
+    ]);
+    Vendor.becomeVendor(data, function(err, res) {
+      if (err) {
+        console.log('Error', err);
+        return;
+      }
+      console.log('Success:', res);
+      if ($scope.data.fileInput) {
+        Vendor.fileUpload($scope.data.fileInput);
+      }
+      return;
+    });
   };
 });
