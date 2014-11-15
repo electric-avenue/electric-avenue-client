@@ -12,6 +12,10 @@
           </label>
         </div>
         <label class="item item-input item-floating-label profileinput">
+          <span class="input-label">Company Name</span>
+          <input name="companyname" type="text" ng-model="data.companyname" placeholder="Company Name">
+        </label>
+        <label class="item item-input item-floating-label profileinput">
           <span class="input-label">Description</span>
           <input name="description" type="text" ng-model="data.descriptiopn" placeholder="Description">
         </label>
@@ -65,7 +69,7 @@
         </div>
       </div>
       <div class="padding">
-        <button class="button button-block button-positive" ng-click="becomeVendor();" ui-sref="app.home">Save</button>
+        <button class="button button-block button-positive" ng-click="becomeVendor();" ui-sref="app.home">Sign Up</button>
       </div>
     </form>
   </ion-content>
