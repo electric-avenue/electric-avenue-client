@@ -24,7 +24,7 @@ angular.module('starter.login', ['auth'])
         if (!data) {
           $scope.loginError = true;
         } else {
-          $state.transitionTo('app.home');
+          $state.transitionTo('app.usermap');
         }
       }).catch(function(err) {
         $scope.loginError = true;
