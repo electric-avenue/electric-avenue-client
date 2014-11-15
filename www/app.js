@@ -20,7 +20,6 @@ angular.module('starter', [
     }
   });
 })
-
 .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
   $stateProvider
     .state('app', {
@@ -117,7 +116,7 @@ angular.module('starter', [
   /*
   *  END DEVELOPMENT ONLY
   */
-  $httpProvider.responseInterceptors.push(function($q) {
+  $httpProvider.responseInterceptors.push(function($q, $location) {
     return function(promise) {
       return promise.then(
         function(response) {
@@ -125,7 +124,7 @@ angular.module('starter', [
         },
         function(response) {
           if (response.status === 401) {
-            $state.transitionTo('app.login');
+            $location.url('/app/login');
           }
           return $q.reject(response);
         }
