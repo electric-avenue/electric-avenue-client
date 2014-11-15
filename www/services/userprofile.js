@@ -1,16 +1,21 @@
-angular.module('userprofile', [])
-.factory('UserProfile', function($http) {
-  var updateProfile = function(changes, callback) {
+angular.module('userFactory', [])
+.factory('User', function($http) {
+  var update = function(changes, callback) {
     var data = _.pick(changes, [
-      'password',
+      'oldPassword',
+      'newPassword',
+      'displayName',
+      'firstName',
+      'middleName',
+      'lastName',
       'email',
       'zipcode',
-      'displayname'
+      'age'
     ]);
 
     return $http({
       method: 'POST',
-      url: config.baseUrl + '/user/update',
+      url: config.baseUrl + '/api/user/update',
       data: data
     })
     .then(function(res) {
@@ -28,6 +33,6 @@ angular.module('userprofile', [])
   };
 
   return {
-    updateProfile: updateProfile
+    update: update
   };
 });

@@ -26,7 +26,7 @@ angular.module('vendorFactory', ['angularFileUpload'])
   var getStatus = function(vendor, callback) {
     return $http({
       method: 'GET',
-      url: config.baseUrl + '/vendor/status',
+      url: config.baseUrl + '/api/vendor/status',
       data: {
         vendor: vendor
       }
