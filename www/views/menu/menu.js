@@ -3,7 +3,7 @@
  * @module MenuCtrl
  */
 angular.module('starter.controllers', [])
-.controller('MenuCtrl', function($scope, Auth, $state, $http) {
+.controller('MenuCtrl', function($scope, Auth, $state, $http, $ionicPopover) {
   // States to avoid showing the map & list buttons for
   var excludedStates = [
     'app.vendorProfile',
@@ -17,11 +17,16 @@ angular.module('starter.controllers', [])
     $scope.state = _.indexOf(excludedStates, $state.current.name) === -1;
   });
   // Get auth method
+  //
   $scope.check = {
     isAuth: function() {
       return Auth.isAuth;
     }
   };
+  // Setup the popover menu for the gear on the right
+  $ionicPopover.fromTemplateUrl('templates/popover.html', function(popover) {
+    $scope.popover = popover;
+  });
   // Expose logout for the user
   $scope.logout = function() {
     Auth.logout();

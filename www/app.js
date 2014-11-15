@@ -5,7 +5,7 @@ angular.module('starter', [
   'starter.signup',
   'vendorProfile',
   'vendorSignup',
-  'userProfile'
+  'userprofile'
   // 'starter.userprofile'
 ]).run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
