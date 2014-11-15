@@ -5,7 +5,7 @@ angular.module('starter', [
   'starter.signup',
   'vendorProfile',
   'vendorSignup',
-  'ngCookies'
+  'userProfile'
   // 'starter.userprofile'
 ]).run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -38,15 +38,16 @@ angular.module('starter', [
       },
       authenticate: true
     })
-    // .state('app.userProfile', {
-    //   url: '/profile',
-    //   views: {
-    //     'menuContent': {
-    //       templateUrl: 'views/user/profile/profile.html',
-    //       controller: 'ProfileCtrl'
-    //     }
-    //   }
-    // })
+    .state('app.userProfile', {
+      url: '/user/profile',
+      authenticate: true,
+      views: {
+        'menuContent': {
+          templateUrl: 'views/user/profile/profile.html',
+          controller: 'UserProfileCtrl'
+        }
+      }
+    })
     .state('app.vendorProfile', {
       url: '/vendor/profile',
       authenticate: true,

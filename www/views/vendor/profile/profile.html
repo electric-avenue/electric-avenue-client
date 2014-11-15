@@ -13,30 +13,14 @@
           <button class="button button-large button-clear icon-left ion-close button-assertive" ng-if="uploading" ng-click="upload.abort()"></button>
           <button class="button button-large button-clear icon-left ion-upload button-positive" ng-if="!uploading" ng-click="onFileSelect();"></button>
         </div>
-        <div class="row">
-          <label class="col item item-input item-floating-label profileinput">
-            <span class="input-label">First Name</span>
-            <input type="text" name="firstname" placeholder="First Name">
-          </label>
-          <label class="col item item-input item-floating-label profileinput">
-            <span class="input-label">Middle Name</span>
-            <input type="text" name="middlename" placeholder="Middle Name">
-          </label>
-          <label class="col item item-input item-floating-label profileinput">
-            <span class="input-label">Last Name</span>
-            <input type="text" name="lastname" placeholder="Last Name">
-          </label>
-        </div>
-        <div class="row">
-          <label class="col col-75 item item-input item-floating-label profileinput">
-            <span class="input-label">Display Name</span>
-            <input name="displayname" type="text" placeholder="Display Name">
-          </label>
-          <label class="col item item-input item-floating-label profileinput">
-            <span class="input-label">Age</span>
-            <input name="age" type="number" placeholder="Age">
-          </label>
-        </div>
+        <label class="item item-input item-floating-label profileinput">
+          <span class="input-label">Description</span>
+          <input name="description" type="text" placeholder="Description">
+        </label>
+        <label class="item item-input item-floating-label profileinput">
+          <span class="input-label">Types</span>
+          <input name="types" type="text" placeholder="Types">
+        </label>
         <div class="item item-toggle profileToggle">
           Accept Payments?
           <label class="toggle toggle-positive">

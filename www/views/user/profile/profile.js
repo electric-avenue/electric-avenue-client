@@ -1,4 +1,4 @@
-angular.module('starter.userprofile', [])
-.controller('ProfileCtrl', function($scope, $state, UserProfile) {
+angular.module('userProfile')
+.controller('UserProfileCtrl', function($scope, $state, UserProfile) {
 
 });

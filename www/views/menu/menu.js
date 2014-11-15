@@ -8,6 +8,7 @@ angular.module('starter.controllers', [])
   var excludedStates = [
     'app.vendorProfile',
     'app.vendorSignup',
+    'app.userProfile',
     'app.signup',
     'app.login'
   ];

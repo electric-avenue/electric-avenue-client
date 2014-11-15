@@ -4,7 +4,7 @@
  * @returns {Object} Object containing authorization methods
  */
 angular.module('auth', [])
-.factory('Auth', function($http, $location, $cookieStore) {
+.factory('Auth', function($http, $location) {
   var auth = {};
   /**
    * Register a user
@@ -62,7 +62,6 @@ angular.module('auth', [])
     }).then(function(res) {
       if (!!res.data) {
         auth.isAuth = true;
-        $cookieStore.put('user', res.data);
         return true;
       }
     }).catch(function(err) {
@@ -77,9 +76,6 @@ angular.module('auth', [])
    * @returns {boolean}
    */
 
-  // var isAuth = function() {
-  //   return !!$cookieStore.get('user');
-  // };
   /**
    * Logs a user out of the session
    * @function
@@ -90,7 +86,6 @@ angular.module('auth', [])
     // Remove the cookie
     if (auth.isAuth) {
       auth.isAuth = false;
-      $cookieStore.remove('user');
     }
     // Send request to server
     return $http({
