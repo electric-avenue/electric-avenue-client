@@ -4,6 +4,7 @@ angular.module('starter', [
   'starter.login',
   'starter.signup',
   'vendorProfile',
+  'vendorSignup',
   'ngCookies'
   // 'starter.userprofile'
 ]).run(function($ionicPlatform) {
@@ -54,6 +55,16 @@ angular.module('starter', [
         'menuContent': {
           templateUrl: 'views/vendor/profile/profile.html',
           controller: 'VendorProfileCtrl'
+        }
+      }
+    })
+    .state('app.vendorSignup', {
+      url: '/vendor/signup',
+      authenticate: true,
+      views: {
+        'menuContent': {
+          templateUrl: 'views/vendor/signup/signup.html',
+          controller: 'VendorSignupCtrl'
         }
       }
     })

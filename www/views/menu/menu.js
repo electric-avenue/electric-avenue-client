@@ -7,6 +7,7 @@ angular.module('starter.controllers', [])
   // States to avoid showing the map & list buttons for
   var excludedStates = [
     'app.vendorProfile',
+    'app.vendorSignup',
     'app.signup',
     'app.login'
   ];

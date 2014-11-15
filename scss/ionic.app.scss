@@ -19,6 +19,10 @@ $dark:                            #444 !default;
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+html, body, ion-nav-view {
+  background: #fff;
+  border-color: #fff;
+}
 .tabs-active .has-header {
   top: 100px;
 }
