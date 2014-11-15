@@ -24,7 +24,7 @@ html, body, ion-nav-view {
   border-color: #fff;
 }
 .tabs-active .has-header {
-  top: 100px;
+  top: 93px;
 }
 .maintabs {
   left: 0;
@@ -35,3 +35,4 @@ html, body, ion-nav-view {
 @import "../www/views/auth/auth.scss";
 @import "../www/views/vendor/profile/profile.scss";
 @import "../www/views/menu/menu.scss";
+@import "../www/views/user/list/list.scss";
