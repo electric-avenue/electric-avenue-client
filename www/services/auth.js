@@ -6,6 +6,8 @@
 angular.module('auth', [])
 .factory('Auth', function($http, $location) {
   var auth = {};
+  auth.isAuth = false;
+  auth.isVendor = false;
   /**
    * Register a user
    * @function
@@ -62,6 +64,8 @@ angular.module('auth', [])
     }).then(function(res) {
       if (!!res.data) {
         auth.isAuth = true;
+        auth.isVendor = res.data.isVendor;
+        console.log('data:', res);
         return true;
       }
     }).catch(function(err) {
@@ -86,6 +90,7 @@ angular.module('auth', [])
     // Remove the cookie
     if (auth.isAuth) {
       auth.isAuth = false;
+      auth.isVendor = false;
     }
     // Send request to server
     return $http({
@@ -93,12 +98,5 @@ angular.module('auth', [])
       url: config.baseUrl + '/auth/logout'
     });
   };
-  auth.isAuth = false;
   return auth;
-  // return {
-  //   signup: signup,
-  //   login: login,
-  //   isAuth: false,
-  //   logout: logout
-  // };
 });
