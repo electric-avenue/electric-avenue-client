@@ -78,14 +78,12 @@ angular.module('starter', [
         }
       }
     })
-    // temporary
     .state('app.userlist', {
       url: '/user/list',
       authenticate: true,
       views: {
         'menuContent': {
-          templateUrl: 'views/user/home/home.html',
-          controller: 'MenuCtrl'
+          templateUrl: 'views/user/list/list.html'
         }
       }
     })
