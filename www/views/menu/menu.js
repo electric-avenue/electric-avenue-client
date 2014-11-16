@@ -21,6 +21,9 @@ angular.module('starter.controllers', [])
   $scope.check = {
     isAuth: function() {
       return Auth.isAuth;
+    },
+    isVendor: function() {
+      return Auth.isVendor;
     }
   };
   // Setup the popover menu for the gear on the right

@@ -5,7 +5,8 @@ angular.module('starter', [
   'starter.signup',
   'vendorProfile',
   'vendorSignup',
-  'userprofile'
+  'userprofile',
+  'auth'
 ]).run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -29,12 +30,20 @@ angular.module('starter', [
     })
     .state('app.home', {
       url: '/home',
-      views: {
-        'menuContent': {
-          templateUrl: 'views/user/home/home.html',
-          controller: 'MenuCtrl'
+      onEnter: function(Auth, $state) {
+        if (!Auth.isVendor) {
+          $state.transitionTo('app.usermap');
+          return;
         }
+        // $state.transitionTo('app.vendormap'); activate when vendor map is done 
+        $state.transitionTo('app.vendorProfile');
       },
+      // views: {
+      //   'menuContent': {
+      //     templateUrl: 'views/user/home/home.html',
+      //     controller: 'MenuCtrl'
+      //   }
+      // },
       authenticate: true
     })
     .state('app.userProfile', {
@@ -71,6 +80,9 @@ angular.module('starter', [
     .state('app.usermap', {
       url: '/user/map',
       authenticate: true,
+      onEnter: function(Auth) {
+        console.log('Auth', Auth);
+      },
       views: {
         'menuContent': {
           templateUrl: 'views/user/home/home.html',

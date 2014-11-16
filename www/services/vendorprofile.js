@@ -1,5 +1,5 @@
-angular.module('vendorFactory', ['angularFileUpload'])
-.factory('Vendor', function($http, $upload) {
+angular.module('vendorFactory', ['angularFileUpload', 'auth'])
+.factory('Vendor', function($http, $upload, Auth) {
   var updateStatus = function(changes, callback) {
     var data = _.pick(changes, 'status');
     return $http({
@@ -91,7 +91,8 @@ angular.module('vendorFactory', ['angularFileUpload'])
       data: data
     })
     .then(function(res) {
-      console.log('Success:', res);
+      console.log('Data:', res);
+      Auth.isVendor = res.data.isVendor;
       if (callback) {
         callback(null, res);
       }
