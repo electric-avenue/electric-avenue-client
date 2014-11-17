@@ -1,9 +1,9 @@
 angular.module('search', [])
 .factory('Search', function($http) {
-  var getVendors(params, callback) {
+  var getVendors = function(params, callback) {
     return $http({
       method: 'GET',
-      url: config.baseUrl + '/vendor/get',
+      url: config.baseUrl + '/api/vendor/get',
       data: params
     })
     .then(function(res) {
@@ -20,10 +20,10 @@ angular.module('search', [])
     });
   };
   //name = vendor email or username (display name wip)
-  var getOneVendor(name, callback) {
+  var getOneVendor = function(name, callback) {
     return $http({
       method: 'GET',
-      url: config.baseUrl + '/vendor/' + name,
+      url: config.baseUrl + '/api/vendor/' + name,
     })
     .then(function(res) {
       console.log('GetOne Vendor Success!:', res);
@@ -46,7 +46,7 @@ angular.module('search', [])
     ]);
     return $http({
       method: 'GET',
-      url: config.baseUrl + '/vendor/trending',
+      url: config.baseUrl + '/api/vendor/trending',
       data: data
     })
     .then(function(res) {
