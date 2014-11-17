@@ -6,7 +6,7 @@ angular.module('userDashboard', ['search'])
   };
   $ionicModal.fromTemplateUrl('views/user/dashboard/vendorProfile/vendorprofile.html', {
     scope: $scope,
-    animation: 'slide-in-right'
+    animation: 'slide-left-right'
   }).then(function(modal) {
     $scope.vendorModal = modal;
   });
