@@ -1,4 +1,4 @@
-angular.module('dashboard', [])
-.controller('DashboardCtrl', function($scope) {
+angular.module('userDashboard', [])
+.controller('UserDashboardCtrl', function($scope) {
   
 });

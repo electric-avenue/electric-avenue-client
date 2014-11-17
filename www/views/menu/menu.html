@@ -34,7 +34,7 @@
         <ion-item nav-clear menu-close ui-sref="app.usermap" class="leftnavitem">
           Home
         </ion-item>
-        <ion-item ng-show="check.isVendor()" nav-clear menu-close class="leftnavitem">
+        <ion-item ng-show="check.isVendor()" nav-clear menu-close ui-sref="app.vendorHome" class="leftnavitem">
           Vendor Home
         </ion-item>
         <ion-item ng-show="!check.isVendor()" nav-clear menu-close ui-sref="app.vendorSignup" class="leftnavitem">
