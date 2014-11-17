@@ -6,6 +6,8 @@ angular.module('starter', [
   'vendorProfile',
   'vendorSignup',
   'userprofile',
+  'userDashboard',
+  'vendorDashboard',
   'auth'
 ]).run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -36,14 +38,8 @@ angular.module('starter', [
           return;
         }
         // $state.transitionTo('app.vendormap'); activate when vendor map is done 
-        $state.transitionTo('app.vendorProfile');
+        $state.transitionTo('app.vendorHome');
       },
-      // views: {
-      //   'menuContent': {
-      //     templateUrl: 'views/user/home/home.html',
-      //     controller: 'MenuCtrl'
-      //   }
-      // },
       authenticate: true
     })
     .state('app.userProfile', {
@@ -76,17 +72,23 @@ angular.module('starter', [
         }
       }
     })
-    // temporary
+    .state('app.vendorHome', {
+      url: '/vendor/home',
+      authenticate: true,
+      views: {
+        'menuContent': {
+          templateUrl: 'views/vendor/dashboard/home.html',
+          controller: 'VendorDashboardCtrl'
+        }
+      }
+    })
     .state('app.usermap', {
       url: '/user/map',
       authenticate: true,
-      onEnter: function(Auth) {
-        console.log('Auth', Auth);
-      },
       views: {
         'menuContent': {
-          templateUrl: 'views/user/home/home.html',
-          controller: 'MenuCtrl'
+          templateUrl: 'views/user/dashboard/map.html',
+          controller: 'UserDashboardCtrl'
         }
       }
     })
@@ -95,7 +97,8 @@ angular.module('starter', [
       authenticate: true,
       views: {
         'menuContent': {
-          templateUrl: 'views/user/dashbaord/list.html'
+          templateUrl: 'views/user/dashboard/list.html',
+          controller: 'UserDashboardCtrl'
         }
       }
     })
