@@ -1,0 +1,54 @@
+.vendorImage {
+  display: block;
+  margin: 0 auto;
+  width: 125px;
+  height: 125px;
+}
+
+.vendorinfo {
+  font-size: 1.3em;
+  & > .row {
+    margin-top: 7px;
+    margin-bottom: 7px;
+  }
+  & > .row:first-child {
+    margin-top: 0px;
+  }
+}
+.vendordescription {
+  padding: 2px 5px;
+}
+
+.tipbutton {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  border: none;
+  font-size: 1.5em;
+}
+
+.hastipbutton {
+  margin-bottom: 60px;
+}
+.vendorlocation {
+  padding-top: 0;
+  & > .row {
+    margin-top: 0;
+    font-size: 1.1em;
+  }
+}
+
+address {
+  margin-bottom: 2px;
+}
+
+.vendormapbox {
+  width: 165px;
+  height: 140px;
+  background-color: black;
+  color: white;
+  line-height: 140px;
+  text-align: center;
+}
