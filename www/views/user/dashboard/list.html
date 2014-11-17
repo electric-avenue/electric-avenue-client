@@ -1,7 +1,7 @@
 <ion-view title="Vendor List" on-swipe-right="changeState('app.usermap')">
   <ion-content class="hasFilter">
     <ion-list>
-      <ion-item class="item-thumbnail-left" ng-repeat="n in [1,2,3,4,5,6,7,8]" ui-sref="app.home">
+      <ion-item class="item-thumbnail-left" ng-repeat="n in [1,2,3,4,5,6,7,8]" ng-click="showVendor()">
         <img class="roundimage" ng-src="http://img3.wikia.nocookie.net/__cb20121227201208/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg">
         <div class="row">
           <div class="col col-75">Vendor Name - Activity</div>
