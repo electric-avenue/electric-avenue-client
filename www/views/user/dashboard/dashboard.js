@@ -2,7 +2,7 @@ angular.module('userDashboard', [])
 .controller('UserDashboardCtrl', function($scope, $ionicModal) {
   $ionicModal.fromTemplateUrl('views/user/vendorprofile/vendorprofile.html', {
     scope: $scope,
-    animation: 'slide-in-up'
+    animation: 'slide-in-right'
   }).then(function(modal) {
     $scope.vendorModal = modal;
   });
