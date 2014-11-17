@@ -3,7 +3,7 @@
     <p class="authFormError" ng-show="signupError">
       Signup failed
     </p>
-    <form novalidate name="signupForm" ng-submit="doSignup()">
+    <form novalidate name="signupForm" ng-submit="signup()">
       <div class="list authform">
         <label class="item item-input"
             ng-class="{'error': signupForm.username.$dirty && signupForm.username.$invalid, 'valid': !signupForm.username.$invalid && signupForm.username.$dirty }">

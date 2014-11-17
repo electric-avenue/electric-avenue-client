@@ -1,8 +1,7 @@
 angular.module('starter', [
   'ionic',
   'starter.controllers',
-  'starter.login',
-  'starter.signup',
+  'authView',
   'vendorProfile',
   'vendorSignup',
   'userprofile',
@@ -63,11 +62,11 @@ angular.module('starter', [
       }
     })
     .state('app.vendorSignup', {
-      url: '/vendor/signup',
+      url: '/user/vendorsignup',
       authenticate: true,
       views: {
         'menuContent': {
-          templateUrl: 'views/vendor/signup/signup.html',
+          templateUrl: 'views/user/vendorSignup/vendorSignup.html',
           controller: 'VendorSignupCtrl'
         }
       }
@@ -103,20 +102,20 @@ angular.module('starter', [
       }
     })
     .state('app.signup', {
-      url: "/signup",
+      url: "/auth/signup",
       views: {
         'menuContent': {
-          templateUrl: "views/auth/signup/signup.html",
-          controller: 'SignUpCtrl'
+          templateUrl: "views/auth/signup.html",
+          controller: 'AuthCtrl'
         }
       }
     })
     .state('app.login', {
-      url: '/login',
+      url: '/auth/login',
       views: {
         'menuContent': {
-          templateUrl: 'views/auth/login/login.html',
-          controller: 'LoginCtrl'
+          templateUrl: 'views/auth/login.html',
+          controller: 'AuthCtrl'
         }
       }
     });
@@ -137,7 +136,7 @@ angular.module('starter', [
         },
         function(response) {
           if (response.status === 401) {
-            $location.url('/app/login');
+            $location.url('/app/auth/login');
           }
           return $q.reject(response);
         }
