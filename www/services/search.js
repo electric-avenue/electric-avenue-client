@@ -1,3 +1,71 @@
 angular.module('search', [])
 .factory('Search', function($http) {
+  var getVendors(params, callback) {
+    return $http({
+      method: 'GET',
+      url: config.baseUrl + '/vendor/get',
+      data: params
+    })
+    .then(function(res) {
+      console.log('Vendor Get Success!:', res);
+      if (callback) {
+        callback(null, res);
+      }
+    })
+    .catch(function(err) {
+      console.log('Vendor Get Error:', err);
+      if (callback) {
+        callback(err, null);
+      }
+    });
+  };
+  //name = vendor email or username (display name wip)
+  var getOneVendor(name, callback) {
+    return $http({
+      method: 'GET',
+      url: config.baseUrl + '/vendor/' + name,
+    })
+    .then(function(res) {
+      console.log('GetOne Vendor Success!:', res);
+      if (callback) {
+        callback(null, res);
+      }
+    })
+    .catch(function(err) {
+      console.log('GetOne Vendor Error:', err);
+      if (callback) {
+        callback(err, null);
+      }
+    });
+  };
+  //params  = location + category
+  var getTrendingVendors = function(params, callback) {
+    var data = _.pick(params, [
+      'location',
+      'type'
+    ]);
+    return $http({
+      method: 'GET',
+      url: config.baseUrl + '/vendor/trending',
+      data: data
+    })
+    .then(function(res) {
+      console.log('Get Trending Vendor Success!:', res);
+      if (callback) {
+        callback(null, res);
+      }
+    })
+    .catch(function(err) {
+      console.log('Get Trending Vendor Error:', err);
+      if (callback) {
+        callback(err, null);
+      }
+    });
+  };
+
+  return {
+    getVendors: getVendors,
+    getOneVendor: getOneVendor,
+    getTrendingVendors: getTrendingVendors
+  };
 });
