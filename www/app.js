@@ -95,7 +95,7 @@ angular.module('starter', [
       authenticate: true,
       views: {
         'menuContent': {
-          templateUrl: 'views/user/list/list.html'
+          templateUrl: 'views/user/dashbaord/list.html'
         }
       }
     })
