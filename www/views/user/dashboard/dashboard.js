@@ -6,7 +6,7 @@ angular.module('userDashboard', ['search'])
   };
   $ionicModal.fromTemplateUrl('views/user/dashboard/vendorProfile/vendorprofile.html', {
     scope: $scope,
-    animation: 'slide-in-right'
+    animation: 'slide-left-right'
   }).then(function(modal) {
     $scope.vendorModal = modal;
   });
@@ -30,4 +30,32 @@ angular.module('userDashboard', ['search'])
       console.log('Vendors:', vendors.data.result);
     });
   };
+  $ionicModal.fromTemplateUrl('views/user/dashboard/filter.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.filterModal = modal;
+  });
+  $scope.showFilter = function() {
+    $scope.filterModal.show();
+  };
+  $scope.hideFilter = function() {
+    $scope.filterModal.hide();
+  };
+  $scope.filters = {
+    'types-art' : {
+      title: 'Art',
+      selected: true
+    },
+    'types-music' : {
+      title: 'Music',
+      selected: true
+    },
+    'types-performance' : {
+      title: 'Performance',
+      selected: false
+    }
+  };
+  $scope.selectedFilters = _.filter($scope.filters, 'selected');
+  console.log(JSON.stringify($scope.selectedFilters));
 });
