@@ -1,7 +1,8 @@
 <ion-view title="Home" on-swipe-right="changeState('app.usermap')"on-swipe-left="changeState('app.userlist')">
   <ion-content data-tap-disabled="true">
     <!-- MAP CONTAINER -->
-       <leaflet defaults="defaults"></leaflet>     
+       
+<leaflet defaults="map.defaults" center="map.center" markers="map.markers" ng-if="map"></leaflet>  
     <!-- end of MAP CONTAINER -->
   </ion-content>
 </ion-view>
