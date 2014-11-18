@@ -1,17 +1,25 @@
 <ion-modal-view>
   <ion-header-bar>
     <button class="button button-clear icon ion-arrow-left-c button-stable" ng-click="hideVendor()"></button>
-    <h1 class="title">Vendor Name</h1>
+    <h1 ng-show="data.selected.User.displayname" class="title">
+      {{data.selected.User.displayname}}
+    </h1>
+    <h1 ng-show="!data.selected.User.displayname" class="title">
+      {{data.selected.User.username}}
+    </h1>
   </ion-header-bar>
   <ion-content class="padding hastipbutton">
     <div class="row">
       <div class="col">
-        <img class="roundimage vendorImage" ng-src="http://img3.wikia.nocookie.net/__cb20121227201208/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg">
+        <img class="roundimage vendorImage" ng-src="http://localhost:5000/profileImages/{{data.selected.image}}">
       </div>
       <div class="col vendorinfo">
         <div class="row">
-          <div class="col vendorstatus">
+          <div ng-show="data.selected.status" class="col vendorstatus">
             Status: Online
+          </div>
+          <div ng-show="!data.selected.status" class="col vendorstatus">
+            Status: Offline
           </div>
         </div>
         <div class="row">
@@ -30,8 +38,9 @@
       <div class="col">
         <h4 class="title">Description</h4>
         <div class="vendordescription">
-          This is some description for a vendor that is displayed and it could potentially be very long
-          and go multiple lines.
+          <!-- This is some description for a vendor that is displayed and it could potentially be very long
+          and go multiple lines. -->
+          {{data.selected.description}}
         </div>
       </div>
     </div>
