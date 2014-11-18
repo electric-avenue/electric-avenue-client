@@ -86,7 +86,7 @@ angular.module('starter', [
       authenticate: true,
       views: {
         'menuContent': {
-          templateUrl: 'views/user/dashboard/map.html',
+          templateUrl: 'views/user/dashboard/map/map.html',
           controller: 'UserDashboardCtrl'
         }
       }
@@ -96,7 +96,7 @@ angular.module('starter', [
       authenticate: true,
       views: {
         'menuContent': {
-          templateUrl: 'views/user/dashboard/list.html',
+          templateUrl: 'views/user/dashboard/vendorList/list.html',
           controller: 'UserDashboardCtrl'
         }
       }
