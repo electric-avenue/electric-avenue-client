@@ -11,7 +11,7 @@
   <ion-content class="padding hastipbutton">
     <div class="row">
       <div class="col">
-        <img class="roundimage vendorImage" ng-src="http://localhost:5000/profileImages/{{data.selected.image}}">
+        <img ng-if="data.selected.image" class="roundimage vendorImage" ng-src="http://localhost:5000/profileImages/{{data.selected.image}}">
       </div>
       <div class="col vendorinfo">
         <div class="row">
