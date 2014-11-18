@@ -1,5 +1,5 @@
-angular.module('userDashboard', ['search'])
-.controller('UserDashboardCtrl', function($scope, $ionicModal, Search) {
+angular.module('userDashboard', ['search', 'leaflet-directive'])
+.controller('UserDashboardCtrl', function($scope, $ionicModal, Search, $state) {
   $scope.data = {
     vendors: [],
     selected: {}
@@ -11,6 +11,7 @@ angular.module('userDashboard', ['search'])
     $scope.vendorModal = modal;
   });
   $scope.showVendor = function(vendor) {
+    console.log('hey:', vendor);
     $scope.data.selected = vendor;
     $scope.vendorModal.show();
   };
@@ -58,4 +59,24 @@ angular.module('userDashboard', ['search'])
   };
   $scope.selectedFilters = _.filter($scope.filters, 'selected');
   console.log(JSON.stringify($scope.selectedFilters));
+
+  $scope.map = {
+    defaults: {
+      tileLayer: "https://{s}.tiles.mapbox.com/v3/deziak1906.k8mphke2/{z}/{x}/{y}.png",
+      maxZoom: 18,
+      zoomControlPosition: 'bottomleft'
+    },
+    center: {
+      lat: 43.661165,
+      lng: -79.390919,
+      zoom: 15
+    },
+    markers : {},
+    events: {
+      map: {
+        enable: ['context'],
+        logic: 'emit'
+      }
+    }
+  };
 });
