@@ -4,10 +4,10 @@ angular.module('userFactory', [])
     var data = _.pick(changes, [
       'oldPassword',
       'newPassword',
-      'displayName',
-      'firstName',
-      'middleName',
-      'lastName',
+      'displayname',
+      'firstname',
+      'middlename',
+      'lastname',
       'email',
       'zipcode',
       'age'

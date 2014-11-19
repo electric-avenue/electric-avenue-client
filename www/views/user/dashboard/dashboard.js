@@ -11,7 +11,6 @@ angular.module('userDashboard', ['search', 'leaflet-directive'])
     $scope.vendorModal = modal;
   });
   $scope.showVendor = function(vendor) {
-    console.log('hey:', vendor);
     $scope.data.selected = vendor;
     $scope.vendorModal.show();
   };
@@ -25,7 +24,6 @@ angular.module('userDashboard', ['search', 'leaflet-directive'])
   });
 
   $scope.loadVendors = function() {
-    console.log('hey');
     Search.getVendors({}, function(err, vendors) {
       $scope.data.vendors = vendors.data.result;
       console.log('Vendors:', vendors.data.result);
@@ -58,7 +56,7 @@ angular.module('userDashboard', ['search', 'leaflet-directive'])
     }
   };
   $scope.selectedFilters = _.filter($scope.filters, 'selected');
-  console.log(JSON.stringify($scope.selectedFilters));
+  // console.log(JSON.stringify($scope.selectedFilters));
 
   $scope.map = {
     defaults: {

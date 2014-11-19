@@ -1,29 +1,27 @@
-angular.module('vendorProfile', ['angularFileUpload'])
-.controller('VendorProfileCtrl', function($scope, $upload) {
+angular.module('vendorProfile', ['angularFileUpload', 'vendorFactory', 'userFactory'])
+.controller('VendorProfileCtrl', function($scope, $upload, Vendor, User) {
   // will add to factory eventually
   $scope.data = {
-    fileInput: ''
+    fileInput: '',
+    description: '',
+    types: '',
+    address: '',
+    city: '',
+    state: '',
+    zipcode: ''
   };
 
   $scope.uploading = false;
-  $scope.onFileSelect = function() {
-    var files = $scope.data.fileInput;
-    for (var i = 0; i < files.length; i++) {
-      var file = files[i];
-      $scope.upload = $upload.upload({
-        url: config.baseUrl + '/api/vendor/photo',
-        method: 'POST',
-        data: {myObj: $scope.myModelObj},
-        file: file,
-      })
-      .progress(function(evt) {
-        console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-        $scope.uploading = true;
-      })
-      .success(function(data, status, headers, config) {
-        $scope.uploading = false;
-        console.log(data);
-      });
-    }
+
+  $scope.update = function() {
+    Vendor.updateProfile($scope.data);
+  };
+
+  $scope.populate = function() {
+    User.getSelf(function(err, data) {
+      console.log('data!:', data);
+      _.extend($scope.data, data.data.result);
+      _.extend($scope.data, data.data.result.Vendor);
+    });
   };
 });
