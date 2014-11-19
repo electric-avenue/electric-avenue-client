@@ -1,9 +1,9 @@
-<ion-view title="User Profile">
+<ion-view title="User Profile" ng-init="populate();">
   <ion-content has-header="true">
     <form novalidate name="userProfileForm">
       <div class="list profileForm">
         <label class="item item-label profileinput">
-          <span class="input-label">Username: Insert Username</span>
+          <span class="input-label">Username: {{data.username}}</span>
         </label>
         <label class="item item-input item-floating-label profileinput">
           <span class="input-label">Old Password</span>
@@ -19,26 +19,26 @@
         </label>
         <label class="item item-input item-floating-label profileinput">
           <span class="input-label">Display Name</span>
-          <input ng-model="data.displayName" name="displayname" type="text" placeholder="Display Name">
+          <input ng-model="data.displayname" name="displayname" type="text" placeholder="Display Name">
         </label>
         <div class="row">
           <label class="col item item-input item-floating-label profileinput">
             <span class="input-label">First Name</span>
-            <input ng-model="data.firstName" type="text" name="firstname" placeholder="First Name">
+            <input ng-model="data.firstname" type="text" name="firstname" placeholder="First Name">
           </label>
           <label class="col item item-input item-floating-label profileinput">
             <span class="input-label">Middle Name</span>
-            <input ng-model="data.middleName" type="text" name="middlename" placeholder="Middle Name">
+            <input ng-model="data.middlename" type="text" name="middlename" placeholder="Middle Name">
           </label>
           <label class="col item item-input item-floating-label profileinput">
             <span class="input-label">Last Name</span>
-            <input ng-model="data.lastName" type="text" name="lastname" placeholder="Last Name">
+            <input ng-model="data.lastname" type="text" name="lastname" placeholder="Last Name">
           </label>
         </div>
         <div class="row">
           <label class="col col item item-input item-floating-label profileinput">
             <span class="input-label">Zip Code</span>
-            <input ng-model="data.zipcode" name="zipcode" type="number" placeholder="Zip Code">
+            <input ng-model="data.zipcode" type="text" name="zipcode" placeholder="Zip Code">
           </label>
           <label class="col item item-input item-floating-label profileinput">
             <span class="input-label">Age</span>
