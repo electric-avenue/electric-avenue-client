@@ -9,6 +9,7 @@
     "ng-file-upload": "~1.6.12",
     "lodash": "~2.4.1",
     "angular-leaflet-directive": "~0.7.9",
-    "leaflet": "~0.7.3"
+    "leaflet": "~0.7.3",
+    "ngCordova": "~0.1.7-alpha"
   }
 }
