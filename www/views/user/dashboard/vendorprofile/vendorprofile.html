@@ -8,7 +8,7 @@
       {{data.selected.User.username}}
     </h1>
   </ion-header-bar>
-  <ion-content class="padding hastipbutton">
+  <ion-content>
     <div class="row">
       <div class="col">
         <img ng-if="data.selected.image" class="roundimage vendorImage" ng-src="http://localhost:5000/profileImages/{{data.selected.image}}">
@@ -35,6 +35,13 @@
       </div>
     </div>
     <div class="row">
+      <div class="col tipbuttonarea">
+        <button class="button button-balanced tipbutton">
+          Send Tip
+        </button>
+      </div>
+    </div>
+    <div class="row">
       <div class="col">
         <h4 class="title">Description</h4>
         <div class="vendordescription">
@@ -44,36 +51,31 @@
         </div>
       </div>
     </div>
+    <!--<div class="row">-->
+      <!--<div class="col">-->
+        <!--<h4 class="title">Current Location</h4>-->
+      <!--</div>-->
+    <!--</div>-->
+    <div class="vendormapbox">
+      Mini Map
+    </div>
     <div class="row">
-      <div class="col">
-        <h4 class="title">Current Location</h4>
+      <div class="col vendorlocation">
         <div class="row">
           <div class="col">
-            <div class="vendormapbox">
-              Mini Map
-            </div>
+            Nearest Address: <br />
+            <address>
+              944 Market St, San Francisco, CA 94102
+            </address>
           </div>
-          <div class="col vendorlocation">
-            <div class="row">
-              <div class="col">
-                Nearest Address: <br />
-                <address>
-                  944 Market St, San Francisco, CA 94102
-                </address>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                Distance from you: <br />
-                0.5 miles
-              </div>
-            </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            Distance from you: <br />
+            0.5 miles
           </div>
         </div>
       </div>
     </div>
   </ion-content>
-  <button class="button button-balanced tipbutton">
-    Send Tip
-  </button>
 </ion-modal-view>

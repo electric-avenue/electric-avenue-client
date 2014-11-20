@@ -1,20 +1,28 @@
 <ion-view title="Vendor List" on-swipe-right="changeState('app.usermap')" ng-init="loadVendors();">
-  <ion-content class="hasFilter">
+  <ion-content class="hasFilter has-header has-tabs-top">
     <ion-list>
-      <ion-item class="item-thumbnail-left" ng-repeat="vendor in data.vendors" ng-click="showVendor(vendor)">
-        <img ng-if="!vendor.image" class="roundimage" ng-src="http://img3.wikia.nocookie.net/__cb20121227201208/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg">
-        <img ng-if="vendor.image" class="roundimage" ng-src="http://localhost:5000/profileImages/{{vendor.image}}">
+      <ion-item class="item vendor-item" ng-repeat="vendor in data.vendors" item="item" ng-click="showVendor(vendor)">
         <div class="row">
-          <div ng-show="vendor.User.displayname" class="col col-75">{{vendor.User.displayname}} - Activity</div>
-          <div ng-show="!vendor.User.displayname" class="col col-75">{{vendor.User.username}} - Activity</div>
-          <div class="col">0.5 miles</div>
-        </div>
-        <div class="row">
-          <div class="col col-75">
-            <p>{{vendor.description}}</p>
+          <div class="col col-33 col-center text-center">
+            <img ng-if="!vendor.image" class="roundimage" ng-src="http://img3.wikia.nocookie.net/__cb20121227201208/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg">
+            <img ng-if="vendor.image" class="roundimage" ng-src="http://localhost:5000/profileImages/{{vendor.image}}">
           </div>
-          <div class="col rating">
-            <i class="ion ion-star" ng-repeat="n in [1,2,3,4]"></i>
+          <div class="col vendor-content">
+            <div class="row">
+              <div ng-show="vendor.User.displayname" class="col">{{vendor.User.displayname}} - Activity</div>
+              <div ng-show="!vendor.User.displayname" class="col">{{vendor.User.username}} - Activity</div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <p>{{vendor.description}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col rating">
+                <i class="ion ion-star" ng-repeat="n in [1,2,3,4]"></i>
+              </div>
+              <div class="col text-right vendor-distance">0.5 mi</div>
+            </div>
           </div>
         </div>
       </ion-item>

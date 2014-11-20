@@ -1,0 +1,17 @@
+.vendor-notification {
+  background: $stable;
+  border-top: 1px solid darken($stable, 10%);
+  border-bottom: 1px solid darken($stable, 10%);
+}
+.notification-time {
+  margin-top: 5px;
+  padding-bottom: 0;
+  font-size: 0.8em;
+}
+.notification-message {
+  padding-left: 10px;
+  font-size: 1.1em;
+}
+.notification-icon {
+  font-size: 1.3em;
+}

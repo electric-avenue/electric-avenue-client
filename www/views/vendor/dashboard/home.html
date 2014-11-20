@@ -1,6 +1,26 @@
-<ion-view title="Home" on-swipe-right="changeState('app.usermap')"on-swipe-left="changeState('app.userlist')">
-  <ion-content>
-    <button class="button button-positive" ng-click="logout()">Logout</button>
-    <button style="float:right" class="button button-positive" ng-click="test()">Test</button>
+<ion-view title="Dashboard">
+  <ion-content class="has-header has-tabs-top">
+    <div class="row vendortips">
+      <div class="col">
+        <h3 class="title text-center">Total Tips</h3>
+        <div class="text-center">$100.00</div>
+      </div>
+    </div>
+    <h4 class="title">Latest Activity</h4>
+    <ion-list>
+    <ion-item class="row vendor-notification" ng-repeat="n in [1,2,3,4,5]">
+      <div class="col col-10 col-center text-center notification-icon">
+        <i class="ion ion-alert"></i>
+      </div>
+      <div class="col">
+        <div class="row responsive-sm notification-message">
+          This is some notification
+        </div>
+        <div class="row responsive-sm notification-time text-right">
+          Nov 19th, 2014 @ 1:20 PM
+        </div>
+      </div>
+    </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>

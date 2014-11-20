@@ -4,7 +4,7 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova'])
     vendors: [],
     selected: {}
   };
-  $ionicModal.fromTemplateUrl('views/user/dashboard/vendorProfile/vendorprofile.html', {
+  $ionicModal.fromTemplateUrl('views/user/dashboard/vendorprofile/vendorprofile.html', {
     scope: $scope,
     animation: 'slide-left-right'
   }).then(function(modal) {
