@@ -1,3 +1,7 @@
+ion-nav-bar.bar .title {
+  text-transform: uppercase;
+  font-weight: 300;
+}
 .leftnavitem {
   cursor: pointer;
   &:hover {

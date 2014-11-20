@@ -1,15 +1,15 @@
 <ion-side-menus>
 <ion-pane ion-side-menu-content drag-content="false">
-    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
+    <ion-nav-bar class="bar-dark nav-title-slide-ios7">
       <!--<ion-nav-back-button class="button-clear" ng-if="!!false"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>-->
       <ion-nav-buttons side="left">
         <button menu-toggle="left" ng-if="check.isAuth()" class="button button-icon icon ion-navicon"></button>
       </ion-nav-buttons>
       <ion-nav-buttons side="right">
-        <button ng-show="!check.isVendor()" ui-sref="app.userProfile" ng-if="check.isAuth()" class="button button-icon icon ion-gear-b"></button>
-        <button ng-show="check.isVendor()" ng-click="popover.show($event)" ng-if="check.isAuth()" class="button button-icon icon ion-gear-b"></button>
+        <button ng-show="!check.isVendor()" ui-sref="app.userProfile" ng-if="check.isAuth()" class="gearbutton button button-icon icon ion-gear-b "></button>
+        <button ng-show="check.isVendor()" ng-click="popover.show($event)" ng-if="check.isAuth()" class="gearbutton button button-icon icon ion-gear-b"></button>
       </ion-nav-buttons>
-      <div class="tabs-striped tabs-top tabs-background-stable tabs-positive" ng-hide="!state">
+      <div class="tabs-striped tabs-top tabs-background-dark tabs-calm" ng-hide="!state">
         <div class="tabs maintabs">
           <a class="tab-item" ui-sref-active="active" ui-sref="app.usermap">
             <i class="icon ion-map"></i>
@@ -26,7 +26,7 @@
   </ion-pane>
 
   <ion-side-menu side="left">
-    <header class="bar bar-header bar-stable">
+    <header class="bar bar-header bar-dark">
       <h1 class="title">Welcome</h1>
     </header>
     <ion-content class="has-header">

@@ -16,9 +16,12 @@ angular.module('starter', [
     url: config.baseUrl + '/test'
   })
   .then(function(response) {
+    console.log('hit');
     Auth.isAuth = true;
-    $state.transitionTo('app.home');
-    $cordovaSplashscreen.hide();
+    $state.go('app.home');
+    setTimeout(function() {
+      $cordovaSplashscreen.hide();
+    }, 1500);
   })
   .catch(function(error) {
     Auth.isAuth = false;

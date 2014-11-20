@@ -14,14 +14,36 @@ $assertive:                       #ef4e3a !default;
 $royal:                           #8a6de9 !default;
 $dark:                            #444 !default;
 */
+@import url(http://fonts.googleapis.com/css?family=Raleway:100,400,200,300);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,600,400);
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
+$font-family-base: 'Open Sans', sans-serif;
+$headings-font-family: 'Raleway', sans-serif !default;
+$headings-font-weight: 300 !default;
+
+// Color Variables
+$base-background-color: #ECF0F1;
+$light: lighten($base-background-color, 4%);
+/*$stable: darken($base-background-color, 2%);*/
+$stable: $base-background-color;
+$positive: #2980B9;
+$calm: lighten(#3498DB, 10%);
+$assertive: #E74C3C;
+$dark: #2C3E50;
+
+// Other Overrides
+$button-dark-bg: $dark !default;
+$button-dark-border: $dark !default;
+$button-dark-text: $base-background-color !default;
+$button-calm-text: darken($calm, 10%) !default;
+
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 html, body, ion-nav-view {
-  background: #fff;
-  border-color: #fff;
+  background: $base-background-color;
+  border-color: $base-background-color;
 }
 .tabs-active .has-header {
   top: 93px;
