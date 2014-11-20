@@ -2,14 +2,9 @@
   background: $stable;
   border-top: 1px solid darken($stable, 10%);
   border-bottom: 1px solid darken($stable, 10%);
-  &:nth-child(odd) {
-  }
-  &:nth-child(even) {
-  }
 }
 .notification-time {
   margin-top: 5px;
-  /*margin-bottom: 2px;*/
   padding-bottom: 0;
   font-size: 0.8em;
 }
