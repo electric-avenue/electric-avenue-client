@@ -1,5 +1,5 @@
 <ion-side-menus>
-<ion-pane ion-side-menu-content drag-content="false" ng-class="{'tabs-active': state}">
+<ion-pane ion-side-menu-content drag-content="false">
     <ion-nav-bar class="bar-stable nav-title-slide-ios7">
       <!--<ion-nav-back-button class="button-clear" ng-if="!!false"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>-->
       <ion-nav-buttons side="left">
@@ -45,6 +45,15 @@
         </ion-item>
       </ion-list>
     </ion-content>
+    <div class="bar bar-footer bar-stable onlinestatus">
+      Vendor Status
+      <label class="toggle">
+        <input type="checkbox">
+        <div class="track">
+          <div class="handle"></div>
+        </div>
+      </label>
+    </div>
   </ion-side-menu>
 </ion-side-menus>
 <script id="templates/popover.html" type="text/ng-template">

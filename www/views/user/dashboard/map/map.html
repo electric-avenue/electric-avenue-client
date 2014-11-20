@@ -1,8 +1,11 @@
 <ion-view title="Home">
-  <ion-content data-tap-disabled="true">
+  <ion-content data-tap-disabled="true" class="hasFilter has-header has-tabs-top">
     <!-- MAP CONTAINER -->
        
 <leaflet defaults="map.defaults" controls="controls" center="map.center" markers="map.markers" ng-if="map"></leaflet>  
     <!-- end of MAP CONTAINER -->
   </ion-content>
+  <button class="bar bar-footer bar-positive" ng-click="showFilter()">
+    <div class="title">Filter</div>
+  </button>
 </ion-view>

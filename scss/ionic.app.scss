@@ -32,6 +32,15 @@ html, body, ion-nav-view {
     max-width: 250px;
   }
 }
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
 @import "../www/views/auth/auth.scss";
 @import "../www/views/vendor/profile/profile.scss";
 @import "../www/views/menu/menu.scss";
@@ -39,3 +48,4 @@ html, body, ion-nav-view {
 @import "../www/views/user/dashboard/vendorprofile/vendorprofile.scss";
 @import "../www/views/user/dashboard/filter.scss";
 @import "../www/views/user/dashboard/map/map.scss";
+@import "../www/views/vendor/dashboard/home.scss";

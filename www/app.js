@@ -7,8 +7,23 @@ angular.module('starter', [
   'userprofile',
   'userDashboard',
   'vendorDashboard',
-  'auth'
-]).run(function($ionicPlatform) {
+  'ngCordova',
+  'auth'//,
+  // 'usermap'
+]).run(function($ionicPlatform, $cordovaSplashscreen, $http, Auth, $state) {
+  $http({
+    method: 'GET',
+    url: config.baseUrl + '/test'
+  })
+  .then(function(response) {
+    Auth.isAuth = true;
+    $state.transitionTo('app.home');
+    $cordovaSplashscreen.hide();
+  })
+  .catch(function(error) {
+    Auth.isAuth = false;
+    $cordovaSplashscreen.hide();
+  });
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -36,7 +51,7 @@ angular.module('starter', [
           $state.transitionTo('app.usermap');
           return;
         }
-        // $state.transitionTo('app.vendormap'); activate when vendor map is done 
+        // $state.transitionTo('app.vendormap'); activate when vendor map is done
         $state.transitionTo('app.vendorHome');
       },
       authenticate: true

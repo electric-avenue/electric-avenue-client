@@ -7,3 +7,11 @@
 .popover {
   height: 110px;
 }
+.onlinestatus {
+  line-height: 2;
+  font-size: 1.3em;
+  padding-left: 10%;
+  & > label {
+    left: 30%;
+  }
+}
