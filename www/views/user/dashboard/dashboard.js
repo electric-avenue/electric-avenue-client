@@ -4,7 +4,10 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova'])
     vendors: [],
     selected: {}
   };
-  $ionicModal.fromTemplateUrl('views/user/dashboard/vendorprofile/vendorprofile.html', {
+  /*
+  * VENDOR PROFILE TEMPLATING
+  */
+  $ionicModal.fromTemplateUrl('views/user/dashboard/vendorProfile/vendorprofile.html', {
     scope: $scope,
     animation: 'slide-left-right'
   }).then(function(modal) {
@@ -29,7 +32,25 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova'])
       console.log('Vendors:', vendors.data.result);
     });
   };
-  $ionicModal.fromTemplateUrl('views/user/dashboard/filter.html', {
+
+  $scope.addRating = function(number) {
+    var rating = {
+      vendor: $scope.data.selected.User.username,
+      rating: number//,
+      // review: 
+    };
+    Search.addRating(rating, function(err, res) {
+      console.log('err', err, 'res', res);
+    });
+  };
+  /*
+  * END VENDOR PROFILE TEMPLATING
+  */ 
+
+  /* 
+  * FILTER TEMPLATING
+  */
+  $ionicModal.fromTemplateUrl('views/user/dashboard/filter/filter.html', {
     scope: $scope,
     animation: 'slide-in-up'
   }).then(function(modal) {
@@ -62,7 +83,13 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova'])
   $scope.controls = {
     custom: []
   };
-  
+  /*
+  * END FILTER TEMPLATING
+  */
+
+  /*
+  * MAP TEMPLATING
+  */
   var MyControl = L.control();
   MyControl.setPosition('bottomright');
   MyControl.onAdd = function () {
@@ -119,4 +146,7 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova'])
       $scope.locate();
     }
   };
+  /*
+  * END MAP TEMPLATING
+  */
 });

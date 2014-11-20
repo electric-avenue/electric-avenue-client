@@ -63,9 +63,35 @@ angular.module('search', [])
     });
   };
 
+  var addRating = function(vendor, callback) {
+    var data = {
+      vendor: vendor.vendor,
+      rating: vendor.rating,
+      review: vendor.review
+    };
+    return $http({
+      method: 'POST',
+      url: config.baseUrl + '/api/vendor/rate',
+      data: data
+    })
+    .then(function(res) {
+      console.log('Reviewed!', res);
+      if (callback) {
+        callback(null, res);
+      }
+    })
+    .catch(function(err) {
+      console.log('Review Error!:', err);
+      if (callback) {
+        callback(err, null);
+      }
+    });
+  };
+
   return {
     getVendors: getVendors,
     getOneVendor: getOneVendor,
-    getTrendingVendors: getTrendingVendors
+    getTrendingVendors: getTrendingVendors,
+    addRating: addRating
   };
 });

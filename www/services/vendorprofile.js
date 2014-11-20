@@ -112,8 +112,8 @@ angular.module('vendorFactory', ['angularFileUpload', 'auth'])
     for (var i = 0; i < files.length; i++) {
       var file = files[i];
       $upload.upload({
-        url: config.baseUrl + '/api/vendor/photo',
         method: 'POST',
+        url: config.baseUrl + '/api/vendor/photo',
         file: file,
       })
       .progress(function(evt) {
