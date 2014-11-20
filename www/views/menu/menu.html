@@ -6,8 +6,8 @@
         <button menu-toggle="left" ng-if="check.isAuth()" class="button button-icon icon ion-navicon"></button>
       </ion-nav-buttons>
       <ion-nav-buttons side="right">
-        <button ng-show="!check.isVendor()" ui-sref="app.userProfile" ng-if="check.isAuth()" class="gearbutton button button-icon icon ion-gear-b "></button>
-        <button ng-show="check.isVendor()" ng-click="popover.show($event)" ng-if="check.isAuth()" class="gearbutton button button-icon icon ion-gear-b"></button>
+        <button ng-show="!check.isVendor()" ui-sref="app.userProfile" ng-if="check.isAuth()" class="button button-icon icon ion-gear-b "></button>
+        <button ng-show="check.isVendor()" ng-click="popover.show($event)" ng-if="check.isAuth()" class="button button-icon icon ion-gear-b"></button>
       </ion-nav-buttons>
       <div class="tabs-striped tabs-top tabs-background-dark tabs-calm" ng-hide="!state">
         <div class="tabs maintabs">
