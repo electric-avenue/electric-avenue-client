@@ -42,7 +42,7 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
     var rating = {
       vendor: $scope.data.selected.User.username,
       rating: number//,
-      // review: 
+      // review:
     };
     Search.addRating(rating, function(err, res) {
       console.log('err', err, 'res', res);
@@ -53,9 +53,32 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
   };
   /*
   * END VENDOR PROFILE TEMPLATING
-  */ 
+  */
+  /*
+   * START SEND TIP TEMPLATING
+   */
+  $ionicModal.fromTemplateUrl('views/user/dashboard/vendorProfile/sendTip.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.tipModal = modal;
+  });
+  $scope.showTipModal = function() {
+    $scope.tipModal.show();
+  };
+  $scope.hideTipModal = function() {
+    $scope.data.selected = {};
+    $scope.tipModal.hide();
+  };
+  //Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.tipModal.remove();
+  });
 
-  /* 
+  /*
+   * END SEND TIP TEMPLATING
+   */
+  /*
   * FILTER TEMPLATING
   */
   $ionicModal.fromTemplateUrl('views/user/dashboard/filter/filter.html', {
@@ -101,7 +124,7 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
   var MyControl = L.control();
   MyControl.setPosition('bottomright');
   MyControl.onAdd = function () {
-    var className = 'icon ion-compass mycompass', 
+    var className = 'icon ion-compass mycompass',
     container = L.DomUtil.create('div', className);
     return container;
   }
@@ -145,7 +168,7 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
         enable: ['context'],
         logic: 'emit'
       }
-    } 
+    }
   };
   locate();
 

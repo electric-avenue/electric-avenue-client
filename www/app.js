@@ -8,6 +8,8 @@ angular.module('starter', [
   'userDashboard',
   'vendorDashboard',
   'ngCordova',
+  'angularPayments',
+  'payments',
   'auth'//,
   // 'usermap'
 ]).run(function($ionicPlatform, $cordovaSplashscreen, $http, Auth, $state) {
@@ -68,6 +70,26 @@ angular.module('starter', [
       views: {
         'menuContent': {
           templateUrl: 'views/user/profile/profile.html',
+          controller: 'UserProfileCtrl'
+        }
+      }
+    })
+    .state('app.paymentProfile', {
+      url: '/user/payments',
+      authenticate: true,
+      views: {
+        'menuContent': {
+          templateUrl: 'views/user/paymentProfile/payments.html',
+          controller: 'PaymentsCtrl'
+        }
+      }
+    })
+    .state('app.changePassword', {
+      url: '/user/changepassword',
+      authenticate: true,
+      views: {
+        'menuContent': {
+          templateUrl: 'views/user/changePassword/changePassword.html',
           controller: 'UserProfileCtrl'
         }
       }

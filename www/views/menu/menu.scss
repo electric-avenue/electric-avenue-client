@@ -18,8 +18,13 @@ ion-nav-bar.bar .title {
     background: transparent;
     background-color: transparent;
     border: none;
-    /*height: 100%;*/
     width: 100%;
-    /*left: 30%;*/
   }
+}
+
+.stablemenu {
+  background: $stable;
+}
+ion-side-menu i, ion-popover-view i {
+  color: $calm;
 }

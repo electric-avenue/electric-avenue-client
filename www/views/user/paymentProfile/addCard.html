@@ -1,0 +1,48 @@
+<ion-modal-view class="payments-modal">
+  <ion-header-bar class="bar bar-dark">
+    <h1 class="title">
+      Add Card
+    </h1>
+  </ion-header-bar>
+  <ion-content class="has-header">
+    <form novalidate name="userProfileForm">
+      <div class="list profileForm">
+        <div class="row">
+          <div class="col cardicon">
+            <i class="col fa fa-cc-visa" ng-class="{'active': data.cardType === 'visa'}"></i>
+          </div>
+          <div class="col cardicon">
+            <i class="col fa fa-cc-discover" ng-class="{'active': data.cardType === 'discover'}"></i>
+          </div>
+          <div class="col cardicon">
+            <i class="col fa fa-cc-amex" ng-class="{'active': data.cardType === 'amex'}"></i>
+          </div>
+          <div class="col cardicon">
+            <i class="col fa fa-cc-mastercard" ng-class="{'active': data.cardType === 'mastercard'}"></i>
+          </div>
+        </div>
+        <div class="row">
+          <label class="col item item-input item-stacked-label profileinput">
+            <span class="input-label">Card Number</span>
+            <input type="text" ng-model="data.cardNumber" payments-type-model="data.cardType" payments-format="card" payments-validate="card" placeholder="0000 0000 0000 0000" />
+          </label>
+        </div>
+        <div class="row">
+          <label class="col item item-input item-stacked-label profileinput">
+            <span class="input-label">Expiry</span>
+            <input type="text" ng-model="data.cardExpiry" payments-format="expiry" payments-validate="expiry" placeholder="mo / yyyy" />
+          </label>
+        </div>
+        <div class="row">
+          <label class="col item item-input item-stacked-label profileinput">
+            <span class="input-label">CVC Code</span>
+            <input type="text" ng-model="data.cardCVC" payments-format="cvc" payments-validate="cvc" placeholder="000" />
+          </label>
+        </div>
+        <div class="padding">
+          <button class="button button-block button-dark" ng-click="update();">Add</button>
+        </div>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

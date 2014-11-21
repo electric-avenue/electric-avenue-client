@@ -60,3 +60,13 @@ address {
   line-height: 200px;
   text-align: center;
 }
+.tip-modal {
+  background-color: $light;
+  width: 80%;
+  min-height: 200px;
+  top: 10%;
+  left: 10%;
+  ion-content {
+    height: 250px;
+  }
+}

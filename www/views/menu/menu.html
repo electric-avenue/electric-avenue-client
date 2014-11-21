@@ -3,11 +3,11 @@
     <ion-nav-bar class="bar-dark nav-title-slide-ios7">
       <!--<ion-nav-back-button class="button-clear" ng-if="!!false"><i class="icon ion-ios7-arrow-back"></i> Back</ion-nav-back-button>-->
       <ion-nav-buttons side="left">
-        <button menu-toggle="left" ng-if="check.isAuth()" class="button button-icon icon ion-navicon"></button>
+        <button menu-toggle="left" ng-if="check.isAuth()" class="button button-icon icon-stable icon ion-navicon"></button>
       </ion-nav-buttons>
       <ion-nav-buttons side="right">
         <!--<button ng-show="!check.isVendor()" ui-sref="app.userProfile" ng-if="check.isAuth()" class="button button-icon icon ion-gear-b "></button>-->
-        <button ng-click="popover.show($event)" ng-if="check.isAuth()" class="button button-icon icon ion-gear-b"></button>
+        <button ng-click="popover.show($event)" ng-if="check.isAuth()" class="button button-icon icon-stable icon ion-gear-b"></button>
       </ion-nav-buttons>
       <div class="tabs-striped tabs-top tabs-background-dark tabs-calm" ng-hide="!state">
         <div class="tabs maintabs">
@@ -25,22 +25,30 @@
     <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
   </ion-pane>
 
-  <ion-side-menu side="left">
+  <ion-side-menu side="left" class="stablemenu">
     <header class="bar bar-header bar-dark">
       <h1 class="title">Menu</h1>
     </header>
     <ion-content class="has-header">
       <ion-list>
-        <ion-item nav-clear menu-close ui-sref="app.usermap" class="leftnavitem">
+        <ion-item nav-clear menu-close ui-sref="app.usermap" class="item-icon-left item-stable leftnavitem">
+          <i class="icon ion-home"></i>
           Home
         </ion-item>
-        <ion-item ng-show="check.isVendor()" nav-clear menu-close ui-sref="app.vendorHome" class="leftnavitem">
-          Vendor Home
+        <ion-item ng-show="check.isVendor()" nav-clear menu-close ui-sref="app.vendorHome" class="item-icon-left item-stable leftnavitem">
+          <i class="icon ion-speedometer"></i>
+          Dashboard
         </ion-item>
-        <ion-item ng-show="!check.isVendor()" nav-clear menu-close ui-sref="app.vendorSignup" class="leftnavitem">
+        <ion-item ng-show="!check.isVendor()" nav-clear menu-close ui-sref="app.vendorSignup" class="item-icon-left item-stable leftnavitem">
+          <i class="icon ion-key"></i>
           Vendor Signup
         </ion-item>
-        <ion-item nav-clear menu-close ng-click="logout()" class="leftnavitem">
+        <ion-item nav-clear menu-close ui-sref="app.paymentProfile" class="item-icon-left item-stable leftnavitem">
+          <i class="icon ion-card"></i>
+          Payment Profiles
+        </ion-item>
+        <ion-item nav-clear menu-close ng-click="logout()" class="item-icon-left item-stable leftnavitem">
+          <i class="icon ion-log-out"></i>
           Logout
         </ion-item>
       </ion-list>
@@ -58,16 +66,19 @@
   </ion-side-menu>
 </ion-side-menus>
 <script id="templates/popover.html" type="text/ng-template">
-  <ion-popover-view>
+  <ion-popover-view class="stablemenu">
     <ion-content>
       <div class="list">
-        <a class="item" ui-sref="app.userProfile" ng-click="popover.hide($event)">
+        <a class="item item-stable item-icon-left" ui-sref="app.userProfile" ng-click="popover.hide($event)">
+          <i class="icon ion-person"></i>
           Profile
         </a>
-        <a class="item" ui-sref="app.changePassword" ng-click="popover.hide($event)">
+        <a class="item item-stable item-icon-left" ui-sref="app.changePassword" ng-click="popover.hide($event)">
+          <i class="icon ion-locked"></i>
           Change Password
         </a>
-        <a class="item" ng-if="check.isVendor()" ui-sref="app.vendorProfile" ng-click="popover.hide($event)">
+        <a class="item item-stable item-icon-left" ng-if="check.isVendor()" ui-sref="app.vendorProfile" ng-click="popover.hide($event)">
+          <i class="icon ion-settings"></i>
           Vendor Settings
         </a>
       </div>
