@@ -19,16 +19,16 @@ angular.module('starter', [
     Auth.isAuth = true;
     $state.go('app.home');
     if ($cordovaSplashscreen) {
-      setTimeout(function() {
-        $cordovaSplashscreen.hide();
-      }, 1500);
+      // setTimeout(function() {
+      //   $cordovaSplashscreen.hide();
+      // }, 1500);
     }
   })
   .catch(function(error) {
     Auth.isAuth = false;
-    if ($cordovaSplashscreen) {
-      $cordovaSplashscreen.hide();
-    }
+    // if ($cordovaSplashscreen) {
+    //   $cordovaSplashscreen.hide();
+    // }
   });
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -97,7 +97,17 @@ angular.module('starter', [
       authenticate: true,
       views: {
         'menuContent': {
-          templateUrl: 'views/vendor/dashboard/home.html',
+          templateUrl: 'views/vendor/dashboard/home/home.html',
+          controller: 'VendorDashboardCtrl'
+        }
+      }
+    })
+    .state('app.vendorMap', {
+      url: '/vendor/map',
+      authenticate: true,
+      views: {
+        'menuContent': {
+          templateUrl: '/views/vendor/dashboard/map/map.html',
           controller: 'VendorDashboardCtrl'
         }
       }
