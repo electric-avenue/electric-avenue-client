@@ -22,6 +22,13 @@ angular.module('stripe', [])
 
   var saveCard = function(info, callback) {
     getToken(info).then(function(err, token) {
+      if (err) {
+        if (callback) {
+          callback(err, null);
+        }
+        return;
+      }
+
       $http({
         method: 'PUT',
         url: config.baseUrl + '/payments/save',
@@ -42,6 +49,24 @@ angular.module('stripe', [])
     });
   };
 
+  var getCards = function(callback) {
+    return $http({
+      method: 'PUT',
+      url: config.baseUrl + '/payments/listcards'
+    })
+    .then(function(res) {
+      console.log('List Card Success!:', res);
+      if (callback) {
+        callback(null, res);
+      }
+    })
+    .catch(function(err) {
+      console.log('List Card Failure!:', err);
+      if (callback) {
+        callback(err, null);
+      }
+    });
+  };
 
   var sendTip = function(vendor, amount, callback) {
 
@@ -49,7 +74,8 @@ angular.module('stripe', [])
 
   return {
     saveCard: saveCard,
-    sendTip: sendTip
+    sendTip: sendTip,
+    getCards: getCards
   }
 });
 
