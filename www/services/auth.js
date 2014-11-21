@@ -8,6 +8,7 @@ angular.module('auth', [])
   var auth = {};
   auth.isAuth = false;
   auth.isVendor = false;
+  auth.isOnline = false;
   /**
    * Register a user
    * @function
@@ -65,6 +66,7 @@ angular.module('auth', [])
       if (!!res.data) {
         auth.isAuth = true;
         auth.isVendor = res.data.isVendor;
+        auth.isOnline = res.data.isOnline;
         console.log('data:', res);
         return true;
       }

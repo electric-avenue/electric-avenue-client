@@ -1,5 +1,5 @@
-angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova'])
-.controller('UserDashboardCtrl', function($scope, $ionicModal, Search, $state,$cordovaGeolocation) {
+angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'vendorFactory'])
+.controller('UserDashboardCtrl', function($scope, $ionicModal, Search, $state,$cordovaGeolocation, Vendor) {
   $scope.data = {
     vendors: [],
     selected: {}
@@ -16,6 +16,11 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova'])
   $scope.showVendor = function(vendor) {
     $scope.data.selected = vendor;
     $scope.vendorModal.show();
+    console.log('checker', vendor);
+    Vendor.getStatus(vendor.User.username, function(err, res) {
+      $scope.data.selected.status = res.data.result.isOnline;
+      console.log('hELLO', res);
+    });
   };
   $scope.hideVendor = function() {
     $scope.data.selected = {};
@@ -42,6 +47,9 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova'])
     Search.addRating(rating, function(err, res) {
       console.log('err', err, 'res', res);
     });
+  };
+
+  $scope.getStatus = function(vendor) {
   };
   /*
   * END VENDOR PROFILE TEMPLATING
