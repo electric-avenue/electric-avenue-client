@@ -1,9 +1,15 @@
 .profileForm {
+  .item-label {
+    background: $base-background-color;
+  }
   .profileinput {
     border-top: none;
     border-left: none;
     border-right: none;
     margin: 0 5px;
+  }
+  button {
+    height: 55px;
   }
 }
 .profileToggle {
@@ -15,7 +21,6 @@
 }
 .profileheading {
   text-align: center;
-  border-bottom: none;
   border-left: none;
   border-right: none;
 }

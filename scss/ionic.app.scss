@@ -37,10 +37,25 @@ $dark: #2C3E50;
 $button-dark-bg: $dark !default;
 $button-dark-border: $dark !default;
 $button-dark-text: $base-background-color !default;
+$button-color: $base-background-color !default;
 $button-calm-text: darken($calm, 10%) !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+.button.button-dark {
+  font-weight: 300;
+  text-transform: uppercase;
+  font-family: $font-family-base;
+  min-height: 10px;
+  font-size: 1.3em;
+  letter-spacing: 0.07em;
+}
+.bar.bar-dark {
+  font-size: 1.3em;
+  letter-spacing: 0.05em;
+  font-weight: 300;
+  font-family: $font-family-base;
+}
 html, body, ion-nav-view {
   background: $base-background-color;
   border-color: $base-background-color;

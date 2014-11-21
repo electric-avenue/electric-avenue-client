@@ -2,25 +2,31 @@
   <ion-content has-header="true">
     <form novalidate name="userProfileForm">
       <div class="list profileForm">
-        <label class="item item-label profileinput">
-          <span class="input-label">Username: {{data.username}}</span>
-        </label>
-        <label class="item item-input item-floating-label profileinput">
-          <span class="input-label">Old Password</span>
-          <input ng-model="data.oldPassword" type="password" name="oldpassword" placeholder="Old Password">
-        </label>
-        <label class="item item-input item-floating-label profileinput">
-          <span class="input-label">New Password</span>
-          <input ng-model="data.newPassword" type="password" name="newpassword" placeholder="New Password">
-        </label>
-        <label class="item item-input item-floating-label profileinput">
-          <span class="input-label">Email</span>
-          <input ng-model="data.email" type="email" name="email" placeholder="Email">
-        </label>
-        <label class="item item-input item-floating-label profileinput">
-          <span class="input-label">Display Name</span>
-          <input ng-model="data.displayname" name="displayname" type="text" placeholder="Display Name">
-        </label>
+        <h3 class="item profileheading">Username: {{data.username}}</h3>
+        <div class="row">
+          <label class="col item item-input item-floating-label profileinput">
+            <span class="input-label">Old Password</span>
+            <input ng-model="data.oldPassword" type="password" name="oldpassword" placeholder="Old Password">
+          </label>
+        </div>
+        <div class="row">
+          <label class="col item item-input item-floating-label profileinput">
+            <span class="input-label">New Password</span>
+            <input ng-model="data.newPassword" type="password" name="newpassword" placeholder="New Password">
+          </label>
+        </div>
+        <div class="row">
+          <label class="col item item-input item-floating-label profileinput">
+            <span class="input-label">Email</span>
+            <input ng-model="data.email" type="email" name="email" placeholder="Email">
+          </label>
+        </div>
+        <div class="row">
+          <label class="col item item-input item-floating-label profileinput">
+            <span class="input-label">Display Name</span>
+            <input ng-model="data.displayname" name="displayname" type="text" placeholder="Display Name">
+          </label>
+        </div>
         <div class="row">
           <label class="col item item-input item-floating-label profileinput">
             <span class="input-label">First Name</span>
@@ -38,16 +44,16 @@
         <div class="row">
           <label class="col col item item-input item-floating-label profileinput">
             <span class="input-label">Zip Code</span>
-            <input ng-model="data.zipcode" type="text" name="zipcode" placeholder="Zip Code">
+            <input ng-model="data.zipcode" type="number" name="zipcode" placeholder="Zip Code">
           </label>
           <label class="col item item-input item-floating-label profileinput">
             <span class="input-label">Age</span>
             <input ng-model="data.age" name="age" type="number" placeholder="Age">
           </label>
         </div>
-      </div>
-      <div class="padding">
-        <button class="button button-block button-positive" ng-click="update();" ui-sref="app.home">Save</button>
+        <div class="padding">
+          <button class="button button-block button-dark" ng-click="update();" ui-sref="app.home">Save</button>
+        </div>
       </div>
     </form>
   </ion-content>
