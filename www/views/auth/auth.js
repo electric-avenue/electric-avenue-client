@@ -61,12 +61,14 @@ angular.module('authView', ['auth'])
     // Login the user
     Auth.login(user, pass)
       .then(function(data) {
+        console.log('data', data);
         if (!data) {
           $scope.loginError = true;
         } else {
           $state.transitionTo('app.home');
         }
       }).catch(function(err) {
+        console.log(err);
         $scope.loginError = true;
       });
   };

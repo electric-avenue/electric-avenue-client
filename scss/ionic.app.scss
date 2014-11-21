@@ -40,8 +40,20 @@ $button-dark-text: $base-background-color !default;
 $button-color: $base-background-color !default;
 $button-calm-text: darken($calm, 10%) !default;
 
+$tabs-striped-off-opacity: 0.6 !default;
+
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
+.tabs-top.tabs-striped .tab-item.tab-item-active, .tabs-top.tabs-striped .tab-item.active, .tabs-top.tabs-striped .tab-item.activated {
+  margin-top: 0;
+  margin-bottom: -4px;
+  border-width: 0px 0px 4px 0px !important;
+  border-style: solid;
+}
+.tabs-striped.tabs-calm .tab-item {
+  color: rgba(95, 174, 226, 0.6);
+  opacity: 1;
+}
 .button.button-dark {
   font-weight: 300;
   text-transform: uppercase;
@@ -55,6 +67,9 @@ $button-calm-text: darken($calm, 10%) !default;
   letter-spacing: 0.05em;
   font-weight: 300;
   font-family: $font-family-base;
+  h1 {
+    text-transform: uppercase;
+  }
 }
 html, body, ion-nav-view {
   background: $base-background-color;
