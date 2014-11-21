@@ -18,13 +18,17 @@ angular.module('starter', [
   .then(function(response) {
     Auth.isAuth = true;
     $state.go('app.home');
-    setTimeout(function() {
-      $cordovaSplashscreen.hide();
-    }, 1500);
+    if ($cordovaSplashscreen) {
+      setTimeout(function() {
+        $cordovaSplashscreen.hide();
+      }, 1500);
+    }
   })
   .catch(function(error) {
     Auth.isAuth = false;
-    $cordovaSplashscreen.hide();
+    if ($cordovaSplashscreen) {
+      $cordovaSplashscreen.hide();
+    }
   });
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
