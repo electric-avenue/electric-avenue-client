@@ -69,9 +69,8 @@ angular.module('auth', [])
         auth.isOnline = res.data.isOnline;
         console.log('data:', res);
         return true;
-      } else {
-        return false;
       }
+      return false;
     }).catch(function(err) {
       return false;
     });
