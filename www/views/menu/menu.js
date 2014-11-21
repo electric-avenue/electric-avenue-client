@@ -2,8 +2,8 @@
  * Menu Controller for the side menu
  * @module MenuCtrl
  */
-angular.module('starter.controllers', [])
-.controller('MenuCtrl', function($scope, Auth, $state, $http, $ionicPopover) {
+angular.module('starter.controllers', ['vendorFactory'])
+.controller('MenuCtrl', function($scope, Auth, $state, $http, $ionicPopover, Vendor) {
   // States to avoid showing the map & list buttons for
   var excludedStates = [
     'app.vendorProfile',
@@ -12,6 +12,9 @@ angular.module('starter.controllers', [])
     'app.signup',
     'app.login'
   ];
+  $scope.data = {
+    status: false
+  }
   $scope.state = _.indexOf(excludedStates, $state.current.name) === -1;
   $scope.$watch(function($scope) {
     $scope.state = _.indexOf(excludedStates, $state.current.name) === -1;
@@ -24,6 +27,10 @@ angular.module('starter.controllers', [])
     },
     isVendor: function() {
       return Auth.isVendor;
+    },
+    isOnline: function() {
+      $scope.data.status = Auth.isOnline;
+      return $scope.data.status;
     }
   };
   // Setup the popover menu for the gear on the right
@@ -38,18 +45,11 @@ angular.module('starter.controllers', [])
   $scope.changeState = function(name) {
     $state.transitionTo(name);
   };
-  // test function
-  // TODO delete later
-  $scope.test = function() {
-    return $http({
-      method: 'GET',
-      url: config.baseUrl + '/test'
-    })
-    .then(function(response) {
-      console.log('resposeRick:', response);
-    })
-    .catch(function(error) {
-      console.log('responseRisk Error:', error);
+
+  $scope.changeStatus = function() {
+    var status = $scope.data.status;
+    Vendor.updateStatus({status: !status}, function(err, res) {
+      console.log('Response On Status!');
     });
-  };
+  }
 });

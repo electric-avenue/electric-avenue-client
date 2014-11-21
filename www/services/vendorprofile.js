@@ -26,10 +26,7 @@ angular.module('vendorFactory', ['angularFileUpload', 'auth'])
   var getStatus = function(vendor, callback) {
     return $http({
       method: 'GET',
-      url: config.baseUrl + '/api/vendor/status',
-      data: {
-        vendor: vendor
-      }
+      url: config.baseUrl + '/api/vendor/' + vendor + '/status'
     })
     .then(function(res) {
       console.log('Success:', res);
@@ -118,10 +115,9 @@ angular.module('vendorFactory', ['angularFileUpload', 'auth'])
       })
       .progress(function(evt) {
         console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-        // $scope.uploading = true;
       })
       .success(function(data, status, headers, config) {
-        // $scope.uploading = false;
+
         console.log(data);
       });
     }
