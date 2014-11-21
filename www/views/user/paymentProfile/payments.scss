@@ -1,0 +1,17 @@
+.payments-modal {
+  background-color: $light;
+  width: 80%;
+  min-height: 400px;
+  top: 10%;
+  left: 10%;
+}
+
+.cardicon {
+  i {
+    text-align: center;
+    font-size: 40px;
+    &.active {
+      color: $calm;
+    }
+  }
+}

@@ -14,13 +14,14 @@ $assertive:                       #ef4e3a !default;
 $royal:                           #8a6de9 !default;
 $dark:                            #444 !default;
 */
-@import url(http://fonts.googleapis.com/css?family=Raleway:100,400,200,300);
+/*@import url(http://fonts.googleapis.com/css?family=Raleway:100,400,200,300);*/
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,600,400);
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 $font-family-base: 'Open Sans', sans-serif;
-$headings-font-family: 'Raleway', sans-serif !default;
+/*$headings-font-family: 'Raleway', sans-serif !default;*/
+$headings-font-family: $font-family-base !default;
 $headings-font-weight: 300 !default;
 
 // Color Variables
@@ -29,7 +30,8 @@ $light: lighten($base-background-color, 4%);
 /*$stable: darken($base-background-color, 2%);*/
 $stable: $base-background-color;
 $positive: #2980B9;
-$calm: lighten(#3498DB, 10%);
+/*$calm: lighten(#3498DB, 10%);*/
+$calm: #3498DB;
 $assertive: #E74C3C;
 $dark: #2C3E50;
 
@@ -101,3 +103,4 @@ html, body, ion-nav-view {
 @import "../www/views/user/dashboard/filter/filter.scss";
 @import "../www/views/user/dashboard/map/map.scss";
 @import "../www/views/vendor/dashboard/dashboard.scss";
+@import "../www/views/user/paymentProfile/payments.scss";

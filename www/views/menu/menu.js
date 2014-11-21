@@ -10,7 +10,9 @@ angular.module('starter.controllers', ['vendorFactory'])
     'app.vendorSignup',
     'app.userProfile',
     'app.signup',
-    'app.login'
+    'app.login',
+    'app.changePassword',
+    'app.paymentProfile'
   ];
   $scope.data = {
     status: false,
