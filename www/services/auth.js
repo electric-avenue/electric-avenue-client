@@ -70,6 +70,7 @@ angular.module('auth', [])
         console.log('data:', res);
         return true;
       }
+      return false;
     }).catch(function(err) {
       return false;
     });

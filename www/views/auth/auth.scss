@@ -1,35 +1,50 @@
-$errorColor: red;
-$successColor: green;
+$errorColor: $assertive;
+$successColor: #27AE60;
 
 .authform {
-   margin: 15px;
-   .item {
-     margin: 5px 0;
-   }
-   .error {
-     border: none;
-     box-shadow: 0 0 2px $errorColor;
-     &:after {
-       position: absolute;
-       font-family: $ionicons-font-family;
-       right: 10px;
-       line-height: 2;
-       color: $errorColor;
-       content: '\f12a';
-     }
-   }
-   .valid {
-     border: none;
-     box-shadow: 0 0 2px $successColor;
-     &:after {
-       position: absolute;
-       font-family: $ionicons-font-family;
-       right: 10px;
-       line-height: 2;
-       color: $successColor;
-       content: '\f122';
-     }
-   }
+  margin: 15px;
+  input {
+    height: 60px;
+    font-size: 1.2em;
+    line-height: 1;
+    padding-right: 36px;
+  }
+  .item {
+    margin: 10px 0px;
+  }
+  .error {
+    border: none;
+    box-shadow: 0 0 2px $errorColor;
+    &:after {
+      position: absolute;
+      font-family: $ionicons-font-family;
+      right: 15px;
+      font-size: 1.3em;
+      line-height: 2.5;
+      color: $errorColor;
+      content: '\f12a';
+    }
+  }
+  .valid {
+    border: none;
+    box-shadow: 0 0 2px $successColor;
+    &:after {
+      position: absolute;
+      font-family: $ionicons-font-family;
+      right: 15px;
+      font-size: 1.3em;
+      line-height: 2.5;
+      color: $successColor;
+      content: '\f122';
+    }
+  }
+  button {
+    height: 60px;
+    font-size: 1.4em;
+    font-family: $headings-font-family;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
 }
 
 .authFormError {

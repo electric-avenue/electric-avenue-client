@@ -12,10 +12,14 @@ ion-nav-bar.bar .title {
   height: 110px;
 }
 .onlinestatus {
-  line-height: 2;
   font-size: 1.3em;
-  padding-left: 10%;
-  & > label {
-    left: 30%;
+  padding: 0;
+  & > .vendor-toggle {
+    background: transparent;
+    background-color: transparent;
+    border: none;
+    /*height: 100%;*/
+    width: 100%;
+    /*left: 30%;*/
   }
 }

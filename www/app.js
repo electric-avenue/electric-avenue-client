@@ -16,7 +16,6 @@ angular.module('starter', [
     url: config.baseUrl + '/test'
   })
   .then(function(response) {
-    console.log('hit');
     Auth.isAuth = true;
     $state.go('app.home');
     setTimeout(function() {

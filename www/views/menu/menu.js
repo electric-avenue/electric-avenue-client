@@ -13,7 +13,8 @@ angular.module('starter.controllers', ['vendorFactory'])
     'app.login'
   ];
   $scope.data = {
-    status: false
+    status: false,
+    vendorStatus: 'Offline'
   }
   $scope.state = _.indexOf(excludedStates, $state.current.name) === -1;
   $scope.$watch(function($scope) {
@@ -48,6 +49,11 @@ angular.module('starter.controllers', ['vendorFactory'])
 
   $scope.changeStatus = function() {
     var status = $scope.data.status;
+    if (status) {
+      $scope.data.vendorStatus = 'Online';
+    } else {
+      $scope.data.vendorStatus = 'Offline';
+    }
     Vendor.updateStatus({status: !status}, function(err, res) {
       console.log('Response On Status!');
     });
