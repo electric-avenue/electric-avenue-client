@@ -15,3 +15,14 @@
     }
   }
 }
+
+.payment-card {
+  i {
+    font-size: 40px;
+  }
+}
+.payment-card-info {
+  line-height: 2;
+  font-size: 1.1em;
+  color: lighten($dark, 15%);
+}
