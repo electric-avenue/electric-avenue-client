@@ -1,27 +1,25 @@
-angular.module('stripe', [])
+   angular.module('stripe', [])
 .factory('Payments', function($http) {
-  var getToken = function(info) {
+  var getToken = function(info, callback) {
     var card = {
       number: info.number,
       cvc: info.cvc,
       exp_month: info.exp_month,
       exp_year: info.exp_year
     };
-    return $q(function(resolve) {
-      Stripe.card.createToken(card, function(status, res) {
-        if (response.error) {
-          var msg = response.error.message;
-          resolve(response.error, null);
-          return;
-        }
-        var token = response.id;
-        resolve(null, token);
-      });
+    Stripe.card.createToken(card, function(status, res) {
+      if (res.error) {
+        var msg = res.error.message;
+        callback(res.error, null);
+        return;
+      }
+      var token = res.id;
+      callback(null, token);
     });
   };
 
   var saveCard = function(info, callback) {
-    getToken(info).then(function(err, token) {
+    getToken(info, function(err, token) {
       if (err) {
         if (callback) {
           callback(err, null);
@@ -30,7 +28,7 @@ angular.module('stripe', [])
       }
 
       $http({
-        method: 'PUT',
+        method: 'POST',
         url: config.baseUrl + '/payments/save',
         data: {token: token}
       })
@@ -51,7 +49,7 @@ angular.module('stripe', [])
 
   var getCards = function(callback) {
     return $http({
-      method: 'PUT',
+      method: 'POST',
       url: config.baseUrl + '/payments/listcards'
     })
     .then(function(res) {
