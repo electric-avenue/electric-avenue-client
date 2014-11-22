@@ -140,7 +140,15 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
     //   $scope.goTo(location);
     //   createMarkers([location]);
     // });
-    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+console.log(onErr);
+    navigator.geolocation.getCurrentPosition(function(position){
+      console.log("made it to success");
+      console.log(position);
+      $scope.goTo(position);
+      createMarkers([position]);
+    }, function(err){ 
+      console.log("Error retrieveing location: ",err);
+     });
   };
 
   $scope.map = {
@@ -163,7 +171,6 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
       }
     }
   };
-  locate();
   
   var getInterest = function(params){
     MapService.getMarkers(params,function(err,vendorsLocation){
@@ -172,7 +179,6 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
       $scope.map.markers = vendorsLocation;
     });
   };
->>>>>>> Basic impl of leaflet map
 
   var createMarkers = function(location){
     var result = {};
@@ -205,18 +211,7 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
   ];
   //getInterest(markers);
 
-  var onSuccess = function(position){
-    console.log("made it to success");
-    console.log(position);
-    $scope.goTo(position);
-    createMarkers([position]);
-  };
-
-  var onError = function(err){
-    console.log("Error retrieveing location: ",err);
-  };
   /*
   * END MAP TEMPLATING
   */
- //locate();
 });
