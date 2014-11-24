@@ -1,6 +1,7 @@
 angular.module('payments', ['stripe'])
 .controller('PaymentsCtrl', function($scope, $ionicModal, Payments) {
   $scope.data = {
+    cards: [],
     cardNumber: null,
     cardType: null,
     cardExpiry: null,
@@ -29,7 +30,28 @@ angular.module('payments', ['stripe'])
       exp_year: expiration[1]
     };
     Payments.saveCard(card, function(err, res) {
-      console.log('hey', err, res);
+      $scope.data.cards.push(res.data.data);
+      $scope.cardModal.hide();
+      $scope.data.cardNumber = null;
+      $scope.data.cardType = null;
+      $scope.data.cardExpiry = null
+      $scope.data.cardCVC = null;
+    });
+  };
+
+  $scope.getCards = function() {
+    Payments.getCards(function(err, res) {
+      $scope.data.cards = res.data.data;
+    });
+  };
+
+  $scope.setDefault = function(cardId) {
+    Payments.setDefaultCard(cardId, function(err, res) {
+      if (err) { return; }
+      $scope.data.cards = $scope.data.cards.map(function(val) {
+        val.defaultcard = val.id = cardId;
+        return val;
+      });
     });
   };
   //Cleanup the modal when we're done with it!
