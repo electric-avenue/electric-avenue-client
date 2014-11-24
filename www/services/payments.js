@@ -47,6 +47,26 @@
     });
   };
 
+  var setDefaultCard = function(id, callback) {
+    return $http({
+      method: 'POST',
+      url: config.baseUrl + '/payments/setdefault',
+      data: {newDefaultCard: id}
+    })
+    .then(function(res) {
+      console.log('New Default Card Success!:', res);
+      if (callback) {
+        callback(null, res);
+      }
+    })
+    .catch(function(err) {
+      console.log('New Default Card Failure!:', err);
+      if (callback) {
+        callback(err, null);
+      }
+    });
+  };
+
   var getCards = function(callback) {
     return $http({
       method: 'POST',
@@ -73,7 +93,8 @@
   return {
     saveCard: saveCard,
     sendTip: sendTip,
-    getCards: getCards
+    getCards: getCards,
+    setDefaultCard: setDefaultCard
   }
 });
 
