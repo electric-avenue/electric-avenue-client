@@ -51,6 +51,41 @@
             <input ng-model="data.age" name="age" type="number" placeholder="Age">
           </label>
         </div>
+        <div ng-if="check.isVendor()">
+        <h3 class="item profileheading">
+          Vendor
+        </h3>
+        <h5 class="title text-center">Profile Image</h5>
+        <div class="item item-input item-stable profileuploadwrapper">
+          <label class="item-input-wrapper profileinput profileUpload">
+            <div class="button button-full button-outline button-positive fileUpload">
+              <span ng-if="!data.fileInput || data.fileInput === ''">Select Image</span>
+              <span ng-if="data.fileInput">{{data.fileInput[0].name}}</span>
+              <input type="file" class="upload" name="filepic" ng-file-select="data.fileInput = $files">
+            </div>
+          </label>
+          <button class="button button-large button-clear icon-left ion-close button-assertive" ng-if="uploading" ng-click="upload.abort()"></button>
+          <button class="button button-large button-clear icon-left ion-upload button-positive" ng-if="!uploading" ng-click="onFileSelect();"></button>
+        </div>
+        <div class="row">
+          <label class="col item item-input item-floating-label profileinput">
+            <span class="input-label">Company Name</span>
+            <input ng-model="data.companyname" name="companyname" type="text" placeholder="Company Name">
+          </label>
+        </div>
+        <div class="row">
+          <label class="col item item-input item-floating-label profileinput">
+            <span class="input-label">Description</span>
+            <input ng-model="data.description" name="description" type="text" placeholder="Description">
+          </label>
+        </div>
+        <div class="row">
+          <label class="col item item-input item-floating-label profileinput">
+            <span class="input-label">Types</span>
+            <input ng-model="data.types" name="types" type="text" placeholder="Types">
+          </label>
+        </div>
+        </div>
         <div class="padding">
           <button class="button button-block button-dark" ng-click="update();" ui-sref="app.home">Save</button>
         </div>
