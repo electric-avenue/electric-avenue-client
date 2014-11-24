@@ -1,6 +1,6 @@
-angular.module('map', ['leaflet-directive','ngCordova'])
-.factory('MapService', function($http,$cordovaGeolocation){
-
+angular.module('map', ['leaflet-directive','ngCordova','search'])
+.factory('MapService', function($http,$cordovaGeolocation, Search){
+  var types = {};
   var getCurrentLocation = function(params, callback){
     navigator.geolocation.getCurrentPosition()
     .then(function(position){
@@ -39,10 +39,15 @@ angular.module('map', ['leaflet-directive','ngCordova'])
     //receives array of lat and long values
   };
 
-  var getInterests = function(params,callback){
-    console.log("Hit map service", params);
+  var getInterests = function(params){
+    //service property represent interest data points
+    //when we are returned data from server side call assign to prop above.
+    //add a function that is a getter for the property.
+    // console.log(params);
+    if()
+    Search.getVendors(params.name);
   };
-  
+
   return {
     getCurrentLocation: getCurrentLocation,
     getMarkers: getMarkers,
