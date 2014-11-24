@@ -14,10 +14,19 @@
       </button>
     </div>
     <div class="list">
+
       <div class="item item-divider">
         Types
       </div>
-      <div class="item item-checkbox">
+      <label ng-repeat="type in types">
+        <div class="item item-checkbox">
+          <label class="checkbox">
+            <input type="checkbox" name="selectedTpyes[]" value="{{type.name}}" ng-model="type.selected">
+          </label>  
+          {{type.name}}
+        </div>
+      </label>
+     <!--  <div class="item item-checkbox">
         <label class="checkbox">
           <input name="types-art" type="checkbox">
         </label>
@@ -52,7 +61,7 @@
           <input name="types-farmers" type="checkbox">
         </label>
         Farmers Markets
-      </div>
+       </div>-->
       <div class="item item-divider">
         Location
       </div>

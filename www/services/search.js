@@ -1,6 +1,8 @@
 angular.module('search', [])
 .factory('Search', function($http) {
   var getVendors = function(params, callback) {
+    console.log("From search service");
+    console.log(params);
     return $http({
       method: 'GET',
       url: config.baseUrl + '/api/vendor/get',
