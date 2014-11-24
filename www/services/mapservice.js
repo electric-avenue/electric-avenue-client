@@ -44,7 +44,6 @@ angular.module('map', ['leaflet-directive','ngCordova','search'])
     //when we are returned data from server side call assign to prop above.
     //add a function that is a getter for the property.
     // console.log(params);
-    if()
     Search.getVendors(params.name);
   };
 
