@@ -1,5 +1,5 @@
-angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'vendorFactory'])
-.controller('UserDashboardCtrl', function($scope, $ionicModal, Search, $state,$cordovaGeolocation, Vendor) {
+angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'vendorFactory','map'])
+.controller('UserDashboardCtrl', function($scope, $ionicModal, Search, $state, Vendor, MapService) {
   $scope.data = {
     vendors: [],
     selected: {}
@@ -126,30 +126,31 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
   MyControl.onAdd = function () {
     var className = 'icon ion-compass mycompass',
     container = L.DomUtil.create('div', className);
+    L.DomEvent
+    .addListener(container, 'click', L.DomEvent.stopPropagation)
+    .addListener(container, 'click', L.DomEvent.preventDefault)
+    L.DomEvent.addListener(container, 'click', function(){locate();});
     return container;
   }
   $scope.controls.custom.push(MyControl);
 
-
+  //get current position
   var locate = function(){
-    $cordovaGeolocation
-    .getCurrentPosition()
-    .then(function(position){
-      $scope.map.center.lat = position.coords.latitude;
-      $scope.map.center.lng = position.coords.longitude;
-      $scope.map.center.zoom = 16;
-
-      $scope.map.markers['now'] = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude,
-        message: " This is you!",
-        focus: true,
-        draggable: false
-      }, function(err){
-        console.log("Error getting your location.",err);
-      }
-    });
+    // MapService.getCurrentLocation({}, function(err, location){
+    //   $scope.goTo(location);
+    //   createMarkers([location]);
+    // });
+console.log(onErr);
+    navigator.geolocation.getCurrentPosition(function(position){
+      console.log("made it to success");
+      console.log(position);
+      $scope.goTo(position);
+      createMarkers([position]);
+    }, function(err){ 
+      console.log("Error retrieveing location: ",err);
+     });
   };
+
   $scope.map = {
     defaults: {
       tileLayer: "https://{s}.tiles.mapbox.com/v3/deziak1906.k8mphke2/{z}/{x}/{y}.png",
@@ -158,9 +159,9 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
       attributionControl:false
     },
     center: {
-      // lat: 43.661165,
-      // lng: -79.390919,
-      // zoom: 15
+      lat: 43.661165,
+      lng: -79.390919,
+      zoom: 15
     },
     markers : {},
     events: {
@@ -170,13 +171,46 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
       }
     }
   };
-  locate();
+  
+  var getInterest = function(params){
+    MapService.getMarkers(params,function(err,vendorsLocation){
+      console.log("vendor markers");
+      console.log(vendorsLocation);
+      $scope.map.markers = vendorsLocation;
+    });
+  };
+
+  var createMarkers = function(location){
+    var result = {};
+    //may have to check if we are receiving markers from db or from cordova
+    for(var i = 0; i< location.length; i++){
+       i = {
+        lat: location[i].coords.latitude,
+        lng: location[i].coords.longitude,
+        draggable: false,
+        message: 'Current Location',
+        focus: true
+      };
+      result[i] = i;
+    }
+    $scope.map.markers = result;
+  };
+
 
   $scope.goTo = function(location){
-    if(location === 0){
-      $scope.locate();
-    }
+    $scope.map.center.lat = location.coords.latitude;
+    $scope.map.center.lng = location.coords.longitude;
+    $scope.map.center.zoom = 16;
   };
+  
+  var markers = [
+    {latitude: 43.645016,longitude: -79.39092},
+    {latitude: 43.666503,longitude: -79.381121},
+    {latitude: 43.655542,longitude: -79.41307},
+    {latitude: 43.666316,longitude: -79.367193}
+  ];
+  //getInterest(markers);
+
   /*
   * END MAP TEMPLATING
   */

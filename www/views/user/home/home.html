@@ -1,0 +1,27 @@
+<ion-view title="Home" on-swipe-right="changeState('app.usermap')"on-swipe-left="changeState('app.userlist')">
+  <ion-content data-tap-disabled="true">
+    <!-- MAP CONTAINER -->
+       <leaflet defaults="defaults"></leaflet>     
+    <!-- end of MAP CONTAINER -->
+  </ion-content>
+</ion-view>
+
+
+
+angular.module('usermap',['leaflet-directive'])
+.controller('MenuCtrl', function($scope, $state){
+  $scope.$on("$stateChangeSuccess",function(){
+    console.log("We made it here is the state: ", $state);
+   angular.extend($scope, {
+    defaults: {
+        tileLayer: "http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png",
+        maxZoom: 14,
+        path: {
+            weight: 10,
+            color: '#800000',
+            opacity: 1
+        }
+    }
+});
+  });
+});  
