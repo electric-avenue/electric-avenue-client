@@ -93,22 +93,57 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
   $scope.hideFilter = function() {
     $scope.filterModal.hide();
   };
-  $scope.filters = {
-    'types-art' : {
-      title: 'Art',
-      selected: true
+  // $scope.filters = {
+  //   'types-art' : {
+  //     title: 'Art',
+  //     selected: true
+  //   },
+  //   'types-music' : {
+  //     title: 'Music',
+  //     selected: true
+  //   },
+  //   'types-performance' : {
+  //     title: 'Performance',
+  //     selected: false
+  //   }
+  //   //foods
+  //   //goods
+  //   //farmers markets
+  // };
+  $scope.types = [
+    {
+      name: "Art", selected: false,
     },
-    'types-music' : {
-      title: 'Music',
-      selected: true
+    {   
+      name: "Music", selected: false,
     },
-    'types-performance' : {
-      title: 'Performance',
-      selected: false
+    {
+      name: "Performance", selected: false,
+    },
+    {
+      name: "Foods", selected: false,
+    },
+    {
+      name: "Goods", selected: false,
+    },
+    {
+      name:"Farmers Markets", selected: false
     }
-  };
+  ];
+
+  $scope.typeSelection = [];
+
+  $scope.$watch('types|filter:{selected:true}', function (typeArray) {
+    $scope.typeSelection = typeArray.map(function (type) {
+      if($scope.typeSelection.indexOf(type) == -1){
+        MapService.getInterests(type);
+      }
+      return type.name;
+    });
+  }, true);
+
   $scope.selectedFilters = _.filter($scope.filters, 'selected');
-  // console.log(JSON.stringify($scope.selectedFilters));
+//   console.log(JSON.stringify($scope.selectedFilters));
 
 // MAP Implementation JAMON'S Stuff//
   $scope.controls = {

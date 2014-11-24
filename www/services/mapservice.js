@@ -37,13 +37,18 @@ angular.module('map', ['leaflet-directive','ngCordova'])
 
   var setMarkers = function(params, callback){
     //receives array of lat and long values
+  };
 
-  }
+  var getInterests = function(params,callback){
+    console.log("Hit map service", params);
+  };
+  
   return {
     getCurrentLocation: getCurrentLocation,
     getMarkers: getMarkers,
     setMapLocation: setMapLocation,
-    setMarkers: setMarkers
+    setMarkers: setMarkers,
+    getInterests: getInterests
   };
 });
 
