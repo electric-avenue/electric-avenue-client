@@ -1,4 +1,4 @@
-<ion-view title="Payment Profiles">
+<ion-view title="Payment Profiles" ng-init="getCards()">
   <ion-content class="has-header">
     <div class="row">
       <div class="col">
@@ -16,14 +16,19 @@
       <h3 class="item profileheading">
         Cards
       </h3>
-      <div class="item item-stable" item="item" ng-repeat="n in [1,2,3]">
+      <div class="item item-stable" item="item" ng-repeat="card in data.cards">
         <div class="row">
           <div class="col col-25 payment-card">
-            <i class="fa fa-cc-visa"></i>
+            <i ng-if="card.brand == 'Visa'" class="fa fa-cc-visa"></i>
+            <i ng-if="card.brand == 'MasterCard'" class="fa fa-cc-mastercard"></i>
+            <i ng-if="card.brand == 'Discover'" class="fa fa-cc-discover"></i>
+            <i ng-if="card.brand == 'Amex'" class="fa fa-cc-amex"></i>
           </div>
           <div class="col payment-card-info">
-            XXXX XXXX XXXX 1234
+            XXXX XXXX XXXX {{card.last4}}
           </div>
+          <div ng-if="card.defaultcard">Default</div>
+          <button ng-if="!card.defaultcard" ng-click="setDefault(card.id);">Default</button>
         </div>
       </div>
       <h3 class="item profileheading">
