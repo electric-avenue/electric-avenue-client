@@ -46,10 +46,11 @@ angular.module('payments', ['stripe'])
   };
 
   $scope.setDefault = function(cardId) {
+    console.log('checkers');
     Payments.setDefaultCard(cardId, function(err, res) {
       if (err) { return; }
       $scope.data.cards = $scope.data.cards.map(function(val) {
-        val.defaultcard = val.id = cardId;
+        val.defaultcard = val.id === cardId;
         return val;
       });
     });

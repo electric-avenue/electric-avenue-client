@@ -48,6 +48,7 @@
   };
 
   var setDefaultCard = function(id, callback) {
+    console.log('yay');
     return $http({
       method: 'POST',
       url: config.baseUrl + '/payments/setdefault',
@@ -87,21 +88,35 @@
   };
 
   var sendTip = function(vendor, amount, callback) {
-
+    var data = {
+      amount: amount.amount,
+      currency: amount.currency,
+      vendor: vendor
+    };
+    return $http({
+      method: 'POST',
+      url: config.baseUrl + '/payments/tip',
+      data: data
+    })
+    .then(function(res) {
+      console.log('Payment Successful!:', res);
+      if (callback) {
+        callback(null, res);
+      }
+    })
+    .catch(function(err) {
+      console.log('Payment Failure:', err);
+      if (callback) {
+        callback(err, null);
+      }
+    });
   };
 
   return {
     saveCard: saveCard,
     sendTip: sendTip,
     getCards: getCards,
-    setDefaultCard: setDefaultCard
-  }
+    setDefaultCard: setDefaultCard,
+    sendTip: sendTip
+  };
 });
-
-
-// Stripe.card.createToken({
-//   number: $('.card-number').val(),
-//   cvc: $('.card-cvc').val(),
-//   exp_month: $('.card-expiry-month').val(),
-//   exp_year: $('.card-expiry-year').val()
-// }, stripeResponseHandler);

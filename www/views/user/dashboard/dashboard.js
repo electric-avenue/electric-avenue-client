@@ -1,5 +1,5 @@
-angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'vendorFactory','map'])
-.controller('UserDashboardCtrl', function($scope, $ionicModal, Search, $state, Vendor, MapService) {
+angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'vendorFactory','map', 'stripe'])
+.controller('UserDashboardCtrl', function($scope, $ionicModal, Search, $state, Vendor, MapService, Payments) {
   $scope.data = {
     vendors: [],
     selected: {}
@@ -41,8 +41,7 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
   $scope.addRating = function(number) {
     var rating = {
       vendor: $scope.data.selected.User.username,
-      rating: number//,
-      // review:
+      rating: number
     };
     Search.addRating(rating, function(err, res) {
       console.log('err', err, 'res', res);
@@ -50,6 +49,23 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
   };
 
   $scope.getStatus = function(vendor) {
+  };
+
+  $scope.tipData = {
+    vendor: '',
+    currency: 'usd',
+    amount: ''
+  };
+  $scope.sendTip = function() {
+    var vendor = $scope.tipData.vendor;
+    var payment = {
+      currency: $scope.tipData.currency,
+      amount: $scope.tipData.amount
+    };
+    console.log('payment data', payment);
+    Payments.sendTip(vendor, payment, function() {
+
+    });
   };
   /*
   * END VENDOR PROFILE TEMPLATING
@@ -63,7 +79,8 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
   }).then(function(modal) {
     $scope.tipModal = modal;
   });
-  $scope.showTipModal = function() {
+  $scope.showTipModal = function(vendor) {
+    $scope.tipData.vendor = vendor;
     $scope.tipModal.show();
   };
   $scope.hideTipModal = function() {
