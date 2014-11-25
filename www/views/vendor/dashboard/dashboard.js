@@ -1,5 +1,6 @@
-angular.module('vendorDashboard', [])
-.controller('VendorDashboardCtrl', function($scope) {
+angular.module('vendorDashboard', ['leaflet-directive', 'vendorFactory', 'map', 'ngCordova'])
+.controller('VendorDashboardCtrl', function($scope, $ionicModal, Search, $state, Vendor, MapService) {
+
   // $scope.data = {
   //   vendors: [],
   //   selected: {}
@@ -114,10 +115,7 @@ angular.module('vendorDashboard', [])
   }
   $scope.controls.custom.push(MyControl);
 
-  var heat = L.heatLayer(latlngs,{radius: 20,
-            blur: 15, 
-            maxZoom: 17});
-  console.log(heat);
+
 
   //get current position
   var locate = function(){
@@ -127,13 +125,29 @@ angular.module('vendorDashboard', [])
     // });
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
   };
-  var latlngs = [
-    [43.664605, -79.373874, "571"],
-    [43.642566, -79387057, "486"],
-    [43.6643375, -79.384484, "489"],
-    [43.64255, -79.42686, "542"]
-  ];
-  //console.log(L);
+
+
+ Search.getAllPeds(function(err, res) {
+  console.log('get all peds')
+  console.log(err);
+  console.log(res);
+
+  //   var heat = L.heatLayer(
+  //           pedVolume,{
+  //           radius: 20,
+  //           blur: 15, 
+  //           maxZoom: 17});
+  // console.log(heat);
+
+  var pedVolume = res;
+
+  //   var pedVolume = [
+  //   [43.664605, -79.373874, "2/103"],
+  //   [43.642566, -79387057, "1/486"],
+  //   [43.6643375, -79.384484, "6A"],
+  //   [43.64255, -79.42686, "542"]
+  // ];
+
   $scope.map = {
     defaults: {
       tileLayer: "https://{s}.tiles.mapbox.com/v3/deziak1906.k8mphke2/{z}/{x}/{y}.png",
@@ -159,7 +173,8 @@ angular.module('vendorDashboard', [])
           name: 'Pedestrian Flow',
           type: 'heatmap',
           visible: true,
-          data: latlngs,
+          data:  pedVolume,
+          gradient: {0.4: 'blue', 0.65: 'lime', 1: 'red'}
            //url: 'http://suite.opengeo.org/geoserver/usa/wms',
           // layerParams: {
           //   layers: 'usa:states',
@@ -177,6 +192,13 @@ angular.module('vendorDashboard', [])
     //   }
    // } 
   };
+ })
+
+
+
+
+  //console.log(L);
+  
   
   var getInterest = function(params){
     MapService.getMarkers(params,function(err,vendorsLocation){
