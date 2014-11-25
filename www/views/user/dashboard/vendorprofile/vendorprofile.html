@@ -1,5 +1,5 @@
-<ion-modal-view ng-init="getStatus(data.selected.username);">
-  <ion-header-bar>
+<ion-modal-view ng-init="getStatus(data.selected.username);" class="vendor-profile-page">
+  <ion-header-bar class="bar bar-dark">
     <button class="button button-clear icon ion-arrow-left-c button-stable" ng-click="hideVendor()"></button>
     <h1 ng-if="data.selected.User.displayname" class="title">
       {{data.selected.User.displayname}}
@@ -36,7 +36,7 @@
     </div>
     <div class="row">
       <div class="col tipbuttonarea">
-        <button class="button button-balanced tipbutton" ng-click="showTipModal(data.selected.User.username);">
+        <button class="button button-dark tipbutton" ng-click="showTipModal(data.selected.User.username);">
           Send Tip
         </button>
       </div>

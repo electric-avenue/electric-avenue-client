@@ -1,3 +1,7 @@
+.vendor-profile-page {
+  /*background: $base-background-color;*/
+  background: $stable;
+}
 h4.title {
   text-align: center;
 }
@@ -29,8 +33,8 @@ h4.title {
   display: block;
   width: 100%;
   height: 60px;
-  border: none;
-  font-size: 1.5em;
+  /*border: none;*/
+  font-size: 1.6em;
 }
 
 .hastipbutton {
