@@ -70,7 +70,8 @@ address {
   min-height: 200px;
   top: 10%;
   left: 10%;
-  ion-content {
-    height: 250px;
+  /* iOS fix */
+  @media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {
+    height: 225px;
   }
 }
