@@ -59,4 +59,17 @@ angular.module('payments', ['stripe'])
   $scope.$on('$destroy', function() {
     $scope.cardModal.remove();
   });
+  // Bank Addition
+  $ionicModal.fromTemplateUrl('views/user/paymentProfile/addBank.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.bankModal = modal;
+  });
+  $scope.showAddBank = function() {
+    $scope.bankModal.show();
+  };
+  $scope.hideAddBank = function() {
+    $scope.bankModal.hide();
+  };
 });

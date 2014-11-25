@@ -1,7 +1,14 @@
 .payments-modal {
   background-color: $light;
   width: 80%;
-  min-height: 400px;
+  min-height: 405px;
+  top: 10%;
+  left: 10%;
+}
+.payments-modal-bank {
+  background-color: $light;
+  width: 80%;
+  min-height: 320px;
   top: 10%;
   left: 10%;
 }
@@ -25,4 +32,11 @@
   line-height: 2;
   font-size: 1.1em;
   color: lighten($dark, 15%);
+}
+
+.payment-button {
+  i {
+    padding-left: 0;
+    padding-right: 0.2em;
+  }
 }

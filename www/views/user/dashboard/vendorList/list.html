@@ -1,32 +1,27 @@
 <ion-view title="Vendor List" on-swipe-right="changeState('app.usermap')" ng-init="loadVendors();">
   <ion-content class="hasFilter has-header has-tabs-top">
-    <ion-list>
-      <ion-item class="item vendor-item" ng-repeat="vendor in data.vendors" item="item" ng-click="showVendor(vendor)">
-        <div class="row">
-          <div class="col col-33 col-center text-center">
-            <img ng-if="!vendor.image" class="roundimage" ng-src="http://img3.wikia.nocookie.net/__cb20121227201208/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg">
-            <img ng-if="vendor.image" class="roundimage" ng-src="http://localhost:5000/profileImages/{{vendor.image}}">
-          </div>
-          <div class="col vendor-content">
-            <div class="row">
-              <div ng-show="vendor.User.displayname" class="col">{{vendor.User.displayname}} - Activity</div>
-              <div ng-show="!vendor.User.displayname" class="col">{{vendor.User.username}} - Activity</div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <p>{{vendor.description}}</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col rating">
-                <i class="ion ion-star" ng-repeat="n in [1,2,3,4,5]"></i>
-              </div>
-              <div class="col text-right vendor-distance">0.5 mi</div>
-            </div>
-          </div>
+    <div class="list card" ng-repeat="vendor in data.vendors" item="item" ng-click="showVendor(vendor)">
+      <div class="item text-center vendor-item">
+        <h2 ng-if="vendor.User.displayname">{{vendor.User.displayname}}</h1>
+        <h2 ng-if="!vendor.User.displayname">{{vendor.User.username}}</h1>
+        <p>Vendor Activities</p>
+      </div>
+      <div class="item item-body">
+        <img class="full-image roundimage" ng-if="!vendor.image" ng-src="http://img3.wikia.nocookie.net/__cb20121227201208/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg">
+        <img class="full-image roundimage" ng-if="vendor.image" ng-src="http://localhost:5000/profileImages/{{vendor.image}}">
+        <p>
+          {{vendor.description}}
+        </p>
+      </div>
+      <div class="item tabs">
+        <div class="tab-item">
+          0.5 mi
         </div>
-      </ion-item>
-    </ion-list>
+        <div class="tab-item rating">
+          <i class="ion ion-star" ng-repeat="n in [1,2,3,4,5]"></i>
+        </div>
+      </div>
+    </div>
   </ion-content>
   <button class="bar bar-footer bar-dark" ng-click="showFilter()">
     <div class="title">Filter</div>

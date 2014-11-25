@@ -96,11 +96,11 @@ html, body, ion-nav-view {
   text-align: right;
 }
 @import "../www/views/auth/auth.scss";
-@import "../www/views/vendor/profile/profile.scss";
 @import "../www/views/menu/menu.scss";
+@import "../www/views/user/profile/profile.scss";
 @import "../www/views/user/dashboard/vendorList/list.scss";
 @import "../www/views/user/dashboard/vendorprofile/vendorprofile.scss";
 @import "../www/views/user/dashboard/filter/filter.scss";
 @import "../www/views/user/dashboard/map/map.scss";
-@import "../www/views/vendor/dashboard/dashboard.scss";
 @import "../www/views/user/paymentProfile/payments.scss";
+@import "../www/views/vendor/dashboard/dashboard.scss";
