@@ -90,10 +90,35 @@ angular.module('search', [])
     });
   };
 
+  var getAllPeds = function(callback) {
+
+    return $http({
+      method: 'GET',
+      url: config.baseUrl + '/api/peds'
+    })
+    .then(function(res) {
+      var result = []
+      var data = res.data.result;
+      for (var i=0; i<data.length; i++) {
+        result.push([data[i].latitude, data[i].longitude, data[i].pedestrianvol24hr.split(',').join('')]);
+      }
+
+      if (callback) {
+        callback(null, result);
+      }
+    })
+    .catch(function(err) {
+      if(callback) {
+        callback(err,null);
+      }
+    })
+  }
+
   return {
     getVendors: getVendors,
     getOneVendor: getOneVendor,
     getTrendingVendors: getTrendingVendors,
-    addRating: addRating
+    addRating: addRating,
+    getAllPeds: getAllPeds
   };
 });

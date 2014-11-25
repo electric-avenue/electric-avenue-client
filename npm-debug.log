@@ -1,0 +1,86 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'leaflet-heat' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.32
+4 warn package.json tipzip@0.0.1 No repository field.
+5 warn package.json jasmine@2.1.0 No README data
+6 verbose readDependencies using package.json deps
+7 verbose cache add [ 'leaflet-heat', null ]
+8 verbose cache add name=undefined spec="leaflet-heat" args=["leaflet-heat",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: 'leaflet-heat',
+9 verbose parsed url   path: 'leaflet-heat',
+9 verbose parsed url   href: 'leaflet-heat' }
+10 silly lockFile 0976f83d-leaflet-heat leaflet-heat
+11 verbose lock leaflet-heat /Users/fizloki/.npm/0976f83d-leaflet-heat.lock
+12 silly lockFile 0976f83d-leaflet-heat leaflet-heat
+13 silly lockFile 0976f83d-leaflet-heat leaflet-heat
+14 verbose addNamed [ 'leaflet-heat', '' ]
+15 verbose addNamed [ null, '*' ]
+16 silly lockFile aa188c45-leaflet-heat leaflet-heat@
+17 verbose lock leaflet-heat@ /Users/fizloki/.npm/aa188c45-leaflet-heat.lock
+18 silly addNameRange { name: 'leaflet-heat', range: '*', hasData: false }
+19 verbose request where is /leaflet-heat
+20 verbose request registry https://registry.npmjs.org/
+21 verbose request id f001feec1ffbbbc9
+22 verbose url raw /leaflet-heat
+23 verbose url resolving [ 'https://registry.npmjs.org/', './leaflet-heat' ]
+24 verbose url resolved https://registry.npmjs.org/leaflet-heat
+25 verbose request where is https://registry.npmjs.org/leaflet-heat
+26 info trying registry request attempt 1 at 15:06:18
+27 http GET https://registry.npmjs.org/leaflet-heat
+28 http 404 https://registry.npmjs.org/leaflet-heat
+29 verbose headers { date: 'Mon, 24 Nov 2014 23:06:20 GMT',
+29 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+29 verbose headers   'content-type': 'application/json',
+29 verbose headers   'cache-control': 'max-age=0',
+29 verbose headers   'content-length': '52',
+29 verbose headers   'accept-ranges': 'bytes',
+29 verbose headers   via: '1.1 varnish',
+29 verbose headers   age: '0',
+29 verbose headers   'x-served-by': 'cache-sjc3125-SJC',
+29 verbose headers   'x-cache': 'MISS',
+29 verbose headers   'x-cache-hits': '0',
+29 verbose headers   'x-timer': 'S1416870380.422020,VS0,VE153',
+29 verbose headers   'keep-alive': 'timeout=10, max=50',
+29 verbose headers   connection: 'Keep-Alive' }
+30 silly registry.get cb [ 404,
+30 silly registry.get   { date: 'Mon, 24 Nov 2014 23:06:20 GMT',
+30 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+30 silly registry.get     'content-type': 'application/json',
+30 silly registry.get     'cache-control': 'max-age=0',
+30 silly registry.get     'content-length': '52',
+30 silly registry.get     'accept-ranges': 'bytes',
+30 silly registry.get     via: '1.1 varnish',
+30 silly registry.get     age: '0',
+30 silly registry.get     'x-served-by': 'cache-sjc3125-SJC',
+30 silly registry.get     'x-cache': 'MISS',
+30 silly registry.get     'x-cache-hits': '0',
+30 silly registry.get     'x-timer': 'S1416870380.422020,VS0,VE153',
+30 silly registry.get     'keep-alive': 'timeout=10, max=50',
+30 silly registry.get     connection: 'Keep-Alive' } ]
+31 silly lockFile aa188c45-leaflet-heat leaflet-heat@
+32 silly lockFile aa188c45-leaflet-heat leaflet-heat@
+33 error 404 404 Not Found: leaflet-heat
+33 error 404
+33 error 404 'leaflet-heat' is not in the npm registry.
+33 error 404 You should bug the author to publish it
+33 error 404 It was specified as a dependency of 'tipzip'
+33 error 404
+33 error 404 Note that you can also install from a
+33 error 404 tarball, folder, or http url, or git url.
+34 error System Darwin 13.4.0
+35 error command "node" "/usr/local/bin/npm" "install" "leaflet-heat"
+36 error cwd /Users/fizloki/Desktop/Git/tipzip-client
+37 error node -v v0.10.32
+38 error npm -v 1.4.28
+39 error code E404
+40 verbose exit [ 1, true ]

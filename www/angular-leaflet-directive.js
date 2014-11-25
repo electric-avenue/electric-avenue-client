@@ -2431,6 +2431,7 @@ angular.module("leaflet-directive").factory('leafletLayerHelpers', ["$rootScope"
                 // if (!Helpers.HeatMapLayerPlugin.isLoaded()) {
                 //     return;  
                 // }
+                console.log('HEATLAYER,' , L.heatLayer)
                 var layer =  L.heatLayer(params.data, params.options);
                 // if (isDefined(params.data)) {
                 //     layer.setData(params.data);
