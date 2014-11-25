@@ -2,7 +2,6 @@ angular.module('starter', [
   'ionic',
   'starter.controllers',
   'authView',
-  'vendorProfile',
   'vendorSignup',
   'userprofile',
   'userDashboard',
@@ -10,8 +9,7 @@ angular.module('starter', [
   'ngCordova',
   'angularPayments',
   'payments',
-  'auth'//,
-  // 'usermap'
+  'auth'
 ]).run(function($ionicPlatform, $cordovaSplashscreen, $http, Auth, $state) {
   $http({
     method: 'GET',
@@ -69,7 +67,7 @@ angular.module('starter', [
       authenticate: true,
       views: {
         'menuContent': {
-          templateUrl: 'views/user/profile/profile.html',
+          templateUrl: 'views/profile/profile.html',
           controller: 'UserProfileCtrl'
         }
       }
@@ -91,16 +89,6 @@ angular.module('starter', [
         'menuContent': {
           templateUrl: 'views/user/changePassword/changePassword.html',
           controller: 'UserProfileCtrl'
-        }
-      }
-    })
-    .state('app.vendorProfile', {
-      url: '/vendor/profile',
-      authenticate: true,
-      views: {
-        'menuContent': {
-          templateUrl: 'views/vendor/profile/profile.html',
-          controller: 'VendorProfileCtrl'
         }
       }
     })
