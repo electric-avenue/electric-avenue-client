@@ -32,6 +32,7 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
   });
 
   $scope.loadVendors = function() {
+    console.log('checkers');
     Search.getVendors({}, function(err, vendors) {
       $scope.data.vendors = vendors.data.result;
       console.log('Vendors:', vendors.data.result);
@@ -152,13 +153,13 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
       name: "Performance", selected: false,
     },
     {
-      name: "Foods", selected: false,
+      name: "Food", selected: false,
     },
     {
       name: "Goods", selected: false,
     },
     {
-      name:"Farmers Markets", selected: false
+      name:"Farmers Market", selected: false
     }
   ];
 
@@ -167,7 +168,7 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
   $scope.$watch('types|filter:{selected:true}', function (typeArray) {
     $scope.typeSelection = typeArray.map(function (type) {
       if($scope.typeSelection.indexOf(type) == -1){
-        Search.getVendors(types.name, setMarkers);
+        Search.getVendors({category: type.name}, setMarkers);
       }
       return type.name;
     });
@@ -251,12 +252,13 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
   };
 
   var initializeMarkers = function() {
-    Search.getVendors(null, setMarkers);
+    Search.getVendors({}, setMarkers);
   }
 
-  var setMarkers = function(vendors) {
-    console.log('setMarkers Vendor Argument: ', vendors);
+  var setMarkers = function(err, vendors) {
+    vendors = vendors.data.result;
 
+    console.log('setMarkers Vendor Argument: ', vendors);
     var markers = {};
     
     for(var i = 0; i < vendors.length; i++){
