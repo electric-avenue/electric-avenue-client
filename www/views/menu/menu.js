@@ -18,9 +18,15 @@ angular.module('starter.controllers', ['vendorFactory'])
     status: false,
     vendorStatus: 'Offline'
   }
+  var vendorRoutes = [
+    'app.vendorHome',
+    'app.vendorMap'
+  ];
   $scope.state = _.indexOf(excludedStates, $state.current.name) === -1;
+  $scope.isVendorDash = _.indexOf(vendorRoutes, $state.current.name) !== -1;
   $scope.$watch(function($scope) {
     $scope.state = _.indexOf(excludedStates, $state.current.name) === -1;
+    $scope.isVendorDash = _.indexOf(vendorRoutes, $state.current.name) !== -1;
   });
   // Get auth method
   //
