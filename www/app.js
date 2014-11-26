@@ -52,14 +52,10 @@ angular.module('starter', [
       templateUrl: 'views/menu/menu.html',
       controller: 'MenuCtrl'
     })
-    .state('app.main', {
+    .state('main', {
       url: "/main",
-      views: {
-        'menuContent': {
-          templateUrl: "views/main.html",
-          controller: 'AuthCtrl'
-        }
-      }
+      templateUrl: "views/main.html",
+      controller: 'AuthCtrl'
     })
     .state('app.home', {
       url: '/home',
@@ -153,23 +149,15 @@ angular.module('starter', [
         }
       }
     })
-    .state('app.signup', {
+    .state('signup', {
       url: "/auth/signup",
-      views: {
-        'menuContent': {
-          templateUrl: "views/auth/signup.html",
-          controller: 'AuthCtrl'
-        }
-      }
+      templateUrl: "views/auth/signup.html",
+      controller: 'AuthCtrl'
     })
-    .state('app.login', {
+    .state('login', {
       url: '/auth/login',
-      views: {
-        'menuContent': {
-          templateUrl: 'views/auth/login.html',
-          controller: 'AuthCtrl'
-        }
-      }
+      templateUrl: 'views/auth/login.html',
+      controller: 'AuthCtrl'
     });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/home');
@@ -202,10 +190,10 @@ angular.module('starter', [
     if (toState.authenticate && !Auth.isAuth){
       event.preventDefault();
       // User isn’t authenticated
-      $state.transitionTo('app.main');
+      $state.go('main');
     }
     // If they are logged in, don't let them go to signup or login pages
-    if (Auth.isAuth && (toState.name === 'app.signup' || toState.name === 'app.login')) {
+    if (Auth.isAuth && (toState.name === 'signup' || toState.name === 'login')) {
       event.preventDefault();
       $state.transitionTo('app.home');
     }
