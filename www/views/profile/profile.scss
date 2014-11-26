@@ -53,8 +53,9 @@
   margin-right: 15px;
 }
 .largeselect {
-  padding: 0.3em 0.2em;
-  font-size: 1.4em;
+  padding: 0.3em 0.1em;
+  font-size: 1.1em;
+  font-weight: 300;
   width: 100%;
   border-color: darken($stable, 5%);
   &:after {
@@ -66,10 +67,14 @@
     color: $calm;
   }
   select {
+    -webkit-appearance: none;
+    font-family: $base-font-family;
     width: 100%;
     line-height: 40px;
-    font-size: 1.4em;
-    -webkit-appearance: none;
+    font-size: 1.1em;
     text-indent: 15px;
+    & > option {
+      font-weight: 300 !important;
+    }
   }
 }
