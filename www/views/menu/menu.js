@@ -12,7 +12,8 @@ angular.module('starter.controllers', ['vendorFactory'])
     'app.signup',
     'app.login',
     'app.changePassword',
-    'app.paymentProfile'
+    'app.paymentProfile',
+    'app.main'
   ];
   $scope.data = {
     status: false,
@@ -24,9 +25,11 @@ angular.module('starter.controllers', ['vendorFactory'])
   ];
   $scope.state = _.indexOf(excludedStates, $state.current.name) === -1;
   $scope.isVendorDash = _.indexOf(vendorRoutes, $state.current.name) !== -1;
+  $scope.home = $state.current.name === 'app.main';
   $scope.$watch(function($scope) {
     $scope.state = _.indexOf(excludedStates, $state.current.name) === -1;
     $scope.isVendorDash = _.indexOf(vendorRoutes, $state.current.name) !== -1;
+    $scope.home = $state.current.name === 'app.main';
   });
   // Get auth method
   //

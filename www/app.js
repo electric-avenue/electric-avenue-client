@@ -52,6 +52,15 @@ angular.module('starter', [
       templateUrl: 'views/menu/menu.html',
       controller: 'MenuCtrl'
     })
+    .state('app.main', {
+      url: "/main",
+      views: {
+        'menuContent': {
+          templateUrl: "views/main.html",
+          controller: 'AuthCtrl'
+        }
+      }
+    })
     .state('app.home', {
       url: '/home',
       onEnter: function(Auth, $state) {
@@ -179,7 +188,7 @@ angular.module('starter', [
         },
         function(response) {
           if (response.status === 401) {
-            $location.url('/app/auth/login');
+            $location.url('/app/main');
           }
           return $q.reject(response);
         }
@@ -193,7 +202,7 @@ angular.module('starter', [
     if (toState.authenticate && !Auth.isAuth){
       event.preventDefault();
       // User isn’t authenticated
-      $state.transitionTo('app.login');
+      $state.transitionTo('app.main');
     }
     // If they are logged in, don't let them go to signup or login pages
     if (Auth.isAuth && (toState.name === 'app.signup' || toState.name === 'app.login')) {
