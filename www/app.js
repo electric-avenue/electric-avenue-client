@@ -176,7 +176,7 @@ angular.module('starter', [
         },
         function(response) {
           if (response.status === 401) {
-            $location.url('/app/main');
+            $location.url('/main');
           }
           return $q.reject(response);
         }

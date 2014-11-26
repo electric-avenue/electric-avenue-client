@@ -53,7 +53,7 @@ angular.module('vendorFactory', ['angularFileUpload', 'auth'])
     
     return $http({
       method: 'POST',
-      url: config.baseUrl + '/api/vendor/add',
+      url: config.baseUrl + '/api/vendor/update',
       data: data
     })
     .then(function(res) {
