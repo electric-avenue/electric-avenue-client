@@ -9,7 +9,7 @@
         <!--<button ng-show="!check.isVendor()" ui-sref="app.userProfile" ng-if="check.isAuth()" class="button button-icon icon ion-gear-b "></button>-->
         <button ng-click="popover.show($event)" ng-if="check.isAuth()" class="button button-icon icon-stable icon ion-gear-b"></button>
       </ion-nav-buttons>
-      <div class="tabs-striped tabs-top tabs-background-dark tabs-calm" ng-hide="!state">
+      <div class="tabs-striped tabs-top tabs-background-dark tabs-calm" ng-show="state && !isVendorDash">
         <div class="tabs maintabs">
           <a class="tab-item" ui-sref-active="active" ui-sref="app.usermap">
             <i class="icon ion-map"></i>
@@ -18,6 +18,18 @@
           <a class="tab-item" ui-sref-active="active" ui-sref="app.userlist">
             <i class="icon ion-clipboard"></i>
             List
+          </a>
+        </div>
+      </div>
+      <div class="tabs-striped tabs-top tabs-background-dark tabs-calm" ng-show="state && isVendorDash">
+        <div class="tabs maintabs">
+          <a class="tab-item" ui-sref-active="active" ui-sref="app.vendorHome">
+            <i class="icon ion-speedometer"></i>
+            Dashboard
+          </a>
+          <a class="tab-item" ui-sref-active="active" ui-sref="app.vendorMap">
+            <i class="icon ion-map"></i>
+            Map
           </a>
         </div>
       </div>
