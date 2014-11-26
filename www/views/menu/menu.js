@@ -47,7 +47,7 @@ angular.module('starter.controllers', ['vendorFactory'])
   // Expose logout for the user
   $scope.logout = function() {
     Auth.logout();
-    $state.go('app.login');
+    $state.go('login');
   };
   $scope.changeState = function(name) {
     $state.transitionTo(name);

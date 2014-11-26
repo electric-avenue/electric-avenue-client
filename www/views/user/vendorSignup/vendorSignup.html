@@ -15,16 +15,18 @@
           <span class="input-label">Description</span>
           <input name="description" type="text" ng-model="data.description" placeholder="Description">
         </label>
-        <label class="item item-input item-floating-label profileinput">
+        <label class="item item-input item-stacked-label profileinput">
           <span class="input-label">Types</span>
-          <select ng-model="data.category">
+          <div class="largeselect">
+          <select class="ion-input-select" ng-model="data.category">
               <option value="Food">Food</option>
               <option value="Art">Art</option>
               <option value="Music">Music</option>
               <option value="Performance">Performance</option>
               <option value="Farmers Market">Farmers Market</option>
               <option value="Goods">Goods</option>
-            </select>
+          </select>
+          </div>
           <!-- <input name="types" type="text" ng-model="data.types" placeholder="Types"> -->
         </label>
         <!--<div class="item item-toggle profileToggle">-->
