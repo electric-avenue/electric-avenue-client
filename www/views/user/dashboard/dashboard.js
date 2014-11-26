@@ -179,10 +179,11 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
 
   $scope.$watch('types|filter:{selected:true}', function (typeArray) {
     $scope.typeSelection = typeArray.map(function (type) {
+      var clicked = [];
       if($scope.typeSelection.indexOf(type) == -1){
-        Search.getVendors({category: type.name}, setMarkers);
+        clicked.push(type.name);
       }
-      return type.name;
+      Search.getVendors({category: clicked}, setMarkers);
     });
   }, true);
 
