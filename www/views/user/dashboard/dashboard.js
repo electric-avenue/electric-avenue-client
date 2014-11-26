@@ -217,8 +217,6 @@ console.log(onErr);
      });
   };
 
-  
-
   $scope.map = {
     defaults: {
       tileLayer: "https://{s}.tiles.mapbox.com/v3/deziak1906.k8mphke2/{z}/{x}/{y}.png",
@@ -231,7 +229,7 @@ console.log(onErr);
       lng: -79.390919,
       zoom: 15
     },
-    markers : {},
+    markers : MapService.markers || {},
     events: {
       map: {
         enable: ['context'],
@@ -240,29 +238,30 @@ console.log(onErr);
     }
   };
   
-  var getInterest = function(params){
-    MapService.getMarkers(params,function(err,vendorsLocation){
-      console.log("vendor markers");
-      console.log(vendorsLocation);
-      $scope.map.markers = vendorsLocation;
-    });
-  };
+  // var getInterest = function(params){
+  //   MapService.setMarkers(params,function(err,vendorsLocation){
+  //     console.log("vendor markers");
+  //     console.log(vendorsLocation);
+  //     $scope.map.markers = vendorsLocation;
+  //   });
+  // };
 
-  var createMarkers = function(location){
-    var result = {};
-    //may have to check if we are receiving markers from db or from cordova
-    for(var i = 0; i< location.length; i++){
-       i = {
-        lat: location[i].coords.latitude,
-        lng: location[i].coords.longitude,
-        draggable: false,
-        message: 'Current Location',
-        focus: true
-      };
-      result[i] = i;
-    }
-    // $scope.map.markers = result;
-  };
+
+  // var createMarkers = function(location){
+  //   var result = {};
+  //   //may have to check if we are receiving markers from db or from cordova
+  //   for(var i = 0; i< location.length; i++){
+  //      i = {
+  //       lat: location[i].coords.latitude,
+  //       lng: location[i].coords.longitude,
+  //       draggable: false,
+  //       message: 'Current Location',
+  //       focus: true
+  //     };
+  //     result[i] = i;
+  //   }
+  //   // $scope.map.markers = result;
+  // };
 
 
   $scope.goTo = function(location){
@@ -299,7 +298,7 @@ console.log(onErr);
     {latitude: 43.646129,longitude: -79.417376, displayname: 'test test', type: 'food'},
     {latitude: 43.650661,longitude: -79.388511, displayname: 'test test', type: 'food'}
   ];
-  getInterest(markers);
+  // getInterest(markers);
 
   /*
   * END MAP TEMPLATING
