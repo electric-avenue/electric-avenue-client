@@ -43,13 +43,17 @@
     </header>
     <ion-content class="has-header">
       <ion-list>
-        <ion-item nav-clear menu-close ui-sref="app.usermap" class="item-icon-left item-stable leftnavitem">
+        <ion-item nav-clear menu-close ng-show="!check.isVendor()" ui-sref="app.usermap" class="item-icon-left item-stable leftnavitem">
           <i class="icon ion-home"></i>
           Home
         </ion-item>
+        <ion-item nav-clear menu-close ng-show="check.isVendor()" ui-sref="app.usermap" class="item-icon-left item-stable leftnavitem">
+          <i class="icon ion-home"></i>
+          User Dashboard
+        </ion-item>
         <ion-item ng-show="check.isVendor()" nav-clear menu-close ui-sref="app.vendorHome" class="item-icon-left item-stable leftnavitem">
           <i class="icon ion-speedometer"></i>
-          Dashboard
+          Vendor Dashboard
         </ion-item>
         <ion-item ng-show="!check.isVendor()" nav-clear menu-close ui-sref="app.vendorSignup" class="item-icon-left item-stable leftnavitem">
           <i class="icon ion-key"></i>
