@@ -23,7 +23,7 @@ angular.module('map', ['leaflet-directive','ngCordova','search'])
   };
 
   var local_icons = {
-    foodIcon:{
+    FoodIcon:{
       iconUrl: 'img/food.png',
       popupAnchor: [15,0] //point from which the popup should open relative to the iconAnchor
       // shadowUrl: 'img/leaf-shadow.png',
@@ -32,23 +32,23 @@ angular.module('map', ['leaflet-directive','ngCordova','search'])
       // iconAnchor: [22,94], //point of the icon which will correspond to marker's location
       // shadowAnchor: [4,62], //point for shadow icon
     },
-    musicIcon:{
+    MusicIcon:{
       iconUrl: 'img/music.png',
       popupAnchor: [15,0] //point from which the popup should open relative to the iconAnchor
     },
-    performanceIcon:{
+    PerformanceIcon:{
       iconUrl: 'img/theater.png',
       popupAnchor: [15,0] //point from which the popup should open relative to the iconAnchor
     },
-    artIcon:{
+    ArtIcon:{
       iconUrl: 'img/art.png',
       popupAnchor: [15,0] //point from which the popup should open relative to the iconAnchor
     },
-    goodsIcon:{
+    GoodsIcon:{
       iconUrl: 'img/gifts.png',
       popupAnchor: [15,0] //point from which the popup should open relative to the iconAnchor
     },
-    farmersIcon:{
+    FarmersIcon:{
       iconUrl: 'img/bread.png',
       popupAnchor: [15,0] //point from which the popup should open relative to the iconAnchor
     }
@@ -58,14 +58,14 @@ angular.module('map', ['leaflet-directive','ngCordova','search'])
     console.log('setMarkers Vendor Argument: ', vendors);
     
     for(var i = 0; i < vendors.length; i++){
-      console.log()
+    
       markers[i] = {
         lat: vendors[i].latitude,
         lng: vendors[i].longitude,
         message: 'You clicked me!',
         draggable: false,
         label: {
-          message: vendors[i].displayname,
+          message: vendors[i].User.displayname,
           options: {
             noHide: true
           }
@@ -73,6 +73,8 @@ angular.module('map', ['leaflet-directive','ngCordova','search'])
         icon: local_icons[vendors[i].type + 'Icon']
       };
     }
+
+    console.log(markers);
     // if(callback) {
     //   callback(null,markers);
     // }

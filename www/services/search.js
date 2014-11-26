@@ -12,7 +12,7 @@ angular.module('search', [])
     .then(function(res) {
       console.log('Vendor Get Success!:', res);
       if (callback) {
-        callback(null, res);
+        callback(res.data.result);
       }
     })
     .catch(function(err) {
