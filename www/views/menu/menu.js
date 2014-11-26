@@ -61,7 +61,7 @@ angular.module('starter.controllers', ['vendorFactory'])
   $scope.changeStatus = function() {
     Vendor.updateStatus({status: $scope.data.status}, function(err, res) {
       console.log('Response On Status!');
-      if (status) {
+      if ($scope.data.status) {
         $scope.data.vendorStatus = 'Online';
       } else {
         $scope.data.vendorStatus = 'Offline';

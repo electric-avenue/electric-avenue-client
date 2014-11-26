@@ -1,5 +1,24 @@
 angular.module('vendorFactory', ['angularFileUpload', 'auth'])
 .factory('Vendor', function($http, $upload, Auth) {
+  var getInfo = function(callback) {
+    return $http({
+      method: 'GET',
+      url: config.baseUrl + '/api/vendor/info'
+    })
+    .then(function(res) {
+      console.log('Success:', res);
+      if (callback) {
+        callback(null, res);
+      }
+    })
+    .catch(function(err) {
+      console.log('Error:', err);
+      if (callback) {
+        callback(err, null);
+      }
+    });
+  };
+
   var updateStatus = function(changes, callback) {
     var data = _.pick(changes, 'status');
     return $http({
@@ -128,6 +147,7 @@ angular.module('vendorFactory', ['angularFileUpload', 'auth'])
     getStatus: getStatus,
     updateProfile: updateProfile,
     becomeVendor: becomeVendor,
-    fileUpload: fileUpload
+    fileUpload: fileUpload,
+    getInfo: getInfo
   };
 });
