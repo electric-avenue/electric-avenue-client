@@ -15,7 +15,7 @@ angular.module('userprofile', ['userFactory', 'angularFileUpload', 'vendorFactor
     vendor: {
       description: '',
       fileInput: '',
-      types: ''
+      type: ''
     }
   };
 

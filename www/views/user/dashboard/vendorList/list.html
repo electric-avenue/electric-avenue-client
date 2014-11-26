@@ -4,7 +4,7 @@
       <div class="item text-center vendor-item">
         <h2 ng-if="vendor.User.displayname">{{vendor.User.displayname}}</h1>
         <h2 ng-if="!vendor.User.displayname">{{vendor.User.username}}</h1>
-        <p>Vendor Activities</p>
+        <p>{{vendor.type}}</p>
       </div>
       <div class="item item-body">
         <img class="full-image roundimage" ng-if="!vendor.image" ng-src="http://img3.wikia.nocookie.net/__cb20121227201208/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg">
@@ -18,7 +18,8 @@
           0.5 mi
         </div>
         <div class="tab-item rating">
-          <i class="ion ion-star" ng-repeat="n in [1,2,3,4,5]"></i>
+          <i class="ion ion-star" style="color:gold" ng-repeat="n in displayRating(vendor.avgrating, true);"></i>
+          <i class="ion ion-star" style="color:#E3E4E6; margin-left:-4px; margin-right: 3px" ng-repeat="n in displayRating(vendor.avgrating);"></i>
         </div>
       </div>
     </div>

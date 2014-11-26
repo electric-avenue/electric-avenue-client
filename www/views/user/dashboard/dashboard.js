@@ -48,6 +48,20 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
     });
   };
 
+  $scope.displayRating = function(avg, show) {
+    avg = Math.round(avg);
+    var ans = [];
+    if (show) {
+      for (var i = 1; i <= avg; i++) {
+        ans.push(i);
+      }
+    } else {
+      for (var i = avg + 1; i <= 5; i++) {
+        ans.push(i);
+      }
+    }
+    return ans;
+  };
   $scope.getStatus = function(vendor) {
   };
 
