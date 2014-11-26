@@ -139,14 +139,14 @@ angular.module('vendorDashboard', ['leaflet-directive', 'vendorFactory', 'map', 
   //           maxZoom: 17});
   // console.log(heat);
 
-  var pedVolume = res;
+  // var pedVolume = res;
 
-  //   var pedVolume = [
-  //   [43.664605, -79.373874, "2/103"],
-  //   [43.642566, -79387057, "1/486"],
-  //   [43.6643375, -79.384484, "6A"],
-  //   [43.64255, -79.42686, "542"]
-  // ];
+    var pedVolume = [
+    [43.664605, -79.373874, "2/103"],
+    [43.642566, -79387057, "1/486"],
+    [43.6643375, -79.384484, "6A"],
+    [43.64255, -79.42686, "542"]
+  ];
 
   $scope.map = {
     defaults: {
@@ -174,7 +174,7 @@ angular.module('vendorDashboard', ['leaflet-directive', 'vendorFactory', 'map', 
           type: 'heatmap',
           visible: true,
           data:  pedVolume,
-          gradient: {0.4: 'blue', 0.65: 'lime', 1: 'red'}
+          // gradient: {0.4: 'red', 0.65: 'lime', 1: 'red'}
            //url: 'http://suite.opengeo.org/geoserver/usa/wms',
           // layerParams: {
           //   layers: 'usa:states',
