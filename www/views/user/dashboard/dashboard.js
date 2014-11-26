@@ -206,8 +206,8 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
     //   $scope.goTo(location);
     //   createMarkers([location]);
     // });
-console.log(onErr);
-    navigator.geolocation.getCurrentPosition(function(position){
+  console.log(onErr);
+  navigator.geolocation.getCurrentPosition(function(position){
       console.log("made it to success");
       console.log(position);
       $scope.goTo(position);
