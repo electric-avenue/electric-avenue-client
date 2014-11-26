@@ -167,7 +167,7 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
   $scope.$watch('types|filter:{selected:true}', function (typeArray) {
     $scope.typeSelection = typeArray.map(function (type) {
       if($scope.typeSelection.indexOf(type) == -1){
-        MapService.getInterests(type);
+        Search.getVendors(types.name, setMarkers);
       }
       return type.name;
     });
@@ -217,52 +217,115 @@ console.log(onErr);
      });
   };
 
-  
 
-  $scope.map = {
-    defaults: {
-      tileLayer: "https://{s}.tiles.mapbox.com/v3/deziak1906.k8mphke2/{z}/{x}/{y}.png",
-      maxZoom: 18,
-      zoomControlPosition: 'bottomleft',
-      attributionControl:false
+  var local_icons = {
+    FoodIcon:{
+      iconUrl: 'img/food.png',
+      popupAnchor: [15,0] //point from which the popup should open relative to the iconAnchor
+      // shadowUrl: 'img/leaf-shadow.png',
+      // iconSize: [100,50],  //size of the icon
+      // shadowSize: [50,64], //size of the shadow
+      // iconAnchor: [22,94], //point of the icon which will correspond to marker's location
+      // shadowAnchor: [4,62], //point for shadow icon
     },
-    center: {
-      lat: 43.661165,
-      lng: -79.390919,
-      zoom: 15
+    MusicIcon:{
+      iconUrl: 'img/music.png',
+      popupAnchor: [15,0] //point from which the popup should open relative to the iconAnchor
     },
-    markers : {},
-    events: {
-      map: {
-        enable: ['context'],
-        logic: 'emit'
-      }
+    PerformanceIcon:{
+      iconUrl: 'img/theater.png',
+      popupAnchor: [15,0] //point from which the popup should open relative to the iconAnchor
+    },
+    ArtIcon:{
+      iconUrl: 'img/art.png',
+      popupAnchor: [15,0] //point from which the popup should open relative to the iconAnchor
+    },
+    GoodsIcon:{
+      iconUrl: 'img/gifts.png',
+      popupAnchor: [15,0] //point from which the popup should open relative to the iconAnchor
+    },
+    FarmersIcon:{
+      iconUrl: 'img/bread.png',
+      popupAnchor: [15,0] //point from which the popup should open relative to the iconAnchor
     }
   };
-  
-  var getInterest = function(params){
-    MapService.getMarkers(params,function(err,vendorsLocation){
-      console.log("vendor markers");
-      console.log(vendorsLocation);
-      $scope.map.markers = vendorsLocation;
-    });
-  };
 
-  var createMarkers = function(location){
-    var result = {};
-    //may have to check if we are receiving markers from db or from cordova
-    for(var i = 0; i< location.length; i++){
-       i = {
-        lat: location[i].coords.latitude,
-        lng: location[i].coords.longitude,
+  var initializeMarkers = function() {
+    Search.getVendors(null, setMarkers);
+  }
+
+  var setMarkers = function(vendors) {
+    console.log('setMarkers Vendor Argument: ', vendors);
+
+    var markers = {};
+    
+    for(var i = 0; i < vendors.length; i++){
+  
+      markers[i] = {
+        lat: vendors[i].latitude,
+        lng: vendors[i].longitude,
+        message: 'You clicked me!',
         draggable: false,
-        message: 'Current Location',
-        focus: true
+        label: {
+          message: vendors[i].User.displayname,
+          options: {
+            noHide: true
+          }
+        },
+        icon: local_icons[vendors[i].category + 'Icon']
       };
-      result[i] = i;
     }
-    // $scope.map.markers = result;
+
+    console.log(markers);
+
+      $scope.map = {
+        defaults: {
+          tileLayer: "https://{s}.tiles.mapbox.com/v3/deziak1906.k8mphke2/{z}/{x}/{y}.png",
+          maxZoom: 18,
+          zoomControlPosition: 'bottomleft',
+          attributionControl:false
+        },
+        center: {
+          lat: 43.661165,
+          lng: -79.390919,
+          zoom: 15
+        },
+        markers : markers || {},
+        events: {
+          map: {
+            enable: ['context'],
+            logic: 'emit'
+          }
+        }
+      };
   };
+
+initializeMarkers();
+  
+  // var getInterest = function(params){
+  //   MapService.setMarkers(params,function(err,vendorsLocation){
+  //     console.log("vendor markers");
+  //     console.log(vendorsLocation);
+  //     $scope.map.markers = vendorsLocation;
+  //   });
+  // };
+
+
+  // var createMarkers = function(location){
+  //   var result = {};
+  //   //may have to check if we are receiving markers from db or from cordova
+  //   for(var i = 0; i< location.length; i++){
+  //      i = {
+  //       lat: location[i].coords.latitude,
+  //       lng: location[i].coords.longitude,
+  //       draggable: false,
+  //       message: 'Current Location',
+  //       focus: true
+  //     };
+  //     result[i] = i;
+  //   }
+  //   // $scope.map.markers = result;
+  // };
 
 
   $scope.goTo = function(location){
@@ -299,7 +362,6 @@ console.log(onErr);
     {latitude: 43.646129,longitude: -79.417376, displayname: 'test test', type: 'food'},
     {latitude: 43.650661,longitude: -79.388511, displayname: 'test test', type: 'food'}
   ];
-  getInterest(markers);
 
   /*
   * END MAP TEMPLATING

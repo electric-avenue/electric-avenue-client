@@ -48,7 +48,7 @@ angular.module('vendorFactory', ['angularFileUpload', 'auth'])
     var data = _.pick(changes, [
       'description',
       'displayName',
-      'types'
+      'category'
     ]);
     
     return $http({
@@ -79,7 +79,7 @@ angular.module('vendorFactory', ['angularFileUpload', 'auth'])
       'middleInitial',
       'lastName',
       'displayName',
-      'type'
+      'category'
     ]);
 
     return $http({

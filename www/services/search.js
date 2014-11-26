@@ -1,17 +1,18 @@
 angular.module('search', [])
 .factory('Search', function($http) {
-  var getVendors = function(params, callback) {
+  
+  var getVendors = function(type, callback) {
     console.log("From search service");
-    console.log(params);
+    console.log(type);
     return $http({
       method: 'GET',
       url: config.baseUrl + '/api/vendor/get',
-      data: params
+      data: type
     })
     .then(function(res) {
       console.log('Vendor Get Success!:', res);
       if (callback) {
-        callback(null, res);
+        callback(res.data.result);
       }
     })
     .catch(function(err) {
