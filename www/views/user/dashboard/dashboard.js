@@ -203,6 +203,8 @@ console.log(onErr);
      });
   };
 
+  
+
   $scope.map = {
     defaults: {
       tileLayer: "https://{s}.tiles.mapbox.com/v3/deziak1906.k8mphke2/{z}/{x}/{y}.png",
@@ -245,7 +247,7 @@ console.log(onErr);
       };
       result[i] = i;
     }
-    $scope.map.markers = result;
+    // $scope.map.markers = result;
   };
 
 
@@ -256,32 +258,32 @@ console.log(onErr);
   };
   
   var markers = [
-    {latitude: 43.645016,longitude: -79.39092},
-    {latitude: 43.666503,longitude: -79.381121},
-    {latitude: 43.655542,longitude: -79.41307},
-    {latitude: 43.666316,longitude: -79.367193},
-    {latitude: 43.646596,longitude: -79.386413},
-    {latitude: 43.644280,longitude: -79.400347},
-    {latitude: 43.676396,longitude: -79.357112},
-    {latitude: 43.647986,longitude: -79.400473},
-    {latitude: 43.664605,longitude: -79.373874},
-    {latitude: 43.667754,longitude: -79.396075},
-    {latitude: 43.655243,longitude: -79.419252},
-    {latitude: 43.649632,longitude: -79.434537},
-    {latitude: 43.654724,longitude: -79.452157},
-    {latitude: 43.653000,longitude: -79.378997},
-    {latitude: 43.663163,longitude: -79.454888},
-    {latitude: 43.649092,longitude: -79.425950},
-    {latitude: 43.638496,longitude: -79.532080},
-    {latitude: 43.665364,longitude: -79.409445},
-    {latitude: 43.652778,longitude: -79.369347},
-    {latitude: 43.594245,longitude: -79.509620},
-    {latitude: 43.685960,longitude: -79.422028},
-    {latitude: 43.638834,longitude: -79.381878},
-    {latitude: 43.671609,longitude: -79.388442},
-    {latitude: 43.636934,longitude: -79.469089},
-    {latitude: 43.646129,longitude: -79.417376},
-    {latitude: 43.650661,longitude: -79.388511}
+    {latitude: 43.645016,longitude: -79.39092, displayname: 'test test', type: 'food'},
+    {latitude: 43.666503,longitude: -79.381121, displayname: 'test test', type: 'food'},
+    {latitude: 43.655542,longitude: -79.41307, displayname: 'test test', type: 'food'},
+    {latitude: 43.666316,longitude: -79.367193, displayname: 'test test', type: 'food'},
+    {latitude: 43.646596,longitude: -79.386413, displayname: 'test test', type: 'food'},
+    {latitude: 43.644280,longitude: -79.400347, displayname: 'test test', type: 'food'},
+    {latitude: 43.676396,longitude: -79.357112, displayname: 'test test', type: 'food'},
+    {latitude: 43.647986,longitude: -79.400473, displayname: 'test test', type: 'food'},
+    {latitude: 43.664605,longitude: -79.373874, displayname: 'test test', type: 'food'},
+    {latitude: 43.667754,longitude: -79.396075, displayname: 'test test', type: 'food'},
+    {latitude: 43.655243,longitude: -79.419252, displayname: 'test test', type: 'food'},
+    {latitude: 43.649632,longitude: -79.434537, displayname: 'test test', type: 'food'},
+    {latitude: 43.654724,longitude: -79.452157, displayname: 'test test', type: 'food'},
+    {latitude: 43.653000,longitude: -79.378997, displayname: 'test test', type: 'food'},
+    {latitude: 43.663163,longitude: -79.454888, displayname: 'test test', type: 'food'},
+    {latitude: 43.649092,longitude: -79.425950, displayname: 'test test', type: 'food'},
+    {latitude: 43.638496,longitude: -79.532080, displayname: 'test test', type: 'food'},
+    {latitude: 43.665364,longitude: -79.409445, displayname: 'test test', type: 'food'},
+    {latitude: 43.652778,longitude: -79.369347, displayname: 'test test', type: 'food'},
+    {latitude: 43.594245,longitude: -79.509620, displayname: 'test test', type: 'food'},
+    {latitude: 43.685960,longitude: -79.422028, displayname: 'test test', type: 'food'},
+    {latitude: 43.638834,longitude: -79.381878, displayname: 'test test', type: 'food'},
+    {latitude: 43.671609,longitude: -79.388442, displayname: 'test test', type: 'food'},
+    {latitude: 43.636934,longitude: -79.469089, displayname: 'test test', type: 'food'},
+    {latitude: 43.646129,longitude: -79.417376, displayname: 'test test', type: 'food'},
+    {latitude: 43.650661,longitude: -79.388511, displayname: 'test test', type: 'food'}
   ];
   getInterest(markers);
 
