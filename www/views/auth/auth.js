@@ -42,7 +42,7 @@ angular.module('authView', ['auth'])
           return;
         }
         // Signup successful! Send them to login page
-        $state.transitionTo('app.login');
+        $state.transitionTo('login');
       }).catch(function(err) {
         // Signup failed! Give them an error
         $scope.signupError = true;

@@ -1,5 +1,5 @@
-angular.module('userprofile', ['userFactory', 'angularFileUpload', 'vendorFactory'])
-.controller('UserProfileCtrl', function($scope, $state, User, $upload, Vendor) {
+angular.module('userprofile', ['userFactory', 'angularFileUpload', 'vendorFactory', 'auth'])
+.controller('UserProfileCtrl', function($scope, $state, User, $upload, Vendor, Auth) {
   $scope.data = {
     user: {
       oldPassword: '',
@@ -30,7 +30,9 @@ angular.module('userprofile', ['userFactory', 'angularFileUpload', 'vendorFactor
   // };
   $scope.update = function() {
     User.update($scope.data.user, function() {
-      Vendor.updateProfile($scope.data.vendor);
+      if (Auth.isVendor) {
+        Vendor.updateProfile($scope.data.vendor);
+      }
     });
   };
 

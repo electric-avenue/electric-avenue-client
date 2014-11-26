@@ -37,6 +37,11 @@ angular.module('starter.controllers', ['vendorFactory'])
     },
     isOnline: function() {
       $scope.data.status = Auth.isOnline;
+      if ($scope.data.status) {
+        $scope.data.vendorStatus = 'Online';
+      } else {
+        $scope.data.vendorStatus = 'Offline';
+      }
       return $scope.data.status;
     }
   };
@@ -54,14 +59,13 @@ angular.module('starter.controllers', ['vendorFactory'])
   };
 
   $scope.changeStatus = function() {
-    var status = $scope.data.status;
-    if (status) {
-      $scope.data.vendorStatus = 'Online';
-    } else {
-      $scope.data.vendorStatus = 'Offline';
-    }
-    Vendor.updateStatus({status: !status}, function(err, res) {
+    Vendor.updateStatus({status: $scope.data.status}, function(err, res) {
       console.log('Response On Status!');
+      if (status) {
+        $scope.data.vendorStatus = 'Online';
+      } else {
+        $scope.data.vendorStatus = 'Offline';
+      }
     });
   }
 });
