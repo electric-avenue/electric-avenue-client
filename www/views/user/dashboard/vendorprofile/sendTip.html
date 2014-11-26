@@ -8,9 +8,20 @@
     <form novalidate name="userProfileForm">
       <div class="list profileForm">
         <div class="row">
+          <div class="col">
+            <button class="button button-dark button-block" ng-click="tipData.amount = 1">$1</button>
+          </div>
+          <div class="col">
+            <button class="button button-dark button-block" ng-click="tipData.amount = 2">$2</button>
+          </div>
+          <div class="col">
+            <button class="button button-dark button-block" ng-click="tipData.amount = 5">$5</button>
+          </div>
+        </div>
+        <div class="row">
           <label class="col item item-input item-stacked-label profileinput">
-            <span class="input-label">Amount</span>
-            <input ng-model="tipData.amount" type="number" name="amount" placeholder="$0.00">
+            <span class="input-label">Custom Amount</span>
+            <input ng-model="tipData.amount" type="text" name="amount" placeholder="$0.00" ui-money-mask>
           </label>
         </div>
         <div class="padding">

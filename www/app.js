@@ -9,7 +9,9 @@ angular.module('starter', [
   'ngCordova',
   'angularPayments',
   'payments',
-  'auth'
+  'ui.utils.masks',
+  'auth'//,
+  // 'usermap'
 ]).run(function($ionicPlatform, $cordovaSplashscreen, $http, Auth, $state) {
   $http({
     method: 'GET',

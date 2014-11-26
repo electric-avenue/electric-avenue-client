@@ -12,6 +12,7 @@
     "leaflet": "~0.7.3",
     "ngCordova": "~0.1.7-alpha",
     "angular-payments": "*",
-    "Leaflet.label": "~0.2.1"
+    "Leaflet.label": "~0.2.1",
+    "angular-input-masks": "~1.2.5"
   }
 }
