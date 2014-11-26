@@ -16,6 +16,18 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
   $scope.showVendor = function(vendor) {
     $scope.data.selected = vendor;
     $scope.vendorModal.show();
+    $scope.map.markers= {'curMarker':
+                          {lat: vendor.latitude, lng: vendor.longitude, 
+                          message: vendor.description,
+                          focus:true, 
+                          draggable:false,
+                          label:{
+                            message: vendor.User.username,
+                            options: {
+                              noHide: true
+                            }
+                          } 
+                        }};
     console.log('checker', vendor);
     Vendor.getStatus(vendor.User.username, function(err, res) {
       $scope.data.selected.status = res.data.result.isOnline;

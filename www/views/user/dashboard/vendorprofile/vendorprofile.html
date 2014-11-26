@@ -51,8 +51,9 @@
         </div>
       </div>
     </div>
-    <div class="vendormapbox">
-      Mini Map
+    <div class="vendormapbox" data-tap-disabled="true">
+      <leaflet defaults="map.defaults" markers="map.markers" center="map.center"></leaflet>
+      <!-- <leaflet defaults="map.defaults" layers="" center="map.center"></leaflet> -->
     </div>
     <div class="row">
       <div class="col vendorlocation">
