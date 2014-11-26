@@ -1,0 +1,21 @@
+.mainhome {
+  margin: 15px;
+  button {
+    height: 60px;
+    font-size: 1.4em;
+    font-family: $headings-font-family;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+}
+.logo {
+  position: relative;
+  top: 25%;
+  display: block;
+  background: black;
+  color: white;
+  line-height: 200px;
+  height: 200px;
+  margin-bottom: 15px;
+}
+

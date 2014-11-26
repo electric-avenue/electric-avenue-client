@@ -9,8 +9,6 @@ angular.module('starter.controllers', ['vendorFactory'])
     'app.vendorProfile',
     'app.vendorSignup',
     'app.userProfile',
-    'app.signup',
-    'app.login',
     'app.changePassword',
     'app.paymentProfile'
   ];
