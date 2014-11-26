@@ -17,7 +17,15 @@
         </label>
         <label class="item item-input item-floating-label profileinput">
           <span class="input-label">Types</span>
-          <input name="types" type="text" ng-model="data.types" placeholder="Types">
+          <select ng-model="data.type">
+              <option value="Food">Food</option>
+              <option value="Art">Art</option>
+              <option value="Music">Music</option>
+              <option value="Performance">Performance</option>
+              <option value="Farmers Market">Farmers Market</option>
+              <option value="Goods">Goods</option>
+            </select>
+          <!-- <input name="types" type="text" ng-model="data.types" placeholder="Types"> -->
         </label>
         <!--<div class="item item-toggle profileToggle">-->
           <!--Accept Payments?-->

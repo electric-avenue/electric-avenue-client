@@ -4,7 +4,7 @@ angular.module('vendorSignup', ['vendorFactory'])
   $scope.data = {
     fileInput: '',
     description: '',
-    types: '',
+    type: '(Choose One)',
     address: '',
     city: '',
     state: '',
@@ -12,7 +12,8 @@ angular.module('vendorSignup', ['vendorFactory'])
   };
   $scope.becomeVendor = function() {
     var data = _.pick($scope.data, [
-      'description'
+      'description',
+      'type'
     ]);
     Vendor.becomeVendor(data, function(err, res) {
       if (err) {

@@ -79,7 +79,7 @@ angular.module('vendorFactory', ['angularFileUpload', 'auth'])
       'middleInitial',
       'lastName',
       'displayName',
-      'types'
+      'type'
     ]);
 
     return $http({
