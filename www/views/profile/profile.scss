@@ -63,12 +63,11 @@
     position: absolute;
     content: '\f123';
     right: 15px;
-    top: 45px;
+    top: 40px;
     color: $calm;
   }
   select {
     -webkit-appearance: none;
-    font-family: $base-font-family;
     width: 100%;
     line-height: 40px;
     font-size: 1.1em;
