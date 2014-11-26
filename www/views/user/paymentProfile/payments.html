@@ -29,8 +29,12 @@
           <div class="col payment-card-info">
             XXXX XXXX XXXX {{card.last4}}
           </div>
-          <div ng-if="card.defaultcard">Default</div>
-          <button ng-if="!card.defaultcard" ng-click="setDefault(card.id);">Default</button>
+          <div class="col col-20 card-button-default" ng-if="card.defaultcard">
+            <button class="button button-dark button-outline button-icon ion-ios7-checkmark button-block"></button>
+          </div>
+          <div class="col col-20 card-button-default" ng-if="!card.defaultcard">
+            <button class="button button-dark button-outline button-icon ion-ios7-circle-outline button-block" ng-click="setDefault(card.id);"></button>
+          </div>
         </div>
       </div>
       <h3 class="item profileheading">

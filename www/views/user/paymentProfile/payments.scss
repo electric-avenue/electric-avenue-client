@@ -48,3 +48,17 @@
     padding-right: 0.2em;
   }
 }
+
+.card-button-default > .button.button-dark.button-icon {
+  /*background-color: $dark;*/
+  /*color: $light;*/
+  border: none;
+  font-size: 1.8em;
+  margin: 0;
+}
+.card-button > .button.button-dark.button-icon {
+  background: $dark;
+  color: $light;
+  border: none;
+  margin: 0;
+}
