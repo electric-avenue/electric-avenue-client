@@ -191,17 +191,22 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
   $scope.typeSelection = [];
 
   $scope.$watch('types|filter:{selected:true}', function (typeArray) {
-    $scope.typeSelection = typeArray.map(function (type) {
-      var clicked = [];
-      if($scope.typeSelection.indexOf(type) == -1){
-        clicked.push(type.name);
-      }
+    //If no filters selected, then place markers for all vendors
+    if (typeArray.length === 0) {
+      initializeMarkers();
+      return;
+    }
+
+    //Else place markers for all types checked in filter
+    var clicked = [];
+    for (var i=0; i<typeArray.length; i++) {
+      clicked.push(typeArray[i].name)
+    }
       Search.getVendors({category: clicked}, setMarkers);
-    });
-  }, true);
+    }, true);
 
   $scope.selectedFilters = _.filter($scope.filters, 'selected');
-//   console.log(JSON.stringify($scope.selectedFilters));
+
 
 // MAP Implementation JAMON'S Stuff//
   $scope.controls = {
