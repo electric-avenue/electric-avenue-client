@@ -13,7 +13,7 @@
       <div class="col col-center">
         <!-- <img ng-if="data.selected.image" class="roundimage vendorImage" ng-src="http://localhost:5000/profileImages/{{data.selected.image}}"> -->
         <img class="roundimage vendorImage" ng-if="!data.selected.image" ng-src="http://img3.wikia.nocookie.net/__cb20121227201208/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg">
-        <img class="roundimage vendorImage" ng-if="data.selected.image.image" ng-src="http://localhost:5000/profileImages/{{vendor.image}}">
+        <img class="roundimage vendorImage" ng-if="data.selected.image" ng-src="http://localhost:5000/profileImages/{{data.selected.image}}">
       </div>
       <div class="col vendorinfo">
         <div class="row">
