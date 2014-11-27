@@ -18,28 +18,28 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
     $scope.vendorModal.show();
     $scope.vendorProfileMap= {
       defaults: {
-          tileLayer: "https://{s}.tiles.mapbox.com/v3/deziak1906.k8mphke2/{z}/{x}/{y}.png",
-          maxZoom: 18,
-          zoomControlPosition: 'bottomleft',
-          attributionControl:false
-        },
-        center: {
+        tileLayer: "https://{s}.tiles.mapbox.com/v3/deziak1906.k8mphke2/{z}/{x}/{y}.png",
+        maxZoom: 18,
+        zoomControlPosition: 'bottomleft',
+        attributionControl:false
+      },
+      center: {
+        lat: vendor.latitude,
+        lng: vendor.longitude,
+        zoom: 15
+      },
+      markers : {
+        'curPos':{
           lat: vendor.latitude,
-          lng: vendor.longitude,
-          zoom: 15
-        },
-        markers : {
-          'curPos':{
-            lat: vendor.latitude,
-            lng: vendor.longitude
-          }
-        },
-        events: {
-          map: {
-            enable: ['context'],
-            logic: 'emit'
-          }
+          lng: vendor.longitude
         }
+      },
+      events: {
+        map: {
+          enable: ['context'],
+          logic: 'emit'
+        }
+      }
     };    
     console.log('checker', vendor);
     Vendor.getStatus(vendor.User.username, function(err, res) {
