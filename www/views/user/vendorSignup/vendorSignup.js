@@ -4,7 +4,7 @@ angular.module('vendorSignup', ['vendorFactory'])
   $scope.data = {
     fileInput: '',
     description: '',
-    category: '(Choose One)',
+    category: 'Choose One',
     address: '',
     city: '',
     state: '',
