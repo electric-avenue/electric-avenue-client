@@ -1,5 +1,5 @@
 <ion-view title="Listings" on-swipe-right="changeState('app.usermap')" ng-init="loadVendors();">
-  <ion-content class="hasFilter has-header has-tabs-top">
+  <ion-content class="has-header has-tabs-top has-footer">
     <div class="list card" ng-repeat="vendor in data.vendors" item="item" ng-click="showVendor(vendor)">
       <div class="item text-center vendor-item">
         <h2 ng-if="vendor.User.displayname">{{vendor.User.displayname}}</h1>
