@@ -16,18 +16,31 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
   $scope.showVendor = function(vendor) {
     $scope.data.selected = vendor;
     $scope.vendorModal.show();
-    $scope.map.markers= {'curMarker':
-                          {lat: vendor.latitude, lng: vendor.longitude, 
-                          message: vendor.description,
-                          focus:true, 
-                          draggable:false,
-                          label:{
-                            message: vendor.User.username,
-                            options: {
-                              noHide: true
-                            }
-                          } 
-                        }};
+    $scope.vendorProfileMap= {
+      defaults: {
+        tileLayer: "https://{s}.tiles.mapbox.com/v3/deziak1906.k8mphke2/{z}/{x}/{y}.png",
+        maxZoom: 18,
+        zoomControlPosition: 'bottomleft',
+        attributionControl:false
+      },
+      center: {
+        lat: vendor.latitude,
+        lng: vendor.longitude,
+        zoom: 15
+      },
+      markers : {
+        'curPos':{
+          lat: vendor.latitude,
+          lng: vendor.longitude
+        }
+      },
+      events: {
+        map: {
+          enable: ['context'],
+          logic: 'emit'
+        }
+      }
+    };    
     console.log('checker', vendor);
     Vendor.getStatus(vendor.User.username, function(err, res) {
       $scope.data.selected.status = res.data.result.isOnline;
