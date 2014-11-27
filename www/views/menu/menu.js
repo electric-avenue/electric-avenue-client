@@ -2,8 +2,11 @@
  * Menu Controller for the side menu
  * @module MenuCtrl
  */
-angular.module('starter.controllers', ['vendorFactory'])
-.controller('MenuCtrl', function($scope, Auth, $state, $http, $ionicPopover, Vendor) {
+angular.module('starter.controllers', [
+  'vendorFactory',
+  'map'
+])
+.controller('MenuCtrl', function($scope, Auth, $state, $http, $ionicPopover, Vendor, MapService) {
   // States to avoid showing the map & list buttons for
   var excludedStates = [
     'app.vendorProfile',
@@ -59,13 +62,20 @@ angular.module('starter.controllers', ['vendorFactory'])
   };
 
   $scope.changeStatus = function() {
-    Vendor.updateStatus({status: $scope.data.status}, function(err, res) {
-      console.log('Response On Status!');
-      if ($scope.data.status) {
-        $scope.data.vendorStatus = 'Online';
-      } else {
-        $scope.data.vendorStatus = 'Offline';
-      }
+    MapService.getCurrentLocation({}, function(pos){
+      var data = {
+        status: $scope.data.status,
+        latitude: pos.coords.latitude,
+        longitude: pos.coords.longitude
+      };
+
+      Vendor.updateStatus(data, function(err, res) {
+        if ($scope.data.status) {
+          $scope.data.vendorStatus = 'Online';
+        } else {
+          $scope.data.vendorStatus = 'Offline';
+        }
+      });
     });
   }
 });

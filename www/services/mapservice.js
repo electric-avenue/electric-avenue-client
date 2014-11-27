@@ -7,15 +7,18 @@ angular.module('map', ['leaflet-directive','ngCordova','search'])
 
 
   var getCurrentLocation = function(params, callback) {
-    navigator.geolocation.getCurrentPosition()
-    .then(function(position) {
-      if(callback) {
-        callback(null, position);
+    navigator.geolocation.getCurrentPosition(function(position) {
+      console.log('Map Service getLocation:', position);
+      console.dir(position);
+      if (callback) {
+        callback(position);
       }
-    })
-    .catch(function(err){
-      console.log('Map Service getLocation error:', err);
     });
+    // .catch(function(err){
+    //   if (callback) {
+    //     callback(err, null);
+    //   }
+    // });
   };
 
   var setMapLocation = function(params,callback) {
