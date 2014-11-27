@@ -20,7 +20,11 @@ angular.module('vendorFactory', ['angularFileUpload', 'auth'])
   };
 
   var updateStatus = function(changes, callback) {
-    var data = _.pick(changes, 'status');
+    var data = _.pick(changes, [
+      'status',
+      'latitude',
+      'longitude'
+    ]);
     return $http({
       method: 'POST',
       url: config.baseUrl + '/api/vendor/update',
