@@ -1,6 +1,27 @@
 angular.module('vendorDashboard', ['leaflet-directive', 'vendorFactory', 'map', 'ngCordova'])
 .controller('VendorDashboardCtrl', function($scope, $ionicModal, Search, $state, Vendor, MapService) {
+  $scope.data = {
+    tips: [],
+    totalTips: {
+      total: 0,
+      pending: 0
+    }
+  };
 
+  $scope.getTips = function() {
+    Vendor.getInfo(function(err, res) {
+      $scope.data.tips = res.data.data.Vendor.Tips;
+      $scope.data.totalTips = $scope.data.tips.reduce(function(mem, val) {
+        var amount = Number(val.amount) / 100;
+        if (val.paid) {
+          mem.total += amount;
+        } else {
+          mem.pending += amount;
+        }
+        return mem;
+      }, {total: 0, pending: 0});
+    });
+  };
   // MAP Implementation JAMON'S Stuff//
   $scope.controls = {
     custom: []

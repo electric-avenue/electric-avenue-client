@@ -1,14 +1,14 @@
-<ion-view title="Dashboard">
+<ion-view title="Dashboard" ng-init="getTips();">
   <ion-content class="has-header has-tabs-top">
     <h4 class="title vendor-tips-title">Tips</h4>
     <div class="row">
       <div class="col vendor-tips">
         <h4 class="title text-center">Total</h4>
-        <div class="text-center">$100.00</div>
+        <div class="text-center">${{data.totalTips.total}}</div>
       </div>
       <div class="col vendor-tips">
         <h4 class="title text-center">Pending</h4>
-        <div class="text-center">$100.00</div>
+        <div class="text-center">${{data.totalTips.pending}}</div>
       </div>
     </div>
     <h4 class="title">Latest Activity</h4>
