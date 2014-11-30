@@ -51,8 +51,26 @@ angular.module('userFactory', [])
     });
   };
 
+  var getDistance = function(params, callback){
+    return $http({
+      method: 'POST',
+      url: config.baseUrl + '/api/user/calcDistance',
+      data: params
+    }).then(function(res){
+      if(callback){
+        callback(null,res);
+      }
+    }).catch(function(err){
+      console.log("Get Distance Error", err);
+      if(callback){
+        callback(err,null);
+      }
+    });
+  };
+
   return {
     update: update,
-    getSelf: getSelf
+    getSelf: getSelf,
+    getDistance: getDistance
   };
 });
