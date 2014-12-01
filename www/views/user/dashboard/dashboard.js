@@ -314,8 +314,11 @@ $scope.types = [
 
   var initializeMarkers = function() {
     Search.getVendors({}, setMarkers);
-  }
-
+  };
+  sendVendor = function(vendor) {
+    vendor = JSON.parse(vendor);
+    $scope.showVendor(vendor);
+  };
   var setMarkers = function(err, vendors) {
     vendors = vendors.data.result;
 
@@ -331,7 +334,7 @@ $scope.types = [
       markers[i] = {
         lat: vendors[i].latitude,
         lng: vendors[i].longitude,
-        message: '<a id="tester" data-vendor="'+JSON.stringify(currentVendor)+'">' +
+        message: '<a id="tester" onclick="sendVendor(this.dataset.vendor)" data-vendor=\''+JSON.stringify(currentVendor)+'\'>' +
           '<h4 class="title">' + currentVendorName + '</h4>' +
           '<div class="text-center">' + currentVendor.category + '</div>' +
           '<div class="rating text-center">' + stars + '</div>' +
@@ -417,7 +420,7 @@ initializeMarkers();
           });
         }();
         } else {
-        //else call set markers       
+        //else call set markers
         setMarkers(null,result);
         }
         //will need to create markers and place them on map
