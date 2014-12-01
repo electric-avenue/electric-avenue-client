@@ -101,7 +101,11 @@ angular.module('search', [])
       var result = []
       var data = res.data.result;
       for (var i=0; i<data.length; i++) {
-        result.push([data[i].latitude, data[i].longitude, data[i].pedestrianvol24hr.split(',').join('')]);
+        var vol = data[i].pedestrianvol24hr.split(',').join('')
+        if (vol > 60000) {
+          vol = 60000;
+        }
+        result.push([data[i].latitude, data[i].longitude, vol]);
       }
 
       if (callback) {

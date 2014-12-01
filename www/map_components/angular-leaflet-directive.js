@@ -2433,6 +2433,7 @@ angular.module("leaflet-directive").factory('leafletLayerHelpers', ["$rootScope"
                 // }
                 console.log('HEATLAYER,' , L.heatLayer)
                 var layer =  L.heatLayer(params.data, params.options);
+                // var layer = simpleheat(params.data);
                 // if (isDefined(params.data)) {
                 //     layer.setData(params.data);
                 // }

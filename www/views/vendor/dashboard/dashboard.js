@@ -73,14 +73,15 @@ angular.module('vendorDashboard', ['leaflet-directive', 'vendorFactory', 'map', 
   //           maxZoom: 17});
   // console.log(heat);
 
-  // var pedVolume = res;
+  var pedVolume = res;
 
-    var pedVolume = [
-    [43.664605, -79.373874, "2/103"],
-    [43.642566, -79387057, "1/486"],
-    [43.6643375, -79.384484, "6A"],
-    [43.64255, -79.42686, "542"]
-  ];
+    // var pedVolume = [
+    // [43.7, -79.4, 25],
+    // [43.69, -79.39, 20],
+    // [43.664605, -79.373874, 15]
+    //   ];
+
+   // var pedVolume = [{lat: 43.60, lon: -79.30, value: 0},{lat: 43.61, lon: -79.31, value: 10},{lat: 43.62, lon: -79.32, value: 20},{lat: 43.63, lon: -79.33, value: 30},{lat: 43.64, lon: -79.34, value: 40},{lat: 43.65, lon: -79.35, value: 50},{lat: 43.66, lon: -79.36, value: 60},{lat: 43.67, lon: -79.37, value: 70}]
 
   $scope.map = {
     defaults: {
@@ -107,6 +108,7 @@ angular.module('vendorDashboard', ['leaflet-directive', 'vendorFactory', 'map', 
           name: 'Pedestrian Flow',
           type: 'heatmap',
           visible: true,
+          max: 80000,
           data:  pedVolume,
           // gradient: {0.4: 'red', 0.65: 'lime', 1: 'red'}
            //url: 'http://suite.opengeo.org/geoserver/usa/wms',
