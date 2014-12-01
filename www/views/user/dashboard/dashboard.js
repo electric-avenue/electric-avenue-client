@@ -49,10 +49,8 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
         }
       }
     };    
-    console.log('checker', vendor);
     Vendor.getStatus(vendor.User.username, function(err, res) {
       $scope.data.selected.status = res.data.result.isOnline;
-      console.log('hELLO', res);
     });
   };
   $scope.hideVendor = function() {
@@ -65,10 +63,22 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
   });
 
   $scope.loadVendors = function() {
-    console.log('checkers');
+    
     Search.getVendors({}, function(err, vendors) {
       $scope.data.vendors = vendors.data.result;
-      console.log('Vendors:', vendors.data.result);
+
+      User.getSelf(function(err,user){
+        var userId= user.data.result.id;
+        
+        for (var i=0; i<$scope.data.vendors.length; i++) {
+          var wrapper = function(i) {
+            User.getDistance({'userID': userId, 'vendorID': $scope.data.vendors[i].id}, function(err, distance){
+              console.log('INDEX', i, 'SCOPE VENDOR VAR', $scope.data.vendors[i]);
+              $scope.data.vendors[i].distance = Number(distance.data.data).toFixed(1);  
+            });
+          }(i);
+        }
+      });
     });
   };
 
@@ -297,7 +307,6 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
   var setMarkers = function(err, vendors) {
     vendors = vendors.data.result;
 
-    console.log('setMarkers Vendor Argument: ', vendors);
     var markers = {};
     
     for(var i = 0; i < vendors.length; i++){
@@ -316,8 +325,6 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
         icon: local_icons[vendors[i].category + 'Icon']
       };
     }
-
-    console.log(markers);
 
       $scope.map = {
         defaults: {
