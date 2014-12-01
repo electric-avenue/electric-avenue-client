@@ -1,5 +1,5 @@
 angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'vendorFactory','map', 'stripe','userFactory'])
-.controller('UserDashboardCtrl', function($scope, $ionicModal, Search, $state, Vendor, MapService, Payments, User) {
+.controller('UserDashboardCtrl', function($scope, $ionicModal, Search, $state, Vendor, MapService, Payments, User, $ionicPopup) {
   $scope.data = {
     vendors: [],
     selected: {}
@@ -186,7 +186,10 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
   //   //goods
   //   //farmers markets
   // };
-  $scope.types = [
+$scope.types = [
+    {
+      name: "Recommended For You", selected: false
+    },
     {
       name: "Art", selected: false,
     },
@@ -211,6 +214,7 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
 
   $scope.$watch('types|filter:{selected:true}', function (typeArray) {
     //If no filters selected, then place markers for all vendors
+    var getRecommendations = false;
     if (typeArray.length === 0) {
       initializeMarkers();
       return;
@@ -219,10 +223,17 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
     //Else place markers for all types checked in filter
     var clicked = [];
     for (var i=0; i<typeArray.length; i++) {
+      if(typeArray[i].name === $scope.types[0].name){
+        getRecommendations = !getRecommendations;
+        continue;
+      }
       clicked.push(typeArray[i].name)
     }
+    if(getRecommendations){
+      $scope.getRecommendations();
+    }
       Search.getVendors({category: clicked}, setMarkers);
-    }, true);
+  }, true);
 
   $scope.selectedFilters = _.filter($scope.filters, 'selected');
 
@@ -383,11 +394,25 @@ initializeMarkers();
   $scope.getRecommendations = function(){
     //set default distance to 5 miles
     User.getSelf(function(err,user){
-       var userId= user.data.result.id;
-       User.getRecommendations({'userID':userId, 'miles': 5},function(err,result){
-        setMarkers(null, result);
+      var userId= user.data.result.id;
+      User.getRecommendations({'userID':userId},function(err,result){
+        // if returned null then call showPopup
+        if(result === null){
+          $scope.showAlert = function() {
+            var alertPopup = $ionicPopup.alert({
+              title: 'Recommendation Error',
+              template: 'You need to review more vendors to receive a recommendation.'
+            });
+          alertPopup.then(function(res) {
+            $scope.types[0].selected = false;
+          });
+        }();
+        } else {
+        //else call set markers       
+        setMarkers(null,result);
+        }
         //will need to create markers and place them on map
-       });
+      });
     });
   };
   $scope.goTo = function(location){
