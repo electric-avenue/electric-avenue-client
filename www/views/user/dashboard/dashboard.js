@@ -122,7 +122,7 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
     };
     console.log('payment data', payment);
     Payments.sendTip(vendor, payment, function() {
-
+      $scope.hideTipModal();
     });
   };
   /*
@@ -142,7 +142,8 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
     $scope.tipModal.show();
   };
   $scope.hideTipModal = function() {
-    $scope.data.selected = {};
+    $scope.tipData.vendor = '';
+    $scope.tipData.amount = '';
     $scope.tipModal.hide();
   };
   //Cleanup the modal when we're done with it!

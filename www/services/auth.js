@@ -101,5 +101,28 @@ angular.module('auth', [])
       url: config.baseUrl + '/auth/logout'
     });
   };
+
+  auth.changePassword = function(data, callback) {
+    data = _.pick(data, [
+      'oldPassword',
+      'newPassword'
+    ]);
+
+    return $http({
+      method: 'POST',
+      url: config.baseUrl + '/auth/changepassword',
+      data: data
+    }).then(function(res) {
+      if (callback) {
+        callback(null, res);
+      }
+      return true;
+    }).catch(function(err) {
+      if (callback) {
+        callback(err, null);
+      }
+      return false;
+    });
+  }
   return auth;
 });

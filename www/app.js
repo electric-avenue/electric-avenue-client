@@ -4,14 +4,14 @@ angular.module('starter', [
   'authView',
   'vendorSignup',
   'userprofile',
+  'userpassword',
   'userDashboard',
   'vendorDashboard',
   'ngCordova',
   'angularPayments',
   'payments',
   'ui.utils.masks',
-  'auth'//,
-  // 'usermap'
+  'auth'
 ]).run(function($ionicPlatform, $cordovaSplashscreen, $http, Auth, $state) {
   $http({
     method: 'GET',
@@ -95,7 +95,7 @@ angular.module('starter', [
       views: {
         'menuContent': {
           templateUrl: 'views/user/changePassword/changePassword.html',
-          controller: 'UserProfileCtrl'
+          controller: 'ChangePasswordCtrl'
         }
       }
     })
