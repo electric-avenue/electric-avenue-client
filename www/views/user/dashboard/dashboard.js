@@ -1,5 +1,5 @@
-angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'vendorFactory','map', 'stripe'])
-.controller('UserDashboardCtrl', function($scope, $ionicModal, Search, $state, Vendor, MapService, Payments) {
+angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'vendorFactory','map', 'stripe','userFactory'])
+.controller('UserDashboardCtrl', function($scope, $ionicModal, Search, $state, Vendor, MapService, Payments, User) {
   $scope.data = {
     vendors: [],
     selected: {}
@@ -14,6 +14,14 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
     $scope.vendorModal = modal;
   });
   $scope.showVendor = function(vendor) {
+    User.getSelf(function(err,user){
+       $scope.data.user = user.data.result;
+       var userId= user.data.result.id;
+      User.getDistance({'userID': user.data.result.id, 'vendorID': vendor.id}, function(err, distance){
+        $scope.data.distance = Number(distance.data.data).toFixed(1);
+      });
+    });
+    
     $scope.data.selected = vendor;
     $scope.vendorModal.show();
     $scope.vendorProfileMap= {
