@@ -295,7 +295,7 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
       iconUrl: 'img/gifts.png',
       popupAnchor: [15,0] //point from which the popup should open relative to the iconAnchor
     },
-    FarmersIcon:{
+    FarmersMarketIcon:{
       iconUrl: 'img/bread.png',
       popupAnchor: [15,0] //point from which the popup should open relative to the iconAnchor
     }
@@ -323,7 +323,7 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
             noHide: true
           }
         },
-        icon: local_icons[vendors[i].category + 'Icon']
+        icon: local_icons[(vendors[i].category).split(' ').join('') + 'Icon']
       };
     }
 
