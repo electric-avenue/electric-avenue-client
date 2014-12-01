@@ -368,7 +368,20 @@ initializeMarkers();
   //   // $scope.map.markers = result;
   // };
 
-
+//Handle when user is requesting info vendors Near User
+//will make a call in search.js
+//populate map with information
+//may need to dummy up information
+  $scope.getRecommendations = function(){
+    //set default distance to 5 miles
+    User.getSelf(function(err,user){
+       var userId= user.data.result.id;
+       User.getRecommendations({'userID':userId, 'miles': 5},function(err,result){
+        setMarkers(null, result);
+        //will need to create markers and place them on map
+       });
+    });
+  };
   $scope.goTo = function(location){
     $scope.map.center.lat = location.coords.latitude;
     $scope.map.center.lng = location.coords.longitude;
