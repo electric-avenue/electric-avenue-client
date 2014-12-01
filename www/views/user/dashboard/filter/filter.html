@@ -4,19 +4,30 @@
     <button class="button button-clear button-positive" ng-click="clearFilter()">Clear</button>
   </ion-header-bar>
   <ion-content class="hasFilter">
-    <div class="filterArea">
-      <h5 class="title">Current Filters:</h5>
-      <button class="button button-small icon-right ion-close button-dark filterItem">
+    <!-- <div class="filterArea"> -->
+      <!-- <h5 class="title">Current Filters:</h5> -->
+<!--       <button class="button button-small icon-right ion-close button-dark filterItem">
         Art
       </button>
       <button class="button button-small icon-right ion-close button-dark filterItem">
         Closest
-      </button>
-    </div>
+      </button> -->
+ <!--    </div> -->
     <div class="list">
 
       <div class="item item-divider">
-        Types
+        Vendors:
+      </div>
+      <div class="item item-checkbox">
+        <label class="checkbox">
+          <input name="stats-bestrating" type="checkbox" ng-click="getRecommendations()">
+        </label>
+        Recommended For You
+      </div>
+
+
+      <div class="item item-divider">
+       Vendors By Type:
       </div>
       <label ng-repeat="type in types">
         <div class="item item-checkbox">
@@ -62,7 +73,7 @@
         </label>
         Farmers Markets
        </div>-->
-      <div class="item item-divider">
+<!--       <div class="item item-divider">
         Location
       </div>
       <div class="item item-checkbox">
@@ -70,16 +81,8 @@
           <input name="location-closest" type="checkbox">
         </label>
         Closest
-      </div>
-      <div class="item item-divider">
-        Stats
-      </div>
-      <div class="item item-checkbox">
-        <label class="checkbox">
-          <input name="stats-bestrating" type="checkbox" ng-click="getRecommendations()">
-        </label>
-        Best Rating
-      </div>
+      </div> -->
+
     </div>
   </ion-content>
   <button class="bar bar-footer bar-assertive" ng-click="hideFilter()">
