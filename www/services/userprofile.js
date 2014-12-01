@@ -68,9 +68,27 @@ angular.module('userFactory', [])
     });
   };
 
+  var getRecommendations= function(params,callback){
+    return $http({
+      method: 'POST',
+      url: config.baseUrl + '/api/user/getRecommendations',
+      data: params
+    }).then(function(result){
+      if(callback){
+        callback(null,result);
+      }
+    }).catch(function(err){
+      console.log("Error retrieving recommendation, ",err);
+      if(callback){
+        callback(err,null);
+      }
+    });
+  };
+
   return {
     update: update,
     getSelf: getSelf,
-    getDistance: getDistance
+    getDistance: getDistance,
+    getRecommendations: getRecommendations
   };
 });
