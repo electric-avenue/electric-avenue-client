@@ -11,8 +11,15 @@
 .vendor-item:last-child {
   padding-bottom: 80px;
 }
+.imagewrapper {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
 .roundimage {
   border-radius: 6px;
+  max-height: 250px;
+  width: auto;
 }
 
 .rating i {

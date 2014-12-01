@@ -7,8 +7,10 @@
         <p>{{vendor.category}}</p>
       </div>
       <div class="item item-body">
+        <div class="imagewrapper">
         <img class="full-image roundimage" ng-if="!vendor.image" ng-src="http://img3.wikia.nocookie.net/__cb20121227201208/jamesbond/images/6/61/Generic_Placeholder_-_Profile.jpg">
         <img class="full-image roundimage" ng-if="vendor.image" ng-src="http://localhost:5000/profileImages/{{vendor.image}}">
+        </div>
         <p>
           {{vendor.description}}
         </p>
