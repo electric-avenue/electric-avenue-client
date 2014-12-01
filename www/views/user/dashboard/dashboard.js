@@ -317,12 +317,12 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
         lng: vendors[i].longitude,
         message: 'You clicked me!',
         draggable: false,
-        label: {
-          message: vendors[i].User.displayname,
-          options: {
-            noHide: true
-          }
-        },
+        // label: {
+        //   message: vendors[i].User.displayname,
+        //   options: {
+        //     noHide: true
+        //   }
+        // },
         icon: local_icons[(vendors[i].category).split(' ').join('') + 'Icon']
       };
     }
