@@ -21,7 +21,7 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
         $scope.data.distance = Number(distance.data.data).toFixed(1);
       });
     });
-    
+
     $scope.data.selected = vendor;
     $scope.vendorModal.show();
     $scope.vendorProfileMap= {
@@ -48,7 +48,7 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
           logic: 'emit'
         }
       }
-    };    
+    };
     Vendor.getStatus(vendor.User.username, function(err, res) {
       $scope.data.selected.status = res.data.result.isOnline;
     });
@@ -63,18 +63,18 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
   });
 
   $scope.loadVendors = function() {
-    
+
     Search.getVendors({}, function(err, vendors) {
       $scope.data.vendors = vendors.data.result;
 
       User.getSelf(function(err,user){
         var userId= user.data.result.id;
-        
+
         for (var i=0; i<$scope.data.vendors.length; i++) {
           var wrapper = function(i) {
             User.getDistance({'userID': userId, 'vendorID': $scope.data.vendors[i].id}, function(err, distance){
               console.log('INDEX', i, 'SCOPE VENDOR VAR', $scope.data.vendors[i]);
-              $scope.data.vendors[i].distance = Number(distance.data.data).toFixed(1);  
+              $scope.data.vendors[i].distance = Number(distance.data.data).toFixed(1);
             });
           }(i);
         }
@@ -193,7 +193,7 @@ $scope.types = [
     {
       name: "Art", selected: false,
     },
-    {   
+    {
       name: "Music", selected: false,
     },
     {
@@ -274,7 +274,7 @@ $scope.types = [
       console.log(position);
       $scope.goTo(position);
       createMarkers([position]);
-    }, function(err){ 
+    }, function(err){
       console.log("Error retrieveing location: ",err);
      });
   };
@@ -320,13 +320,22 @@ $scope.types = [
     vendors = vendors.data.result;
 
     var markers = {};
-    
+
     for(var i = 0; i < vendors.length; i++){
-  
+      var currentVendor = vendors[i];
+      var currentVendorName = currentVendor.User.displayname || currentVendor.User.username;
+      var ratingArr = new Array(currentVendor.avgrating).join('0').split('');
+      var stars = ratingArr.reduce(function(prev, value) {
+        return prev + '<i class="ion ion-star"></i>';
+      }, '');
       markers[i] = {
         lat: vendors[i].latitude,
         lng: vendors[i].longitude,
-        message: 'You clicked me!',
+        message: '<a id="tester" data-vendor="'+JSON.stringify(currentVendor)+'">' +
+          '<h4 class="title">' + currentVendorName + '</h4>' +
+          '<div class="text-center">' + currentVendor.category + '</div>' +
+          '<div class="rating text-center">' + stars + '</div>' +
+          '</a>',
         draggable: false,
         // label: {
         //   message: vendors[i].User.displayname,
@@ -361,7 +370,7 @@ $scope.types = [
   };
 
 initializeMarkers();
-  
+
   // var getInterest = function(params){
   //   MapService.setMarkers(params,function(err,vendorsLocation){
   //     console.log("vendor markers");
@@ -420,7 +429,7 @@ initializeMarkers();
     $scope.map.center.lng = location.coords.longitude;
     $scope.map.center.zoom = 16;
   };
-  
+
   var markers = [
     {latitude: 43.645016,longitude: -79.39092, displayname: 'test test', type: 'food'},
     {latitude: 43.666503,longitude: -79.381121, displayname: 'test test', type: 'food'},
