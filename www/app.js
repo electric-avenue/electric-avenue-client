@@ -124,7 +124,7 @@ angular.module('starter', [
       authenticate: true,
       views: {
         'menuContent': {
-          templateUrl: '/views/vendor/dashboard/map/map.html',
+          templateUrl: 'views/vendor/dashboard/map/map.html',
           controller: 'VendorDashboardCtrl'
         }
       }
