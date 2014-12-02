@@ -5,14 +5,17 @@ angular.module('vendorDashboard', ['leaflet-directive', 'vendorFactory', 'map', 
     totalTips: {
       total: 0,
       pending: 0
-    }
+    },
   };
 
   $scope.getTips = function() {
     Vendor.getInfo(function(err, res) {
       $scope.data.tips = res.data.data.Vendor.Tips;
-      $scope.data.totalTips = $scope.data.tips.reduce(function(mem, val) {
+      $scope.data.totalTips = $scope.data.tips.reduce(function(mem, val, index) {
         var amount = Number(val.amount) / 100;
+        $scope.data.tips[index].dollars = '$' + amount;
+        var date = new Date(val.updatedAt);
+        $scope.data.tips[index].dateFormat = moment(date).format('MM/DD/YYYY hh:mm a');
         if (val.paid) {
           mem.total += amount;
         } else {
