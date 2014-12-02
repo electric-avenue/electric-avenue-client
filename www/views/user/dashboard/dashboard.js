@@ -327,7 +327,7 @@ $scope.types = [
     for(var i = 0; i < vendors.length; i++){
       var currentVendor = vendors[i];
       var currentVendorName = currentVendor.User.displayname || currentVendor.User.username;
-      var ratingArr = new Array(currentVendor.avgrating).join('0').split('');
+      var ratingArr = new Array(Math.floor(currentVendor.avgrating)).join('0').split('');
       var stars = ratingArr.reduce(function(prev, value) {
         return prev + '<i class="ion ion-star"></i>';
       }, '');
