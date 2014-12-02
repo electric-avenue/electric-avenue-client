@@ -34,7 +34,7 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
       center: {
         lat: vendor.latitude,
         lng: vendor.longitude,
-        zoom: 15
+        zoom: 13
       },
       markers : {
         'curPos':{
@@ -360,7 +360,7 @@ $scope.types = [
         center: {
           lat: 43.661165,
           lng: -79.390919,
-          zoom: 15
+          zoom: 13
         },
         markers : markers || {},
         events: {

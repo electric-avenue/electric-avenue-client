@@ -96,7 +96,7 @@ angular.module('vendorDashboard', ['leaflet-directive', 'vendorFactory', 'map', 
     center: {
       lat: 43.661165,
       lng: -79.390919,
-      zoom: 15
+      zoom: 14
     },
     layers: {
       baselayers: {
