@@ -79,9 +79,9 @@ angular.module('userFactory', [])
       }
     }).catch(function(err){
       console.log("Error retrieving recommendation, ",err);
-      if(callback){
-        callback(err,null);
-      }
+      // if(callback){
+      //   callback(err,null);
+      // }
     });
   };
 
