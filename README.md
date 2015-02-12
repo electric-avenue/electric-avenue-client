@@ -5,7 +5,7 @@ Electric Avenue is a single-platform solution for connecting people to street ve
 Vendors manage an in-app home page viewable by users that contains information about the vendor’s services or goods. Vendors appear to users on the map or list view when they “check-in” to begin vending. Vendors will also receive recommendations about the best areas for them to operate based on pedestrian volume statistics, tipping history, Square analytics and other data collected from the application. ￼￼￼￼
 
 Team Breakdown
-==============
+--------------
 Mike Horan: Project Manager, Back End, Algorithms & Leaflet Maps
 
 Jamon Douglas: DevOps & Full Stack
