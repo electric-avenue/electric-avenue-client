@@ -5,8 +5,8 @@ angular.module('search', [])
     console.log("From search service");
     console.log(params);
     return $http({
-      method: 'POST',
-      url: config.baseUrl + '/api/vendor/get',
+      method: 'GET',
+      url: config.baseUrl + '/api/vendor',
       data: params
     })
     .then(function(res) {

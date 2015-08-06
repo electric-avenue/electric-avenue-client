@@ -327,13 +327,14 @@ $scope.types = [
     for(var i = 0; i < vendors.length; i++){
       var currentVendor = vendors[i];
       var currentVendorName = currentVendor.User.displayname || currentVendor.User.username;
+      var localIconsKeyIndex = currentVendor.User.username.indexOf('Vendor');
       var ratingArr = new Array(Math.floor(currentVendor.avgrating) || 0).join('0').split('');
       var stars = ratingArr.reduce(function(prev, value) {
         return prev + '<i class="ion ion-star"></i>';
       }, '');
       markers[i] = {
-        lat: vendors[i].latitude,
-        lng: vendors[i].longitude,
+        lat: currentVendor.latitude,
+        lng: currentVendor.longitude,
         message: '<a id="tester" onclick="sendVendor(this.dataset.vendor)" data-vendor=\''+JSON.stringify(currentVendor)+'\'>' +
           '<h4 class="title">' + currentVendorName + '</h4>' +
           '<div class="text-center">' + currentVendor.category + '</div>' +
@@ -346,7 +347,7 @@ $scope.types = [
         //     noHide: true
         //   }
         // },
-        icon: local_icons[(vendors[i].category).split(' ').join('') + 'Icon']
+        icon: local_icons[currentVendor.User.username.substring(0,localIconsKeyIndex) + 'Icon']
       };
     }
 
