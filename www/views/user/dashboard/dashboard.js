@@ -232,7 +232,7 @@ $scope.types = [
     if(getRecommendations){
       $scope.getRecommendations();
     }
-      Search.getVendors({category: clicked}, setMarkers);
+      Search.getVendorsPost({category: clicked}, setMarkers);
   }, true);
 
   $scope.selectedFilters = _.filter($scope.filters, 'selected');

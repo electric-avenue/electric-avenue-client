@@ -22,6 +22,25 @@ angular.module('search', [])
       }
     });
   };
+
+  var getVendorsPost = function(params, callback){
+    return $http({
+      method : 'POST',
+      url    : config.baseUrl + '/api/vendor',
+      data   : params
+    })
+    .then(function(res){
+      if(callback){
+        callback(null,res);
+      }
+    }).catch(function(err){
+      console.log('Vendor Get Error:', err);
+      if (callback) {
+        callback(err, null);
+      }
+    });
+  };
+
   //name = vendor email or username (display name wip)
   var getOneVendor = function(name, callback) {
     return $http({
@@ -124,6 +143,7 @@ angular.module('search', [])
     getOneVendor: getOneVendor,
     getTrendingVendors: getTrendingVendors,
     addRating: addRating,
-    getAllPeds: getAllPeds
+    getAllPeds: getAllPeds,
+    getVendorsPost : getVendorsPost
   };
 });
