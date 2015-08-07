@@ -52,6 +52,7 @@ angular.module('userFactory', [])
   };
 
   var getDistance = function(params, callback){
+    console.log('need to get distance');
     return $http({
       method: 'POST',
       url: config.baseUrl + '/api/user/calcDistance',

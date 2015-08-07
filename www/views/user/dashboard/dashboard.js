@@ -66,11 +66,11 @@ angular.module('userDashboard', ['search', 'leaflet-directive','ngCordova', 'ven
 
     Search.getVendors({}, function(err, vendors) {
       $scope.data.vendors = vendors.data.result;
-
       User.getSelf(function(err,user){
         var userId= user.data.result.id;
 
         for (var i=0; i<$scope.data.vendors.length; i++) {
+          console.log($scope.data.vendors[i]);
           var wrapper = function(i) {
             User.getDistance({'userID': userId, 'vendorID': $scope.data.vendors[i].id}, function(err, distance){
               console.log('INDEX', i, 'SCOPE VENDOR VAR', $scope.data.vendors[i]);

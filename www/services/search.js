@@ -30,6 +30,7 @@ angular.module('search', [])
       data   : params
     })
     .then(function(res){
+      console.log(' FROM get vendors post:: ',res);
       if(callback){
         callback(null,res);
       }
